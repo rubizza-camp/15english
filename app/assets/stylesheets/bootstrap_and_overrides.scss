@@ -1,0 +1,32 @@
+@import 'bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+a{
+  color: #000 !important;
+}
+a:hover{
+  text-decoration: none;
+}
+.logo{
+  color: green;
+}
+.content_welcome{
+  text-align: center;
+  margin-top: 18%;
+}
+.footer{
+  text-align: center;
+  left: 0;
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+}
