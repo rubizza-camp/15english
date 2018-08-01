@@ -1,5 +1,6 @@
-.hidden
-  p.notice
-    = notice
-  p.alert
-    = alert
+.alert
+  - flash.each do |key, value|
+    |  <div class="
+    = flash_class(key)
+    | ">
+    = value
