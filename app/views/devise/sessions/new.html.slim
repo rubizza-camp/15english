@@ -1,7 +1,7 @@
 .container_out
   h2
     center
-      | Log in
+      = t('.sign_in')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -16,4 +16,4 @@
     .actions
       = f.button
         .save_button
-          | Log in
+          = t('.sign_in')
