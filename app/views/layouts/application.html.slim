@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application'
   body
     == render 'shared/header'
-    == render 'shared/error'
     .container
+      == render 'shared/error'
       = yield
     == render 'shared/footer'
