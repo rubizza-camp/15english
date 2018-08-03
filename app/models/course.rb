@@ -1,3 +1,6 @@
 class Course < ApplicationRecord
-  belongs_to :theme_bloks
+  belongs_to :user
+  validates :user_id, presence: true # ??
+  validates :content, presence: true, length: { maximum: 20 }
+  #default_scope -> { order(created_at: :desc) }
 end
