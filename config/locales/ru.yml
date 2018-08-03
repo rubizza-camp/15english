@@ -4,6 +4,7 @@ ru:
       welcome_to: 'Добро пожаловать на'
   shared:
     header:
+      profile: 'Profile'
       sign:
         out: 'Выйти'
         up: 'Зарегестрироваться'
