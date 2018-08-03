@@ -5,24 +5,19 @@ h1
       | Elementary
     a.btn.btn-success[href="#"]
       | Edit
-    a.btn.btn-danger[href="#"]
-      | Delete
+    a.btn.btn-danger == link_to 'Delete', destroy_course_path
   .alert.alert-success
     .course_blokn
       a[href="#"]
         | Middle
     a.btn.btn-success[href="#"]
       | Edit
-    a.btn.btn-danger[href="#"]
-      | Delete
+    a.btn.btn-danger == link_to 'Delete', destroy_course_path
   .alert.alert-success
     .course_blok
       a[href="#"]
         | Pro
     a.btn.btn-success[href="#"]
       | Edit
-    a.btn.btn-danger[href="#"]
-      | Delete
-
-  .btn.btn-secondary
-    | Add new lvl!
+    a.btn.btn-danger == link_to 'Delete', destroy_course_path
+  .btn.btn-secondary == link_to 'Add new lvl!', new_course_path
