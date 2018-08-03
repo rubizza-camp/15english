@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   scope ':locale', locale: /en|ru/ do
     devise_for :users
+    resources :users, only: [:show]
   end
 end
