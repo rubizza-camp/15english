@@ -5,6 +5,7 @@ en:
 
   shared:
     header:
+      profile: 'Profile'
       sign:
         out: 'Sign out'
         up: 'Sign up'
