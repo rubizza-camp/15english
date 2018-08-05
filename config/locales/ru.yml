@@ -1,0 +1,12 @@
+ru:
+  welcome:
+    index:
+      welcome_to: 'Добро пожаловать на'
+  shared:
+    header:
+      profile: 'Профиль'
+      sign:
+        out: 'Выйти'
+        up: 'Зарегестрироваться'
+        in: 'Войти'
+
