@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
+  
   def new
     @course = Course.new
   end
@@ -34,10 +35,9 @@ class CoursesController < ApplicationController
 
   private
 
-   # def set_user
-   #    @user = User.find(params[:id])
-   #    if @user.has_role?
-   #  end
+  def admin_user
+    redirect_to(course_path) unless current_user.admin?
+  end
 
   def course_params
     params.require(:course).permit(:title)
