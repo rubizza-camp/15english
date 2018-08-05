@@ -34,10 +34,10 @@ class CoursesController < ApplicationController
 
   private
 
-   def set_user
-      @user = User.find(params[:id])
-      if @user.has_role?
-    end
+   # def set_user
+   #    @user = User.find(params[:id])
+   #    if @user.has_role?
+   #  end
 
   def course_params
     params.require(:course).permit(:title)
