@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
   def new
     @course = Course.new
   end
@@ -41,5 +41,5 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:title)
-
+  end
 end
