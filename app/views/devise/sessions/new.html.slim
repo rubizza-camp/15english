@@ -13,7 +13,7 @@
       .field
           = f.check_box :remember_me
           = f.label :remember_me
-    = link_to "Forgot Password?", new_user_password_path
+    = link_to t('devise.passwords.new.forgot_your_password'), new_user_password_path
     .actions
       = f.button
         .save_button

@@ -8,17 +8,19 @@ ru:
         created_at: "Дата создания"
         current_password: "Текущий пароль"
         current_sign_in_at: "Дата текущего входа"
-        current_sign_in_ip: IP текущего входа
-        email: Email
+        current_sign_in_ip: "IP текущего входа"
+        email: "Email"
+        username: "Имя пользователя"
         encrypted_password: "Зашифрованный пароль"
         failed_attempts: "Неудачные попытки"
         last_sign_in_at: "Дата последнего входа"
-        last_sign_in_ip: IP последнего входа
+        last_sign_in_ip: "IP последнего входа"
         locked_at: "Дата блокировки"
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
         remember_created_at: "Дата создания запоминания"
         remember_me: "Запомнить меня"
+        forget_password: "Забыли пароль?"
         reset_password_sent_at: "Дата отправки сброса пароля"
         reset_password_token: "Токен сброса пароля"
         sign_in_count: "Количество входов"
@@ -53,7 +55,7 @@ ru:
       email_changed:
         greeting: "Здравствуйте, %{recipient}!"
         message: "Мы пытаемся связаться с вами, что бы сообщить, что ваш email был изменен на %{email}."
-        subject: Email изменен
+        subject: "Email изменен"
       password_change:
         greeting: "Приветствуем, %{recipient}!"
         message: "Мы пытаемся связаться с вами, что бы сообщить, что ваш пароль был изменен."
@@ -72,7 +74,7 @@ ru:
         message: "Ваша учетная запись была заблокирована в связи с превышением лимита неудачных попыток входа."
         subject: "Инструкции по разблокировке учетной записи"
     omniauth_callbacks:
-      failure: Вы не можете войти в систему с учетной записью из %{kind}, т.к. "%{reason}".
+      failure: "Вы не можете войти в систему с учетной записью из %{kind}, т.к. %{reason}."
       success: "Вход в систему выполнен с учетной записью из %{kind}."
     passwords:
       edit:
@@ -140,6 +142,7 @@ ru:
       expired: "устарела. Пожалуйста, запросите новую"
       not_found: "не найден"
       not_locked: "не заблокирован"
+      avatar_size_error: "размер не должен превышать 500Кб"
       not_saved:
         few: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
         many: "%{resource}: сохранение не удалось из-за %{count} ошибок:"
