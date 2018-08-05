@@ -5,7 +5,10 @@ nav.navbar.navbar-light.bg-light
       .round-image-50
         = image_tag(current_user.avatar.url)
       .dropdown
-        .btn.btn-outline-success == link_to = current_user.email
+        - if current_user.username.blank?
+          .btn.btn-outline-success == link_to = current_user.email
+        - else
+          .btn.btn-outline-success == link_to = current_user.username
         .dropdown-content
           == link_to (t ".profile"), current_user
           == link_to (t ".sign.out"), destroy_user_session_path, method: :delete

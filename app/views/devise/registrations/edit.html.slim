@@ -9,6 +9,10 @@ h2
   = f.file_field :avatar
   = f.hidden_field :avatar_cache
   .field
+    = f.label :username
+    br
+    = f.text_field :username
+  .field
     = f.label :email
     br
     = f.email_field :email, autofocus: true, autocomplete: "email"
