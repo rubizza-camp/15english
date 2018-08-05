@@ -1,11 +1,10 @@
 class CreateCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :courses do |t|
-      t.string :name
-      t.references :user, foreign_key: true
+      t.string :title
 
       t.timestamps
     end
-    add_index :courses, [:user_id, :created_at]
+    add_index :courses, :title
   end
 end

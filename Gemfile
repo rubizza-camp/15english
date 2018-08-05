@@ -19,6 +19,7 @@ gem 'jquery-rails', '~> 4.3.3'
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'rails-i18n', '~> 5.1'
 gem 'rspec-rails', '~> 3.7.2'
+gem 'letter_opener'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
@@ -26,7 +27,6 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'letter_opener'
   gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

@@ -1,54 +1,45 @@
 class CoursesController < ApplicationController
+   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  def new
+    @course = Course.new
+  end
 
   def show
-  end
-
-  def new
-    @courses = Course.new
-  end
+    @course = Course.find(params[:id])   
+  end 
 
   def index
     @courses = Course.all
   end
 
   def create
-    @course = Course.new(course_params)
+    @course = Course.new(course_params).save
+    redirect_to courses_url
+  end
 
-    respond_to do |format|
-      if @course.save
-        format.html { reirect_to @course, 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
-      else
-        format.html { render :new }
-        # format.json { render json: @course.errors, status: :unprocessable_entity } 
-      end
+  def edit
+    @course = Course.find(params[:id])
   end
 
   def update
-    respond_to do |format|
-    if @course.update(course_params)
-      format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-      format.json { render :show, status: :ok, location: @course }
-    else
-      format.html { render :edit }
-      #format.json { render json: @course.errors, status: :unprocessable_entity }
-    end
-  end
-    
+    @course = Course.find(params[:id])
+    @course.update(course_params)
+    redirect_to courses_url
   end
 
   def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to course_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    Course.find(params[:id]).destroy
+    redirect_to courses_url
   end
 
   private
 
-    def course_params
-      params.require(:course).permit(:name_course, :user_id)
+   def set_user
+      @user = User.find(params[:id])
+      if @user.has_role?
     end
 
+  def course_params
+    params.require(:course).permit(:title)
+  end
 end
