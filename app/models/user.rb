@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# model for User
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
@@ -5,7 +8,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-          :confirmable, :recoverable#, :omniauthable
+         :confirmable, :recoverable# , :omniauthable
 
   # User Avatar Validation
   validates_integrity_of  :avatar
