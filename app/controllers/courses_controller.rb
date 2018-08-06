@@ -1,13 +1,13 @@
 class CoursesController < ApplicationController
   before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
-  
+
   def new
     @course = Course.new
   end
 
   def show
-    @course = Course.find(params[:id])   
-  end 
+    @course = Course.find(params[:id])
+  end
 
   def index
     @courses = Course.all
@@ -35,11 +35,11 @@ class CoursesController < ApplicationController
 
   private
 
-  def admin_user
-    redirect_to(course_path) unless current_user.admin?
-  end
+    def admin_user
+      redirect_to(course_path) unless current_user.admin?
+    end
 
-  def course_params
-    params.require(:course).permit(:title)
-  end
+    def course_params
+      params.require(:course).permit(:title)
+    end
 end

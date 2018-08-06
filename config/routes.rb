@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     devise_for :users
     resources :users, only: [:show]
   end
-  resources :courses 
+  resources :courses
 end
