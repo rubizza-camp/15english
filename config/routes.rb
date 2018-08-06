@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   scope ":locale", locale: /en|ru/ do
     devise_for :users
     resources :users, only: [:show]
+    resources :courses
   end
-  resources :courses
 end

@@ -7,6 +7,6 @@ h1
         | #{course.title}
       .btn.btn-success == link_to 'Edit', edit_course_path(course.id)
       .btn.btn-danger == link_to 'Delete', course_path(course), method: :delete  
-  = form_for :course, method: "POST", :url => { :action => :create} do |f|
+  = form_for :course, method: "POST", url: { action: :create} do |f|
     = f.text_field :title
     = f.submit "Add new lvl"
