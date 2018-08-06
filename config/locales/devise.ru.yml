@@ -20,7 +20,6 @@ ru:
         password_confirmation: "Подтверждение пароля"
         remember_created_at: "Дата создания запоминания"
         remember_me: "Запомнить меня"
-        forget_password: "Забыли пароль?"
         reset_password_sent_at: "Дата отправки сброса пароля"
         reset_password_token: "Токен сброса пароля"
         sign_in_count: "Количество входов"
