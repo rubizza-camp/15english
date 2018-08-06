@@ -1,14 +1,18 @@
 @import 'bootstrap';
 
+.wrapper {
+  min-height: calc(100vh - 95px);
+}
+
 .container{
   align: center;
-  margin-top: 13%;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .footer{
   text-align: center;
   position: absolute;
-  bottom: 30px;
   width: 100%;
 }
 
