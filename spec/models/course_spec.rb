@@ -6,11 +6,11 @@ RSpec.describe Course, type: :model do
     @user1 = create(:course)
   end
 
-  it "it valid with valid attributes" do
+  it "valid with valid attributes" do
     @course1 = create(:course)
   end
 
-  it "it not valid big name" do
+  it "not valid big name" do
    should_not be_valid(title: 'qqq'*10)
   end
 end
