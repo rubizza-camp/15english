@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     name                  "Mark Brown"
     email                 "mbrown@yahoo.com"
