@@ -2,8 +2,8 @@
 
 # model for User
 class User < ApplicationRecord
+  has_many :images, as :imageableD
   mount_uploader :avatar, AvatarUploader
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
