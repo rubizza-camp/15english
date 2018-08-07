@@ -32,3 +32,9 @@
 .env
 
 /public/uploads/*
+
+.gitignore
+
+*~
+
+/config/secrets.yml
