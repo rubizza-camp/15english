@@ -1,0 +1,9 @@
+p#notice
+  = notice
+p
+  strong
+    | Title:
+  = @lesson.title
+= link_to 'Edit', edit_lesson_path(@lesson)
+|  |
+= link_to 'Back', lessons_path

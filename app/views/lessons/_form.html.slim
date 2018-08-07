@@ -1,0 +1,6 @@
+= form_with(model: lesson, local: true) do |form|
+  .field
+    = form.label :title
+    = form.text_field :title, id: :lesson_title
+  .actions
+    = form.submit
