@@ -1,7 +1,7 @@
 .form-inline
   = simple_form_for :subject, method: :post do |f|
     .form-group.mx-sm-3.mb-2
-      = f.input :title, label: 'Enter subject', input_html: { maxlength: 100 }, class: 'form-control'
+      = f.input :title, label: 'Enter subject', class: 'form-control'
       = f.button :submit, 'Add new subject', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
 table.table
   - @subjects.each do |subject|

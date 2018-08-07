@@ -1,12 +1,5 @@
 .form-inline
   = simple_form_for @subject do |f|
     .form-group.mx-sm-3.mb-2
-      = f.input :title, label: 'Rename your subject', input_html: { maxlength: 100 }, class: 'form-control'
+      = f.input :title, label: 'Rename your subject', class: 'form-control'
       = f.button :submit, 'Edit', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
-
-
-/ | Rename you subject
-/ = simple_form_for @subject, method: :patch, html: { class: 'form-inline' } do |f|
-/   .form-group.mx-sm-3.mb-2
-/     = f.text_field :title, class: 'form-control'
-/     = f.submit 'edit', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
