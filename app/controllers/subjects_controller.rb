@@ -1,24 +1,46 @@
 class SubjectsController < ApplicationController
-  def show
-    @subject = Subject.all
+  include Pundit
+  protect_from_forgery
+  before_action :set_subject, only: [:update, :edit, :destroy, :show]
+
+  def new
+    @subject = Subject.new
   end
 
   def create
-    @subject = Subject.create(new_subject)
-    render 'show'
+    @subject = Subject.create(subject_params)
+    redirect_to subjects_url
   end
 
-  def delete
-    render 'show'
+  def index
+    @subjects = Subject.all
+  end
+
+  def show
+    set_subject
+  end
+
+  def update
+    set_subject.update(subject_params)
+    redirect_to subjects_url
+  end
+
+  def destroy
+    set_subject.destroy
+    redirect_to subjects_url
   end
 
   def edit
-
+    set_subject
   end
 
   private
-  def new_subject
-    params.require(:title).permit(:lesson_id)
+
+  def set_subject
+    @subject = Subject.find(params[:id])
   end
 
+  def subject_params
+    params.require(:subject).permit(:title)
+  end
 end
