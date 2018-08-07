@@ -21,6 +21,9 @@ gem "jquery-rails", "~> 4.3.3"
 gem "listen", ">= 3.0.5", "< 3.2"
 gem "rails-i18n", "~> 5.1"
 gem "rails_best_practices", "~> 1.19.3"
+gem "carrierwave", "~> 1.2.3"
+gem "mini_magick", "~> 4.8.0"
+gem "autoprefixer-rails", "~> 9.0.2"
 gem "simple_form", "~> 4.0.1"
 
 group :development, :test do
