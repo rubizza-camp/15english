@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoursesController < ApplicationController
   before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
@@ -34,15 +36,15 @@ class CoursesController < ApplicationController
 
   private
 
-  def set_course
-    @course = Course.find(params[:id])
-  end
+    def set_course
+      @course = Course.find(params[:id])
+    end
 
-  def admin_user
-    redirect_to(course_path) unless current_user.admin?
-  end
+    def admin_user
+      redirect_to(course_path) unless current_user.admin?
+    end
 
-  def course_params
-    params.require(:course).permit(:title)
-  end
+    def course_params
+      params.require(:course).permit(:title)
+    end
 end
