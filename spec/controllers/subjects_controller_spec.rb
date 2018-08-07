@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SubjectsController, type: :controller do
 
-  describe "GET #page" do
+  describe "GET #subjects" do
     it "returns http success" do
-      get :page
+      visit "/en/subjects/"
       expect(response).to have_http_status(:success)
     end
   end
