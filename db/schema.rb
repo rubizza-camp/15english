@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_08_02_125336) do
+
+ActiveRecord::Schema.define(version: 2018_08_06_065052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +23,13 @@ ActiveRecord::Schema.define(version: 2018_08_02_125336) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_courses_on_title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +49,8 @@ ActiveRecord::Schema.define(version: 2018_08_02_125336) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
+    t.string "avatar"
+    t.string "username"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

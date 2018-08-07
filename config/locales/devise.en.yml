@@ -57,6 +57,7 @@ en:
       expired: "has expired, please request a new one"
       not_found: "not found"
       not_locked: "was not locked"
+      avatar_size_error: "should be less than 500KB"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"

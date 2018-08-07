@@ -22,6 +22,9 @@ gem "listen", ">= 3.0.5", "< 3.2"
 gem "rails-i18n", "~> 5.1"
 gem "rails_best_practices", "~> 1.19.3"
 gem "pundit", "~> 2.0.0"
+gem "carrierwave", "~> 1.2.3"
+gem "mini_magick", "~> 4.8.0"
+gem "autoprefixer-rails", "~> 9.0.2"
 gem "simple_form", "~> 4.0.1"
 
 group :development, :test do
@@ -45,5 +48,6 @@ group :test do
   gem "rspec-rails", "~> 3.7.2"
   gem "factory_bot_rails", "~> 4.10.0"
 end
+
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
