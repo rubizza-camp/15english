@@ -3,6 +3,6 @@ h1
     | Rename your course
   p
     | Before : #{@course.title}
-  = form_for @course, method: "PATCH", url: { action: :update} do |f|
-    = f.text_field :title
+  = simple_form_for @course do |f|
+    = f.input_field :title
     = f.submit "Rename"

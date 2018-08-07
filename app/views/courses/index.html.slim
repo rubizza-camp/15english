@@ -3,10 +3,9 @@ h1
   - @courses.each do |course|
     .alert.alert-success
       .course_blok
-       a[href="#"]
-        | #{course.title}
-      .btn.btn-success == link_to 'Edit', edit_course_path(course.id)
-      .btn.btn-danger == link_to 'Delete', course_path(course), method: :delete  
-  = form_for :course, method: "POST", url: { action: :create} do |f|
-    = f.text_field :title
+        = link_to course.title, courses_path
+      .btn.btn-success==link_to 'Edit', edit_course_path(course.id)
+      .btn.btn-danger==link_to 'Delete', course_path(course), method: :delete
+  = simple_form_for @course do |f|
+    = f.input_field :title
     = f.submit "Add new lvl"
