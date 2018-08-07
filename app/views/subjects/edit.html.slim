@@ -1,0 +1,5 @@
+.form-inline
+  = simple_form_for @subject do |f|
+    .form-group.mx-sm-3.mb-2
+      = f.input :title, label: 'Rename your subject', input_html: { maxlength: 100 }, class: 'form-control'
+      = f.button :submit, 'Edit', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
