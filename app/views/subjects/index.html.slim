@@ -1,12 +1,10 @@
-.form-inline
-  = simple_form_for :subject, method: :post do |f|
-    .form-group.mx-sm-3.mb-2
-      = f.input :title, label: 'Enter subject', class: 'form-control'
-      = f.button :submit, 'Add new subject', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
+= simple_form_for @subject, wrapper: :horizontal_form do |f|
+    = f.input :title, label: 'Enter subject'
+    = f.button :submit, 'Add new subject', class: 'btn btn-primary mb-2'
 table.table
   - @subjects.each do |subject|
     tr.alert.alert-success.subject-row
       td
-        == link_to subject.title, subject_path(subject.id)
-      td.btn.btn-warning == link_to 'Edit', edit_subject_path(subject.id)
-      td.btn.btn-danger == link_to 'Delete', subject_path(subject), method: :delete
+        == link_to subject.title, subject_path(subject)
+      td.btn.btn-warning==link_to 'Edit', edit_subject_path(subject.id)
+      td.btn.btn-danger==link_to 'Delete', subject_path(subject), method: :delete

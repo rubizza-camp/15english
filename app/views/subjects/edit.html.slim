@@ -1,5 +1,3 @@
-.form-inline
-  = simple_form_for @subject do |f|
-    .form-group.mx-sm-3.mb-2
-      = f.input :title, label: 'Rename your subject', class: 'form-control'
-      = f.button :submit, 'Edit', class: 'btn btn-primary mb-2', id: 'add-subject-btn'
+= simple_form_for @subject, wrapper: :horizontal_form do |f|
+  = f.input :title, label: 'Rename your subject'
+  = f.button :submit, 'Edit', class: 'btn btn-primary mb-2'

@@ -1,6 +1,5 @@
 class SubjectsController < ApplicationController
-  include Pundit
-  protect_from_forgery
+  before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_subject, only: [:update, :edit, :destroy, :show]
 
   def new
@@ -13,25 +12,24 @@ class SubjectsController < ApplicationController
   end
 
   def index
+    @subject = Subject.new
     @subjects = Subject.all
   end
 
-  def show
-    set_subject
-  end
-
   def update
-    set_subject.update(subject_params)
+    @subject.update(subject_params)
     redirect_to subjects_url
   end
 
   def destroy
-    set_subject.destroy
+    @subject.destroy
     redirect_to subjects_url
   end
 
   def edit
-    set_subject
+  end
+
+  def show
   end
 
   private
