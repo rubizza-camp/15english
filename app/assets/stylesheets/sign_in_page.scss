@@ -1,7 +1,12 @@
 @import 'bootstrap';
+@import "colors";
 
 .field {
   input#user_remember_me{
     width: 7%;
   }
+}
+
+.text-primary.link {
+  margin-left: 13%;
 }
