@@ -8,6 +8,7 @@
       = f.email_field :email, autofocus: true, autocomplete: "email"
     .field
       = f.label :password
+      = link_to t('devise.passwords.new.forgot_your_password'), new_password_path('user'), class: "text-primary link"
       = f.password_field :password, autocomplete: "off"
     - if devise_mapping.rememberable?
       .field
