@@ -1,0 +1,8 @@
+h1
+  p
+    | Rename your course
+  p
+    | Before : #{@course.title}
+  = simple_form_for @course do |f|
+    = f.input_field :title
+    = f.submit "Rename"

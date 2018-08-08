@@ -1,3 +1,3 @@
-class Lesson < ApplicationRecord
+class Subject < ApplicationRecord
   validates :title, presence: true
 end

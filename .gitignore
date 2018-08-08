@@ -30,3 +30,11 @@
 /config/master.key
 .idea
 .env
+
+/public/uploads/*
+
+.gitignore
+
+*~
+
+/config/secrets.yml
