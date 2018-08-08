@@ -25,6 +25,8 @@ gem "carrierwave", "~> 1.2.3"
 gem "mini_magick", "~> 4.8.0"
 gem "autoprefixer-rails", "~> 9.0.2"
 gem "simple_form", "~> 4.0.1"
+gem "administrate", "~> 0.10.0"
+gem "will_paginate", "~> 3.1.6"
 
 group :development, :test do
   gem "pry-rails", "~> 0.3.6"
