@@ -10,23 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_05_143341) do
-
+ActiveRecord::Schema.define(version: 2018_08_08_120018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_courses_on_title"
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_lessons_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string "title"
-    t.integer "lesson_id"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
