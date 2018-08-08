@@ -11,7 +11,6 @@ class User < ApplicationRecord
          :confirmable, :recoverable# , :omniauthable
 
   validates :username, presence: true
-  validates :username, uniqueness: true, if: -> { self.username.present? }
 
   # User Avatar Validation
   validates_integrity_of  :avatar
