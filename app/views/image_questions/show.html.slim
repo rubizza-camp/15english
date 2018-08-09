@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @image_question.title
+p
+  strong Image:
+  = @image_question.image
+p
+  strong Text:
+  = @image_question.text
+p
+  strong Answer:
+  = @image_question.answer
+
+=> link_to 'Edit', edit_image_question_path(@image_question)
+'|
+=< link_to 'Back', image_questions_path

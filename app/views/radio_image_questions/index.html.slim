@@ -1,0 +1,31 @@
+h1 Listing radio_image_questions
+
+table
+  thead
+    tr
+      th Title
+      th Image
+      th First option
+      th Second option
+      th Third option
+      th Answer
+      th
+      th
+      th
+
+  tbody
+    - @radio_image_questions.each do |radio_image_question|
+      tr
+        td = radio_image_question.title
+        td = radio_image_question.image
+        td = radio_image_question.first_option
+        td = radio_image_question.second_option
+        td = radio_image_question.third_option
+        td = radio_image_question.answer
+        td = link_to 'Show', radio_image_question
+        td = link_to 'Edit', edit_radio_image_question_path(radio_image_question)
+        td = link_to 'Destroy', radio_image_question, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Radio image question', new_radio_image_question_path

@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @radio_image_question.title
+p
+  strong Image:
+  = @radio_image_question.image
+p
+  strong First option:
+  = @radio_image_question.first_option
+p
+  strong Second option:
+  = @radio_image_question.second_option
+p
+  strong Third option:
+  = @radio_image_question.third_option
+p
+  strong Answer:
+  = @radio_image_question.answer
+
+=> link_to 'Edit', edit_radio_image_question_path(@radio_image_question)
+'|
+=< link_to 'Back', radio_image_questions_path

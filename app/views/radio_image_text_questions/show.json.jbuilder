@@ -1,0 +1,1 @@
+json.partial! "radio_image_text_questions/radio_image_text_question", radio_image_text_question: @radio_image_text_question

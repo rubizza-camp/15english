@@ -1,0 +1,2 @@
+class RadioImageQuestion < ApplicationRecord
+end

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @radio_question.title
+p
+  strong First option:
+  = @radio_question.first_option
+p
+  strong Second option:
+  = @radio_question.second_option
+p
+  strong Third option:
+  = @radio_question.third_option
+p
+  strong Answer:
+  = @radio_question.answer
+
+=> link_to 'Edit', edit_radio_question_path(@radio_question)
+'|
+=< link_to 'Back', radio_questions_path

@@ -1,0 +1,27 @@
+= form_for @radio_image_text_question do |f|
+  - if @radio_image_text_question.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@radio_image_text_question.errors.count, "error")} prohibited this radio_image_text_question from being saved:"
+      ul
+        - @radio_image_text_question.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :image
+    = f.text_field :image
+  .field
+    = f.label :text
+    = f.text_field :text
+  .field
+    = f.label :first_option
+    = f.text_field :first_option
+  .field
+    = f.label :second_option
+    = f.text_field :second_option
+  .field
+    = f.label :answer
+    = f.text_field :answer
+  .actions = f.submit
