@@ -2,6 +2,8 @@
 
 # model for User
 class User < ApplicationRecord
+  has_many :user_courses
+  has_many :courses, through: :user_courses
   has_many :images, as: :imageable
   mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:

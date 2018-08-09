@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :users
       resources :courses
-
       root to: "users#index"
     end
 

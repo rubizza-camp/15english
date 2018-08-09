@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_100508) do
+ActiveRecord::Schema.define(version: 2018_08_09_083905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_100508) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_courses_on_title"
   end
 
   create_table "images", force: :cascade do |t|
@@ -41,6 +40,32 @@ ActiveRecord::Schema.define(version: 2018_08_07_100508) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_courses", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_user_courses_on_course_id"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_subject_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+  end
+
+  create_table "user_subjects", force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "user_course_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_user_subjects_on_subject_id"
   end
 
   create_table "users", force: :cascade do |t|
