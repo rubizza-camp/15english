@@ -1,0 +1,8 @@
+h1
+  table style="width:100%"
+    - @cards.each do |card|
+      tr
+        tr
+          -img src="pozitivnie-kartinki.orig.jpg" alt="Trulli" width="500" height="333"
+        tr
+          = card.text
