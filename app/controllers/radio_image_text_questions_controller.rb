@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This class represents RadioImageTextQuestionsController
 class RadioImageTextQuestionsController < ApplicationController
   before_action :set_radio_image_text_question, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +31,7 @@ class RadioImageTextQuestionsController < ApplicationController
 
     respond_to do |format|
       if @radio_image_text_question.save
-        format.html { redirect_to @radio_image_text_question, notice: 'Radio image text question was successfully created.' }
+        format.html { redirect_to @radio_image_text_question, notice: "Radio image text question was successfully created." }
         format.json { render :show, status: :created, location: @radio_image_text_question }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class RadioImageTextQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @radio_image_text_question.update(radio_image_text_question_params)
-        format.html { redirect_to @radio_image_text_question, notice: 'Radio image text question was successfully updated.' }
+        format.html { redirect_to @radio_image_text_question, notice: "Radio image text question was successfully updated." }
         format.json { render :show, status: :ok, location: @radio_image_text_question }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class RadioImageTextQuestionsController < ApplicationController
   def destroy
     @radio_image_text_question.destroy
     respond_to do |format|
-      format.html { redirect_to radio_image_text_questions_url, notice: 'Radio image text question was successfully destroyed.' }
+      format.html { redirect_to radio_image_text_questions_url, notice: "Radio image text question was successfully destroyed." }
       format.json { head :no_content }
     end
   end

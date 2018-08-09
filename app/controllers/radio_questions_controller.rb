@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This class represents RadioQuestionsController
 class RadioQuestionsController < ApplicationController
   before_action :set_radio_question, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +31,7 @@ class RadioQuestionsController < ApplicationController
 
     respond_to do |format|
       if @radio_question.save
-        format.html { redirect_to @radio_question, notice: 'Radio question was successfully created.' }
+        format.html { redirect_to @radio_question, notice: "Radio question was successfully created." }
         format.json { render :show, status: :created, location: @radio_question }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class RadioQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @radio_question.update(radio_question_params)
-        format.html { redirect_to @radio_question, notice: 'Radio question was successfully updated.' }
+        format.html { redirect_to @radio_question, notice: "Radio question was successfully updated." }
         format.json { render :show, status: :ok, location: @radio_question }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class RadioQuestionsController < ApplicationController
   def destroy
     @radio_question.destroy
     respond_to do |format|
-      format.html { redirect_to radio_questions_url, notice: 'Radio question was successfully destroyed.' }
+      format.html { redirect_to radio_questions_url, notice: "Radio question was successfully destroyed." }
       format.json { head :no_content }
     end
   end

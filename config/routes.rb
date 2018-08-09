@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :questions
-  resources :radio_image_text_questions
-  resources :radio_questions
-  resources :radio_image_questions
-  resources :text_questions
-  resources :image_questions
   root "welcome#index"
   namespace :admin do
       resources :users
       resources :courses
+      resources :questions
+      # resources :radio_image_text_questions
+      # resources :radio_questions
+      # resources :radio_image_questions
+      # resources :text_questions
+      resources :image_questions
 
       root to: "users#index"
     end

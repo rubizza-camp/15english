@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This class represents TextQuestionsController
 class TextQuestionsController < ApplicationController
   before_action :set_text_question, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +31,7 @@ class TextQuestionsController < ApplicationController
 
     respond_to do |format|
       if @text_question.save
-        format.html { redirect_to @text_question, notice: 'Text question was successfully created.' }
+        format.html { redirect_to @text_question, notice: "Text question was successfully created." }
         format.json { render :show, status: :created, location: @text_question }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class TextQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @text_question.update(text_question_params)
-        format.html { redirect_to @text_question, notice: 'Text question was successfully updated.' }
+        format.html { redirect_to @text_question, notice: "Text question was successfully updated." }
         format.json { render :show, status: :ok, location: @text_question }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class TextQuestionsController < ApplicationController
   def destroy
     @text_question.destroy
     respond_to do |format|
-      format.html { redirect_to text_questions_url, notice: 'Text question was successfully destroyed.' }
+      format.html { redirect_to text_questions_url, notice: "Text question was successfully destroyed." }
       format.json { head :no_content }
     end
   end

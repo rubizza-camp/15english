@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This class represents ImageQuestionsController
 class ImageQuestionsController < ApplicationController
   before_action :set_image_question, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +31,7 @@ class ImageQuestionsController < ApplicationController
 
     respond_to do |format|
       if @image_question.save
-        format.html { redirect_to @image_question, notice: 'Image question was successfully created.' }
+        format.html { redirect_to @image_question, notice: "Image question was successfully created." }
         format.json { render :show, status: :created, location: @image_question }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class ImageQuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @image_question.update(image_question_params)
-        format.html { redirect_to @image_question, notice: 'Image question was successfully updated.' }
+        format.html { redirect_to @image_question, notice: "Image question was successfully updated." }
         format.json { render :show, status: :ok, location: @image_question }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class ImageQuestionsController < ApplicationController
   def destroy
     @image_question.destroy
     respond_to do |format|
-      format.html { redirect_to image_questions_url, notice: 'Image question was successfully destroyed.' }
+      format.html { redirect_to image_questions_url, notice: "Image question was successfully destroyed." }
       format.json { head :no_content }
     end
   end

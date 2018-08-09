@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_100508) do
+ActiveRecord::Schema.define(version: 2018_08_09_200440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2018_08_07_100508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_courses_on_title"
+  end
+
+  create_table "image_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "text"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
@@ -37,8 +46,59 @@ ActiveRecord::Schema.define(version: 2018_08_07_100508) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.integer "image_questions_id"
+    t.integer "text_questions_id"
+    t.integer "radio_image_questions_id"
+    t.integer "radio_questions_id"
+    t.integer "radio_image_text_questions_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radio_image_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "third_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radio_image_text_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "text"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radio_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "third_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "text_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "phrase"
+    t.string "text"
+    t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
