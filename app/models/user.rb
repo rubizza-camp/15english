@@ -10,6 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :recoverable# , :omniauthable
 
+  validates :username, presence: true
+
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
