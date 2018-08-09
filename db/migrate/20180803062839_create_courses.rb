@@ -5,6 +5,5 @@ class CreateCourses < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :courses, :title
   end
 end
