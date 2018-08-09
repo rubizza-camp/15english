@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-
-# model for User
 class User < ApplicationRecord
   has_many :user_courses
   has_many :courses, through: :user_courses
