@@ -1,3 +1,4 @@
+# class UserSubject
 class UserSubject < ApplicationRecord
   belongs_to :subject
   has_many :user_lessons
