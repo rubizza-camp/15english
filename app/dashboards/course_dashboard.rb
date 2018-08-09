@@ -43,7 +43,6 @@ class CourseDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :users,
-    :subjects,
     :title,
   ].freeze
 
