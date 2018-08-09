@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     end
 
   get "/:locale" => "welcome#index"
-  get "cards/index"
 
   scope ":locale", locale: /en|ru/ do
     devise_for :users
@@ -17,5 +16,6 @@ Rails.application.routes.draw do
     resources :lessons
     resources :subjects
     resources :courses
+    resources :cards
   end
 end

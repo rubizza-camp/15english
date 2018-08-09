@@ -34,7 +34,7 @@ class CardsController < ApplicationController
   private
 
     def set_course
-      @card = Course.find(params[:id])
+      @card = Card.find(params[:id])
     end
 
     def course_params
