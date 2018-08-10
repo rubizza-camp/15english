@@ -9,6 +9,10 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     image: Field::String,
+    pages: Field::HasMany,
+    revisions: Field::HasMany,
+    practices: Field::HasMany,
+    theories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     image: Field::String,
@@ -25,15 +29,19 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :image,
-    :id,
-    :title,
-    :image,
+    :theories,
+    :revisions,
+    :practices,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :image,
+    :pages,
+    :revisions,
+    :practices,
+    :theories,
     :id,
     :title,
     :image,
@@ -47,11 +55,13 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :image,
     :title,
-    :image,
     :text,
     :answer,
+    :image,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # Overwrite this method to customize how image questions are displayed

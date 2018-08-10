@@ -8,6 +8,10 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    pages: Field::HasMany,
+    revisions: Field::HasMany,
+    practices: Field::HasMany,
+    theories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     phrase: Field::String,
@@ -24,21 +28,21 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :title,
-    :phrase,
-    :text,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
     :phrase,
     :text,
     :answer,
-    :created_at,
-    :updated_at,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -49,6 +53,9 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     :phrase,
     :text,
     :answer,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # Overwrite this method to customize how text questions are displayed
