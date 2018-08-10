@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class CourseDashboard < Administrate::BaseDashboard
+class RevisionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,12 +10,9 @@ class CourseDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user_courses: Field::HasMany,
-    users: Field::HasMany,
-    subjects: Field::HasMany,
+    lesson: Field::BelongsTo,
     id: Field::Number,
-    title: Field::String,
-    user_id: Field::Number,
+    question_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,32 +23,31 @@ class CourseDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :title,
-    :subjects,
-    :users,
+    :lesson
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :title,
+    :lesson,
+    :id,
+    :question_id,
     :created_at,
     :updated_at,
-    :subjects,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :users,
-    :title,
+    :lesson,
+    :question_id,
   ].freeze
 
-  # Overwrite this method to customize how courses are displayed
+  # Overwrite this method to customize how revisions are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(course)
-    "#{course.title}"
-  end
+  # def display_resource(revision)
+  #   "#{revision.title}"
+  # end
 end

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
       # resources :radio_image_questions
       # resources :text_questions
       resources :image_questions
+      resources :subjects
+      resources :lessons
+      resources :revisions
+      resources :theories
+      resources :practices
 
       root to: "users#index"
     end
