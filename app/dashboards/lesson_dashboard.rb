@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
 class LessonDashboard < Administrate::BaseDashboard
@@ -13,6 +11,9 @@ class LessonDashboard < Administrate::BaseDashboard
     subject: Field::BelongsTo,
     user_lessons: Field::HasMany,
     users: Field::HasMany,
+    revision: Field::HasOne,
+    theory: Field::HasOne,
+    practice: Field::HasOne,
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
@@ -34,25 +35,29 @@ class LessonDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :created_at,
-    :updated_at,
     :subject,
     :users,
+    :revision,
+    :theory,
+    :practice,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :subject,
     :title,
+    :subject,
     :users,
+    :revision,
+    :theory,
+    :practice,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(lesson)
-    "#{lesson.title}"
-  end
+  # def display_resource(lesson)
+  #   "Lesson ##{lesson.id}"
+  # end
 end
