@@ -16,7 +16,6 @@ class TheoryDashboard < Administrate::BaseDashboard
     radio_image_questions: Field::HasMany,
     radio_image_text_questions: Field::HasMany,
     id: Field::Number,
-    page_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

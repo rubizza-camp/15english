@@ -70,12 +70,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "practices", force: :cascade do |t|
-    t.integer "page_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_practices_on_lesson_id"
-    t.index ["page_id"], name: "index_practices_on_page_id"
   end
 
   create_table "radio_image_questions", force: :cascade do |t|
@@ -111,12 +109,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "revisions", force: :cascade do |t|
-    t.integer "page_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
-    t.index ["page_id"], name: "index_revisions_on_page_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -137,12 +133,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "theories", force: :cascade do |t|
-    t.integer "page_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_theories_on_lesson_id"
-    t.index ["page_id"], name: "index_theories_on_page_id"
   end
 
   create_table "user_courses", force: :cascade do |t|

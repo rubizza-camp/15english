@@ -9,14 +9,12 @@ class RevisionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     lesson: Field::BelongsTo,
-    pages: Field::HasMany,
     text_questions: Field::HasMany,
     image_questions: Field::HasMany,
     radio_questions: Field::HasMany,
     radio_image_questions: Field::HasMany,
     radio_image_text_questions: Field::HasMany,
     id: Field::Number,
-    page_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -34,14 +32,12 @@ class RevisionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :lesson,
-    :pages,
     :text_questions,
     :image_questions,
     :radio_questions,
     :radio_image_questions,
     :radio_image_text_questions,
     :id,
-    :page_id,
     :created_at,
     :updated_at,
   ].freeze
@@ -50,7 +46,6 @@ class RevisionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :pages,
     :lesson,
     :radio_questions,
     :radio_image_questions,

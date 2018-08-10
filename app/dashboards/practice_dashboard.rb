@@ -16,7 +16,6 @@ class PracticeDashboard < Administrate::BaseDashboard
     radio_image_questions: Field::HasMany,
     radio_image_text_questions: Field::HasMany,
     id: Field::Number,
-    page_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,7 +27,6 @@ class PracticeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :lesson,
-    :pages,
     :text_questions,
     :image_questions,
   ].freeze
@@ -37,14 +35,12 @@ class PracticeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :lesson,
-    :pages,
     :text_questions,
     :image_questions,
     :radio_questions,
     :radio_image_questions,
     :radio_image_text_questions,
     :id,
-    :page_id,
     :created_at,
     :updated_at,
   ].freeze
@@ -54,13 +50,11 @@ class PracticeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :lesson,
-    :pages,
     :text_questions,
     :image_questions,
     :radio_questions,
     :radio_image_questions,
     :radio_image_text_questions,
-    :page_id,
   ].freeze
 
   # Overwrite this method to customize how practices are displayed
