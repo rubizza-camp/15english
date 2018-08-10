@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubjectsController < ApplicationController
   before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_subject, only: [:update, :edit, :destroy, :show]

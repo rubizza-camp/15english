@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
   def index

@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class CourseDashboard < Administrate::BaseDashboard
+class LessonDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,12 +10,11 @@ class CourseDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user_courses: Field::HasMany,
+    subject: Field::BelongsTo,
+    user_lessons: Field::HasMany,
     users: Field::HasMany,
-    subjects: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    user_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,7 +26,7 @@ class CourseDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :subjects,
+    :subject,
     :users,
   ].freeze
 
@@ -37,21 +36,23 @@ class CourseDashboard < Administrate::BaseDashboard
     :title,
     :created_at,
     :updated_at,
-    :subjects,
+    :subject,
+    :users,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :users,
+    :subject,
     :title,
+    :users,
   ].freeze
 
-  # Overwrite this method to customize how courses are displayed
+  # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(course)
-    "#{course.title}"
-  end
+  # def display_resource(lesson)
+  #   "Lesson ##{lesson.id}"
+  # end
 end

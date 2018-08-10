@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
-# model for User
+# Comment for User model
 class User < ApplicationRecord
+  has_many :user_courses
+  has_many :courses, through: :user_courses
   has_many :images, as: :imageable
+  has_many :user_lessons
+  has_many :lessons, through: :user_lessons
+
   mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

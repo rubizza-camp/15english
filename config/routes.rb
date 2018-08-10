@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :users
       resources :courses
+      resources :subjects
+      resources :lessons
+    
       root to: "users#index"
     end
 
