@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_055806) do
+ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,12 +39,36 @@ ActiveRecord::Schema.define(version: 2018_08_10_055806) do
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
   end
 
+  create_table "practices", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
+  end
+
+  create_table "revisions", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "course_id"
     t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  create_table "theories", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
   end
 
   create_table "user_courses", force: :cascade do |t|

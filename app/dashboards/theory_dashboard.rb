@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class LessonDashboard < Administrate::BaseDashboard
+class TheoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,14 +10,9 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    subject: Field::BelongsTo,
-    user_lessons: Field::HasMany,
-    users: Field::HasMany,
-    revision: Field::HasOne,
-    theory: Field::HasOne,
-    practice: Field::HasOne,
+    lesson: Field::BelongsTo,
     id: Field::Number,
-    title: Field::String,
+    question_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,35 +23,31 @@ class LessonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users,
+    :lesson
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users,
-    :revision,
-    :theory,
-    :practice,
+    :lesson,
+    :id,
+    :question_id,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users,
+    :lesson,
+    :question_id,
   ].freeze
 
-  # Overwrite this method to customize how lessons are displayed
+  # Overwrite this method to customize how theories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
+  # def display_resource(theory)
+  #   "#{theory.title}"
   # end
 end

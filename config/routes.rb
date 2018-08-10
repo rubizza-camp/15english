@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
+      resources :revisions
+      resources :theories
+      resources :practices
 
       root to: "users#index"
     end
