@@ -25,6 +25,7 @@ class LessonDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :subject,
+    :users,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,6 +44,7 @@ class LessonDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :subject,
     :title,
+    :users,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed

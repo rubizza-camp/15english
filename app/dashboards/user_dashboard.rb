@@ -57,7 +57,8 @@ class UserDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :created_at,
     :updated_at,
-    :courses
+    :courses,
+    :lessons
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -66,16 +67,11 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :username,
     :email,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
     :current_sign_in_at,
     :last_sign_in_at,
     :current_sign_in_ip,
     :last_sign_in_ip,
-    :confirmation_token,
     :confirmed_at,
-    :confirmation_sent_at,
     :admin,
     :avatar,
   ].freeze
