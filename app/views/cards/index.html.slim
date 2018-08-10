@@ -2,8 +2,24 @@ h1
   center
     table
       - @cards.each do |card|
-        tr
-          tr
-            =image_tag("pozitivnie-kartinki.orig.jpg", alt: "Trulli", width:'15%', height: "15%")
-          tr
-            = card.text
+        .cardsblock
+            tr
+              =image_tag(card.url.url, width:'15%', height: "15%")
+            tr
+              = card.text
+            tr
+             .btn.btn-success==link_to 'Edit', edit_card_path(card.id)
+             .btn.btn-danger==link_to 'Delete', card_path(card), method: :delete
+
+= simple_form_for @card do |f|
+  = f.file_field :url
+  = f.input_field :text
+  = f.submit "Add picture"
+
+javascript:
+  | $('#micropost_picture').bind('change', function() {
+    | var size_in_megabytes = this.files[0].size/1024/1024;
+    | if (size_in_megabytes > 5) {
+      | alert('Maximum file size is 5MB. Please choose a smaller file.');
+    | }
+  | });

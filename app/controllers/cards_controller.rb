@@ -37,8 +37,7 @@ class CardsController < ApplicationController
       @card = Card.find(params[:id])
     end
 
-    def course_params
+    def card_params
       params.require(:card).permit(:url, :text)
     end
-
 end
