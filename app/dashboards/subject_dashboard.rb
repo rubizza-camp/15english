@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CourseDashboard < Administrate::BaseDashboard
+class SubjectDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,12 +8,10 @@ class CourseDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user_courses: Field::HasMany,
-    users: Field::HasMany,
-    subjects: Field::HasMany,
+    course: Field::BelongsTo,
+    lessons: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    user_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,32 +23,33 @@ class CourseDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :subjects,
-    :users,
+    :course,
+    :lessons,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
     :title,
     :created_at,
     :updated_at,
-    :subjects,
+    :course,
+    :lessons,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :users,
+    :course,
     :title,
   ].freeze
 
-  # Overwrite this method to customize how courses are displayed
+  # Overwrite this method to customize how subjects are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(course)
-    "#{course.title}"
+  def display_resource(subject)
+    "#{subject.title}"
   end
-
 end
