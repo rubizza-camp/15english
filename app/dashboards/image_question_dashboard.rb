@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class PracticeDashboard < Administrate::BaseDashboard
+class ImageQuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,14 +10,16 @@ class PracticeDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    lesson: Field::BelongsTo,
+    image: Field::String,
     pages: Field::HasMany,
-    text_questions: Field::HasMany,
-    image_questions: Field::HasMany,
-    radio_questions: Field::HasMany,
-    radio_image_questions: Field::HasMany,
-    radio_image_text_questions: Field::HasMany,
+    revisions: Field::HasMany,
+    practices: Field::HasMany,
+    theories: Field::HasMany,
     id: Field::Number,
+    title: Field::String,
+    image: Field::String,
+    text: Field::String,
+    answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,21 +30,25 @@ class PracticeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
+    :image,
+    :theories,
+    :revisions,
+    :practices,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
-    :radio_questions,
-    :radio_image_questions,
-    :radio_image_text_questions,
+    :image,
+    :pages,
+    :revisions,
+    :practices,
+    :theories,
     :id,
+    :title,
+    :image,
+    :text,
+    :answer,
     :created_at,
     :updated_at,
   ].freeze
@@ -51,18 +57,19 @@ class PracticeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
-    :radio_questions,
-    :radio_image_questions,
-    :radio_image_text_questions,
+    :title,
+    :text,
+    :answer,
+    :image,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
-  # Overwrite this method to customize how practices are displayed
+  # Overwrite this method to customize how image questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(practice)
-  #   "Practice ##{practice.id}"
+  # def display_resource(image_question)
+  #   "ImageQuestion ##{image_question.id}"
   # end
 end

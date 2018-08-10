@@ -11,8 +11,13 @@ class TheoryDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     lesson: Field::BelongsTo,
+    pages: Field::HasMany,
+    text_questions: Field::HasMany,
+    image_questions: Field::HasMany,
+    radio_questions: Field::HasMany,
+    radio_image_questions: Field::HasMany,
+    radio_image_text_questions: Field::HasMany,
     id: Field::Number,
-    question_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,17 +28,21 @@ class TheoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :lesson
+    :lesson,
+    :text_questions,
+    :radio_image_questions,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :lesson,
     :id,
-    :question_id,
-    :created_at,
-    :updated_at,
+    :lesson,
+    :text_questions,
+    :image_questions,
+    :radio_questions,
+    :radio_image_questions,
+    :radio_image_text_questions,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -41,13 +50,17 @@ class TheoryDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :lesson,
-    :question_id,
+    :text_questions,
+    :image_questions,
+    :radio_questions,
+    :radio_image_questions,
+    :radio_image_text_questions,
   ].freeze
 
   # Overwrite this method to customize how theories are displayed
   # across all pages of the admin dashboard.
   #
   # def display_resource(theory)
-  #   "#{theory.title}"
+  #   "Theory ##{theory.id}"
   # end
 end
