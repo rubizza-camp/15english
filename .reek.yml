@@ -36,3 +36,8 @@ directories:
       enabled: false
     UncommunicativeVariableName:
       enabled: false
+  "app/dashboards":
+    IrresponsibleModule:
+      enabled: false
+    UtilityFunction:
+      enabled: false
