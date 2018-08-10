@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class LessonDashboard < Administrate::BaseDashboard
@@ -49,9 +51,6 @@ class LessonDashboard < Administrate::BaseDashboard
     :title,
     :subject,
     :users,
-    :revision,
-    :theory,
-    :practice,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed

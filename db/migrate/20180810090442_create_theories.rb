@@ -6,5 +6,6 @@ class CreateTheories < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :theories, :lesson_id
   end
 end

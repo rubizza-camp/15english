@@ -6,5 +6,6 @@ class CreatePractices < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :practices, :lesson_id
   end
 end

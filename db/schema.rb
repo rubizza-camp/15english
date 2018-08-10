@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
   end
 
   create_table "revisions", force: :cascade do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
