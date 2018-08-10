@@ -35,15 +35,15 @@ class TextQuestionsController < ApplicationController
 
   private
 
-  def set_text_question
-    @text_questions = TextQuestion.find(params[:id])
-  end
+    def set_text_question
+      @text_questions = TextQuestion.find(params[:id])
+    end
 
-  def admin_user
-    redirect_to(text_questions_path) unless current_user.admin?
-  end
+    def admin_user
+      redirect_to(text_questions_path) unless current_user.admin?
+    end
 
-  def course_params
-    params.require(:text_question).permit(:title)
-  end
+    def text_questions_params
+      params.require(:text_question).permit(:title)
+    end
 end
