@@ -1,17 +1,137 @@
 @import 'bootstrap';
+@import 'colors';
 
-a{
-  color: #000 !important;
+body {
+  background: #f1f2f1 !important;
 }
 
-a:hover{
+/*HEADER*/
+
+nav a{
+  color: $main_black !important;
+}
+
+nav a:hover{
   text-decoration: none;
 }
 
-.logo{
-  color: green;
+.hdr-logo{
+  color: $main_black;
+  font-family: 'comic sans ms';
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-h1.content_welcome{
-  text-align: center;
+.hdr-color{
+  background-color: $main_yellow;
 }
+
+#hdr-btn {
+  margin: 5px;
+  color: $main_black;
+  background-color: transparent;
+  border-color: $main_black;
+}
+
+#hdr-btn:hover {
+  color: #fff;
+  background-color: $main_orange;
+  border-color: $main_black;
+}
+
+/*HEADER*/
+
+/*CONTENT*/
+
+.content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content-comments-cloud {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 540px; height: 300px;
+  margin-left: 40px;
+  background: #acb94e;
+  position: relative;
+  border: #646363;
+  border-radius: 70px;
+}
+
+.content-comments-cloud:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 100%; top: calc(40% + 75px);
+  border-top: 40px solid transparent;
+  border-right: 60px solid #acb94e;
+}
+
+.content-comments-cloud p{
+  text-align: center;
+  font-family: 'comic sans ms';
+  font-size: 52px;
+}
+
+.content-right-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-btn{
+  position: relative;
+  bottom: 100px;
+  align-self: center;
+  width: 30%;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 1rem 1.3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.content-btn:hover {
+  color: #fff;
+  background-color: $main_orange;
+  border-color: $main_black;
+  text-decoration: none;
+}
+
+/*CONTENT*/
+
+/*FOOTER*/
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a{
+  color: $main_black !important;
+}
+
+.footer a:hover{
+  text-decoration: none;
+}
+
+.footer-language{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-language a{
+  margin: 5px;
+}
+
+/*FOOTER*/
