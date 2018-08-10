@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubjectsController < ApplicationController
   before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_subject, only: [:update, :edit, :destroy, :show]
@@ -34,11 +36,11 @@ class SubjectsController < ApplicationController
 
   private
 
-  def set_subject
-    @subject = Subject.find(params[:id])
-  end
+    def set_subject
+      @subject = Subject.find(params[:id])
+    end
 
-  def subject_params
-    params.require(:subject).permit(:title)
-  end
+    def subject_params
+      params.require(:subject).permit(:title)
+    end
 end

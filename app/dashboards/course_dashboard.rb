@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class CourseDashboard < Administrate::BaseDashboard
@@ -52,5 +54,4 @@ class CourseDashboard < Administrate::BaseDashboard
   def display_resource(course)
     "#{course.title}"
   end
-
 end
