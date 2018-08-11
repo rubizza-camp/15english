@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "lessons", force: :cascade do |t|
     t.string "title"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "subject_id"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
   end
 
@@ -67,6 +67,41 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.index ["revision_id"], name: "index_pages_on_revision_id"
     t.index ["text_question_id"], name: "index_pages_on_text_question_id"
     t.index ["theory_id"], name: "index_pages_on_theory_id"
+  end
+
+  create_table "policy_manager_portability_requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "state"
+    t.string "attachment"
+    t.string "attachment_file_name"
+    t.string "attachment_file_size"
+    t.datetime "attachment_content_type"
+    t.string "attachment_file_content_type"
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_policy_manager_portability_requests_on_user_id"
+  end
+
+  create_table "policy_manager_terms", force: :cascade do |t|
+    t.text "description"
+    t.string "rule"
+    t.string "state"
+    t.datetime "accepted_at"
+    t.datetime "rejected_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "policy_manager_user_terms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "term_id"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state"], name: "index_policy_manager_user_terms_on_state"
+    t.index ["term_id"], name: "index_policy_manager_user_terms_on_term_id"
+    t.index ["user_id"], name: "index_policy_manager_user_terms_on_user_id"
   end
 
   create_table "practices", force: :cascade do |t|
@@ -117,9 +152,9 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "title"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "course_id"
     t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
@@ -155,41 +190,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
     t.index ["user_id"], name: "index_user_lessons_on_user_id"
-  end
-
-  create_table "policy_manager_portability_requests", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "state"
-    t.string "attachment"
-    t.string "attachment_file_name"
-    t.string "attachment_file_size"
-    t.datetime "attachment_content_type"
-    t.string "attachment_file_content_type"
-    t.datetime "expire_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_policy_manager_portability_requests_on_user_id"
-  end
-
-  create_table "policy_manager_terms", force: :cascade do |t|
-    t.text "description"
-    t.string "rule"
-    t.string "state"
-    t.datetime "accepted_at"
-    t.datetime "rejected_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "policy_manager_user_terms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "term_id"
-    t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["state"], name: "index_policy_manager_user_terms_on_state"
-    t.index ["term_id"], name: "index_policy_manager_user_terms_on_term_id"
-    t.index ["user_id"], name: "index_policy_manager_user_terms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

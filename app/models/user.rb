@@ -9,20 +9,16 @@ class User < ApplicationRecord
   has_many :lessons, through: :user_lessons
 
   mount_uploader :avatar, AvatarUploader
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   include PolicyManager::Concerns::UserBehavior
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :recoverable# , :omniauthable
+         :confirmable, :recoverable, :omniauthable, omniauth_providers: %i[facebook]
 
   validates :username, presence: true
 
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
-         :confirmable,
-         :omniauthable, omniauth_providers: %i[facebook]
 
   before_validation :accept_terms
 
@@ -49,7 +45,7 @@ class User < ApplicationRecord
   private
 
   def accept_terms
-    if (terms_accepted == '1' || terms_accepted == true) && new_record?
+    if (terms_accepted == "1" || terms_accepted == true) && new_record?
       self.policy_rule_cookie = true
       self.policy_rule_age = true
       self.policy_rule_privacy_terms = true

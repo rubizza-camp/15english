@@ -22,13 +22,13 @@ Rails.application.routes.draw do
   get "/:locale" => "welcome#index"
 
   scope ":locale", locale: /en|ru/ do
-    devise_for :users
+    devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
     resources :lessons
     resources :subjects
     resources :courses
   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:show]
+  devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   mount PolicyManager::Engine => "/policies"
 end
