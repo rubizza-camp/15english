@@ -13,6 +13,9 @@
     .field
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: "off"
+    .field
+      = f.label "Accept Terms"
+      = f.check_box :terms_accepted
     .actions
       = f.button
         .save_button

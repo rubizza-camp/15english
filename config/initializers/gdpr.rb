@@ -1,7 +1,5 @@
 PolicyManager::Config.setup do |c|
-  c.is_admin_method = ->(o){
-    true
-  }
+  c.is_admin_method = ->(o){ true }
 
   c.add_rule({name: "cookie", sessionless: true }  )
   c.add_rule({name: "age", validates_on: [:create, :update], blocking: true })

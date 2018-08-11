@@ -7,6 +7,10 @@ class User < ApplicationRecord
          :confirmable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  before_validation :accept_terms
+
+  attr_accessor :terms_accepted
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -22,6 +26,16 @@ class User < ApplicationRecord
       # user.name = auth.info.name
       # user.image = auth.info.image
       # user.skip_confirmation!
+    end
+  end
+
+  private
+
+  def accept_terms
+    if (terms_accepted == '1' || terms_accepted == true) && new_record?
+      self.policy_rule_cookie = true
+      self.policy_rule_age = true
+      self.policy_rule_privacy_terms = true
     end
   end
 end
