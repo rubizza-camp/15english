@@ -1,13 +1,18 @@
-nav.navbar.navbar-light.bg-light
-  h1.logo Fifteenglish
+nav.navbar.navbar-light.hdr-color
+  h1.hdr-logo==link_to 'Fifteenglish', root_path
   form.form-inline
     - if user_signed_in?
+      .round-image-50
+        = image_tag(current_user.avatar.url)
       .dropdown
-        .btn.btn-outline-success == link_to = current_user.email
+        - if current_user.username.blank?
+          .btn#hdr-btn==link_to = current_user.email
+        - else
+          .btn#hdr-btn==link_to = current_user.username
         .dropdown-content
-          == link_to 'Profile', current_user
-          == link_to 'Sign out', destroy_user_session_path, method: :delete
+          == link_to (t ".profile"), current_user
+          == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
     - else
       button.btn.btn-outline-success == link_to 'Facebook', user_facebook_omniauth_authorize_path
-      button.btn.btn-outline-success == link_to 'Sign up', new_user_registration_path
-      button.btn.btn-outline-success == link_to 'Sign in', new_user_session_path
+      == link_to (t ".sign.up"), new_user_registration_path, class: 'btn', id: 'hdr-btn'
+      == link_to (t ".sign.in"), new_user_session_path, class: 'btn', id: 'hdr-btn'

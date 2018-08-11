@@ -10,10 +10,152 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_112102) do
+ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_courses_on_title"
+  end
+
+  create_table "image_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "text"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "subject_id"
+    t.index ["subject_id"], name: "index_lessons_on_subject_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.bigint "image_question_id"
+    t.bigint "text_question_id"
+    t.bigint "radio_image_question_id"
+    t.bigint "radio_question_id"
+    t.bigint "radio_image_text_question_id"
+    t.bigint "revision_id"
+    t.bigint "theory_id"
+    t.bigint "practice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_question_id"], name: "index_pages_on_image_question_id"
+    t.index ["practice_id"], name: "index_pages_on_practice_id"
+    t.index ["radio_image_question_id"], name: "index_pages_on_radio_image_question_id"
+    t.index ["radio_image_text_question_id"], name: "index_pages_on_radio_image_text_question_id"
+    t.index ["radio_question_id"], name: "index_pages_on_radio_question_id"
+    t.index ["revision_id"], name: "index_pages_on_revision_id"
+    t.index ["text_question_id"], name: "index_pages_on_text_question_id"
+    t.index ["theory_id"], name: "index_pages_on_theory_id"
+  end
+
+  create_table "practices", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
+  end
+
+  create_table "radio_image_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "third_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radio_image_text_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "text"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radio_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "first_option"
+    t.string "second_option"
+    t.string "third_option"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "revisions", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  create_table "text_questions", force: :cascade do |t|
+    t.string "title"
+    t.string "phrase"
+    t.string "text"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "theories", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
+  end
+
+  create_table "user_courses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_user_courses_on_course_id"
+    t.index ["user_id"], name: "index_user_courses_on_user_id"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
 
   create_table "policy_manager_portability_requests", force: :cascade do |t|
     t.integer "user_id"
@@ -69,6 +211,8 @@ ActiveRecord::Schema.define(version: 2018_08_01_112102) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
+    t.string "avatar"
+    t.string "username"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

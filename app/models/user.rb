@@ -1,9 +1,26 @@
+# frozen_string_literal: true
+
+# Comment for User model
 class User < ApplicationRecord
+  has_many :user_courses
+  has_many :courses, through: :user_courses
+  has_many :images, as: :imageable
+  has_many :user_lessons
+  has_many :lessons, through: :user_lessons
+
+  mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   include PolicyManager::Concerns::UserBehavior
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :recoverable# , :omniauthable
+
+  validates :username, presence: true
+
+  # User Avatar Validation
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
          :confirmable,
          :omniauthable, omniauth_providers: %i[facebook]
 
