@@ -29,7 +29,7 @@ class TheoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :lesson,
-    :text_questions,
+    :image_questions,
     :radio_image_questions,
   ].freeze
 
@@ -38,11 +38,8 @@ class TheoryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :lesson,
-    :text_questions,
     :image_questions,
-    :radio_questions,
     :radio_image_questions,
-    :radio_image_text_questions,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -50,11 +47,8 @@ class TheoryDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :lesson,
-    :text_questions,
     :image_questions,
-    :radio_questions,
     :radio_image_questions,
-    :radio_image_text_questions,
   ].freeze
 
   # Overwrite this method to customize how theories are displayed
