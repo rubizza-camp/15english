@@ -39,10 +39,6 @@ class PracticeDashboard < Administrate::BaseDashboard
     :lesson,
     :text_questions,
     :image_questions,
-    :radio_questions,
-    :radio_image_questions,
-    :radio_image_text_questions,
-    :id,
     :created_at,
     :updated_at,
   ].freeze
@@ -54,9 +50,6 @@ class PracticeDashboard < Administrate::BaseDashboard
     :lesson,
     :text_questions,
     :image_questions,
-    :radio_questions,
-    :radio_image_questions,
-    :radio_image_text_questions,
   ].freeze
 
   # Overwrite this method to customize how practices are displayed
