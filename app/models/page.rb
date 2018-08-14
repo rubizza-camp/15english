@@ -10,4 +10,5 @@ class Page < ApplicationRecord
   belongs_to :radio_question, optional: true
   belongs_to :radio_image_question, optional: true
   belongs_to :radio_image_text_question, optional: true
+  belongs_to :sub_test, optional: true
 end
