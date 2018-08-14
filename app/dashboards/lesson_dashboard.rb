@@ -48,15 +48,14 @@ class LessonDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
     :subject,
-    :users,
+    :title,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
-  # end
+  def display_resource(lesson)
+    "#{lesson.title}"
+  end
 end
