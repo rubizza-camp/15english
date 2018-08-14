@@ -8,9 +8,9 @@ nav.navbar.navbar-light.hdr-color
         - if current_user.username.blank?
           .btn#hdr-btn==link_to = current_user.email
         - else
-          .btn#hdr-btn==link_to = current_user.username
+          == link_to (t ".profile"), current_user, class: 'btn', id: 'hdr-btn'
         .dropdown-content
-          == link_to (t ".profile"), current_user
+          == link_to (t ".settings"), edit_user_registration_path
           == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
     - else
       == link_to (t ".sign.up"), new_user_registration_path, class: 'btn', id: 'hdr-btn'
