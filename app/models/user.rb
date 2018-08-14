@@ -33,12 +33,14 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
+    auth.terms_accepted = "1"
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      # user.name = auth.info.name
+      user.password = Devise.friendly_token[0, 20]
+      user.terms_accepted = "1"
+      user.username = auth.info.name
       # user.image = auth.info.image
-      # user.skip_confirmation!
+      user.skip_confirmation!
     end
   end
 

@@ -1,5 +1,8 @@
 .footer
-  p copyright 2018 (c) Fifteenglish
+  p
+    | copyright 2018 (c) Fifteenglish
+    == link_to image_tag('facebook.png', size: "30x30"), '#socialModal', data: {toggle: "modal", target: "#socialModal"}, style: "padding-left:20px;"
+    = render "layouts/modal_facebook"
   .footer-language
     | Languages:
     == link_to 'English', locale: 'en'

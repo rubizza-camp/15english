@@ -13,6 +13,6 @@ nav.navbar.navbar-light.hdr-color
           == link_to (t ".profile"), current_user
           == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
     - else
-      button.btn.btn-outline-success == link_to 'Facebook', user_facebook_omniauth_authorize_path
+      /button.btn.btn-outline-success == link_to 'Facebook', user_facebook_omniauth_authorize_path
       == link_to (t ".sign.up"), new_user_registration_path, class: 'btn', id: 'hdr-btn'
       == link_to (t ".sign.in"), new_user_session_path, class: 'btn', id: 'hdr-btn'
