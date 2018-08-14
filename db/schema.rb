@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_175923) do
+ActiveRecord::Schema.define(version: 2018_08_14_101651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 2018_08_13_175923) do
     t.bigint "revision_id"
     t.bigint "theory_id"
     t.bigint "practice_id"
-    t.bigint "sub_test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sub_test_id"
     t.index ["image_question_id"], name: "index_pages_on_image_question_id"
     t.index ["practice_id"], name: "index_pages_on_practice_id"
     t.index ["radio_image_question_id"], name: "index_pages_on_radio_image_question_id"

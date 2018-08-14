@@ -9,7 +9,6 @@ class CreatePages < ActiveRecord::Migration[5.2]
       t.belongs_to :revision, index: true
       t.belongs_to :theory, index: true
       t.belongs_to :practice, index: true
-      t.belongs_to :sub_test, index: true
 
       t.timestamps
     end
