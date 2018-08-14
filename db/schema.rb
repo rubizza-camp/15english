@@ -140,6 +140,13 @@ ActiveRecord::Schema.define(version: 2018_08_13_175923) do
     t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
+  create_table "test_levels", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "text_questions", force: :cascade do |t|
     t.string "title"
     t.string "phrase"
