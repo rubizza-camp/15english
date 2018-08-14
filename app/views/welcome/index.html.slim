@@ -1,1 +1,11 @@
-h1.content_welcome #{t '.welcome_to'} Fifteenglish
+.content
+  = image_tag("Tree.png", height: '700')
+  .content-right-block
+    .content-comments-cloud
+      p
+        | Free 15-minute
+      p
+        | English lessons
+      p
+        | Every day
+    == link_to 'Let\'s Start', new_user_registration_path, class: 'content-btn', id: 'hdr-btn'

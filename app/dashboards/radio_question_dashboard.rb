@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class LessonDashboard < Administrate::BaseDashboard
+class RadioQuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,14 +10,16 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    subject: Field::BelongsTo,
-    user_lessons: Field::HasMany,
-    users: Field::HasMany,
-    revision: Field::HasOne,
-    theory: Field::HasOne,
-    practice: Field::HasOne,
+    pages: Field::HasMany,
+    revisions: Field::HasMany,
+    practices: Field::HasMany,
+    theories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
+    first_option: Field::String,
+    second_option: Field::String,
+    third_option: Field::String,
+    answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,20 +30,23 @@ class LessonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users,
+    :id,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :subject,
-    :users,
-    :revision,
-    :theory,
-    :practice,
+    :first_option,
+    :second_option,
+    :third_option,
+    :answer,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -49,14 +54,19 @@ class LessonDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :subject,
-    :users,
+    :first_option,
+    :second_option,
+    :third_option,
+    :answer,
+    :revisions,
+    :practices,
+    :theories,
   ].freeze
 
-  # Overwrite this method to customize how lessons are displayed
+  # Overwrite this method to customize how radio questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
+  # def display_resource(radio_question)
+  #   "RadioQuestion ##{radio_question.id}"
   # end
 end
