@@ -10,14 +10,12 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    image: Field::String,
     pages: Field::HasMany,
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    image: Field::String,
     text: Field::String,
     first_option: Field::String,
     second_option: Field::String,
@@ -32,8 +30,6 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
-    :image,
     :pages,
     :revisions,
     :practices,
@@ -58,7 +54,6 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :image,
     :text,
     :first_option,
     :second_option,

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resources :revisions
       resources :theories
       resources :practices
-      resources :image
+      resources :images
 
       root to: "users#index"
     end
