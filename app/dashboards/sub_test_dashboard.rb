@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class RevisionDashboard < Administrate::BaseDashboard
+class SubTestDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,7 +10,8 @@ class RevisionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    lesson: Field::BelongsTo,
+    subject_sub_tests: Field::HasMany,
+    subjects: Field::HasMany,
     pages: Field::HasMany,
     text_questions: Field::HasMany,
     image_questions: Field::HasMany,
@@ -18,6 +19,7 @@ class RevisionDashboard < Administrate::BaseDashboard
     radio_image_questions: Field::HasMany,
     radio_image_text_questions: Field::HasMany,
     id: Field::Number,
+    title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,21 +30,20 @@ class RevisionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :lesson,
-    :radio_questions,
-    :radio_image_questions,
+    :title,
+    :subjects,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :lesson,
+    :title,
+    :subjects,
     :text_questions,
     :image_questions,
     :radio_questions,
     :radio_image_questions,
     :radio_image_text_questions,
-    :id,
     :created_at,
     :updated_at,
   ].freeze
@@ -51,15 +52,19 @@ class RevisionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :lesson,
+    :title,
+    :subjects,
+    :text_questions,
+    :image_questions,
     :radio_questions,
     :radio_image_questions,
+    :radio_image_text_questions,
   ].freeze
 
-  # Overwrite this method to customize how revisions are displayed
+  # Overwrite this method to customize how sub tests are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(revision)
-  #   "Revision ##{revision.id}"
-  # end
+  def display_resource(sub_test)
+    "#{sub_test.title}"
+  end
 end

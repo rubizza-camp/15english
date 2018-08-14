@@ -12,6 +12,8 @@ class SubjectDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     course: Field::BelongsTo,
     lessons: Field::HasMany,
+    subject_sub_tests: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,

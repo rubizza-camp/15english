@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :revisions
       resources :theories
       resources :practices
+      resources :sub_tests
       resources :test_levels
 
       root to: "users#index"
