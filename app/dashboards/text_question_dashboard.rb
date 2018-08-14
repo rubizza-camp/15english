@@ -14,6 +14,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     phrase: Field::String,

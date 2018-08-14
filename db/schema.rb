@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_090458) do
+ActiveRecord::Schema.define(version: 2018_08_14_101651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,12 +59,14 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.bigint "practice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sub_test_id"
     t.index ["image_question_id"], name: "index_pages_on_image_question_id"
     t.index ["practice_id"], name: "index_pages_on_practice_id"
     t.index ["radio_image_question_id"], name: "index_pages_on_radio_image_question_id"
     t.index ["radio_image_text_question_id"], name: "index_pages_on_radio_image_text_question_id"
     t.index ["radio_question_id"], name: "index_pages_on_radio_question_id"
     t.index ["revision_id"], name: "index_pages_on_revision_id"
+    t.index ["sub_test_id"], name: "index_pages_on_sub_test_id"
     t.index ["text_question_id"], name: "index_pages_on_text_question_id"
     t.index ["theory_id"], name: "index_pages_on_theory_id"
   end
@@ -150,12 +152,34 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
     t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
   end
 
+  create_table "sub_tests", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subject_sub_tests", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "sub_test_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sub_test_id"], name: "index_subject_sub_tests_on_sub_test_id"
+    t.index ["subject_id"], name: "index_subject_sub_tests_on_subject_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "title"
     t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  create_table "test_levels", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "text_questions", force: :cascade do |t|

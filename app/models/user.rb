@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :images, as: :imageable
   has_many :user_lessons
   has_many :lessons, through: :user_lessons
+  has_one :test_level
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior
