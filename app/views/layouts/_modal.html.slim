@@ -11,11 +11,7 @@ div [class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-label
           |
             Terms and Conditions ("Terms")
             ==============================
-        - cookie = PolicyManager::Config.rules.find{|o| o.name == "cookie"}.terms.last
-        - age = PolicyManager::Config.rules.find{|o| o.name == "age"}.terms.last
-        - privacy = PolicyManager::Config.rules.find{|o| o.name == "privacy_terms"}.terms.last
-        == cookie.to_html
-        == age.to_html
-        == privacy.to_html
+        - present.each do |policy|
+          == policy.to_html
       .modal-footer
         = link_to "Close", class: "btn btn-danger", data: {dismiss: "modal"}

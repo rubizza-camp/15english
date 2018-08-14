@@ -1,5 +1,5 @@
 <%= link_to  "Signout", destroy_user_session_path, method: :delete %>
-<%= link_to "Policies", "policies/categories", style: "float:right;" %>
+<%= link_to "Policies", "policies/categories", class: "pull-right" %>
 
 <% content_for(:title) do %>
   <%= display_resource_name(page.resource_name) %>

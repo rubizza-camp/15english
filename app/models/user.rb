@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
-  before_validation :accept_terms
+  before_validation :accept_terms, if: :terms_accepted?
 
   attr_accessor :terms_accepted
 
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    auth.terms_accepted = "1"
+    auth.terms_accepted = true
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
@@ -48,11 +48,9 @@ class User < ApplicationRecord
   private
 
     def accept_terms
-      if terms_accepted?
-        self.policy_rule_cookie = true
-        self.policy_rule_age = true
-        self.policy_rule_privacy_terms = true
-      end
+      self.policy_rule_cookie = true
+      self.policy_rule_age = true
+      self.policy_rule_privacy_terms = true
     end
 
     def terms_accepted?
