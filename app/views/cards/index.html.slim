@@ -2,23 +2,14 @@ h1
   center
     table
       - @cards.each do |card|
-        .cardsblock
-            tr
-              =image_tag(card.url.url, width:'15%', height: "15%", id:"image_card")
-            tr
-              p id='text'  hidden='true'
-                |#{card.text}
-            tr
-             .btn.btn-success==link_to 'Edit', edit_card_path(card.id)
-             .btn.btn-danger==link_to 'Delete', card_path(card), method: :delete
+        .container.card
+          =image_tag(card.url.url, width:'35%', height: "35%", class:"image")
+          .text  hidden='true'
+            |#{card.text}
+          .btn.btn-success==link_to 'Edit', edit_card_path(card.id)
+          .btn.btn-danger==link_to 'Delete', card_path(card), method: :delete
 
 = simple_form_for @card do |f|
   = f.file_field :url
   = f.input_field :text
   = f.submit "Add picture"
-  
-javascript:
-  document.getElementById('image_card').onclick = function () {
-    document.getElementById('image_card').style.display='none';
-    document.getElementById('text').removeAttribute("hidden");
-  }

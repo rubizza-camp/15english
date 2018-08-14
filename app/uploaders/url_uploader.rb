@@ -1,3 +1,5 @@
+# frozen_string_literal: tru
+
 # class UrlUploader
 class UrlUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :users
       resources :courses
       resources :subjects
-      resources :lessons      
+      resources :lessons
       resources :revisions
       resources :theories
       resources :practices
