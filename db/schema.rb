@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_090458) do
+ActiveRecord::Schema.define(version: 2018_08_14_104716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.string "url"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -24,7 +31,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "answer"
     t.datetime "created_at", null: false
@@ -70,15 +76,14 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "practices", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
   end
 
   create_table "radio_image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
@@ -89,7 +94,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "radio_image_text_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "first_option"
     t.string "second_option"
@@ -109,10 +113,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "revisions", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -133,10 +137,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "theories", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
