@@ -46,11 +46,11 @@ class User < ApplicationRecord
 
   private
 
-  def accept_terms
-    if (terms_accepted == "1" || terms_accepted == true) && new_record?
-      self.policy_rule_cookie = true
-      self.policy_rule_age = true
-      self.policy_rule_privacy_terms = true
+    def accept_terms
+      if (terms_accepted == "1" || terms_accepted == true) && new_record?
+        self.policy_rule_cookie = true
+        self.policy_rule_age = true
+        self.policy_rule_privacy_terms = true
+      end
     end
-  end
 end

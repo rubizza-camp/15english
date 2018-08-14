@@ -1,9 +1,11 @@
-PolicyManager::Config.setup do |c|
-  c.is_admin_method = ->(o){ true }
+# frozen_string_literal: true
 
-  c.add_rule({name: "cookie", sessionless: true }  )
-  c.add_rule({name: "age", validates_on: [:create, :update], blocking: true })
-  c.add_rule({name: "privacy_terms", validates_on: [:create, :update], blocking: true })
+PolicyManager::Config.setup do |c|
+  c.is_admin_method = ->(o) { true }
+
+  c.add_rule(name: "cookie", sessionless: true)
+  c.add_rule(name: "age", validates_on: [:create, :update], blocking: true)
+  c.add_rule(name: "privacy_terms", validates_on: [:create, :update], blocking: true)
 end
 
 # If you are using devise, you must extend engines's controller with devise helpers
