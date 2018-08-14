@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 PolicyManager::Config.setup do |c|
-  c.is_admin_method = ->(o) { true }
+  c.is_admin_method = ->(o) { o.admin }
 
   c.add_rule(name: "cookie", sessionless: true)
   c.add_rule(name: "age", validates_on: [:create, :update], blocking: true)
