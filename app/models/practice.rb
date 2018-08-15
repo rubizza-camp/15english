@@ -3,6 +3,7 @@
 # class Practice
 class Practice < ApplicationRecord
   belongs_to :lesson
+  delegate :title, to: :lesson, prefix: true
   has_many :pages
   has_many :text_questions, through: :pages
   has_many :image_questions, through: :pages
