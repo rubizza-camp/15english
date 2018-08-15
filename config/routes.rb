@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   get "/:locale" => "welcome#index"
 
   scope ":locale", locale: /en|ru/ do
+    devise_scope :user do
+      get "user/about", to: "users#about", as: :user_about
+    end
     devise_for :users, skip: :omniauth_callbacks
-    resources :users, only: [:show]
+    resources :users, only: [:show, :about]
     resources :lessons
     resources :subjects
     resources :courses

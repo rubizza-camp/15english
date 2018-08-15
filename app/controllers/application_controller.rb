@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
     def default_url_options(options = {})
       { locale: I18n.locale }
     end
+
+    def after_sign_in_path_for(resource)
+      if current_user.courses.empty?
+        current_user
+      else
+        user_about_path
+      end
+    end
 end
