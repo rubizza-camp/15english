@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       resources :radio_image_questions
       resources :text_questions
       resources :image_questions
-      
       root to: "users#index"
     end
 
