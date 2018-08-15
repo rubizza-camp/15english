@@ -28,10 +28,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-<<<<<<< HEAD
-=======
     :pages,
->>>>>>> bd0d903... Add dashboards for images
     :revisions,
     :practices,
     :theories,

@@ -8,7 +8,6 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    image: Field::HasOne,
     pages: Field::HasMany,
     revisions: Field::HasMany,
     practices: Field::HasMany,
@@ -30,9 +29,9 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :image,
-    :pages,
     :revisions,
     :practices,
+    :theories,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -55,16 +54,6 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-<<<<<<< HEAD
-    :image,
-    :pages,
-    :revisions,
-    :practices,
-    :theories,
-    :title,
-    :text,
-    :answer,
-=======
     #:pages,
     :revisions,
     :practices,
@@ -73,13 +62,12 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :text,
     :answer,
     :image,
->>>>>>> bd0d903... Add dashboards for images
   ].freeze
 
   # Overwrite this method to customize how image questions are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(image_question)
-    "#{image_question.title}"
-  end
+  # def display_resource(image_question)
+  #   "ImageQuestion ##{image_question.id}"
+  # end
 end
