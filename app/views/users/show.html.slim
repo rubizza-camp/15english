@@ -1,3 +1,8 @@
-h4 align="center" E-mail: #{@user.email}
-.btn.btn-outline-success.edit_profile_button
-  == link_to 'Edit profile', edit_user_registration_path
+h4 align="center" = (t "devise.users.profile.user_profile")
+div align="center"
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.level")
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.progress")
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.dictionary")

@@ -5,8 +5,8 @@ ru:
   shared:
     header:
       profile: 'Профиль'
+      settings: 'Настройки'
       sign:
         out: 'Выйти'
         up: 'Зарегестрироваться'
         in: 'Войти'
-

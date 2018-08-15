@@ -2,17 +2,15 @@ nav.navbar.navbar-light.hdr-color
   h1.hdr-logo==link_to 'Fifteenglish', root_path
   form.form-inline
     - if user_signed_in?
-      .round-image-50
-        = image_tag(current_user.avatar.url)
       .dropdown
-        - if current_user.username.blank?
-          .btn#hdr-btn==link_to = current_user.email
-        - else
-          .btn#hdr-btn==link_to = current_user.username
-        .dropdown-content
-          == link_to (t ".profile"), current_user
-          == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
+        div class="round-image-50" id="menu1" data-toggle="dropdown"
+          = image_tag(current_user.avatar.url)
+            span.caret
+        ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
+          li role="presentation" == link_to (t ".profile"), current_user
+          li role="presentation" == link_to (t ".settings"), edit_user_registration_path
+          .dropdown-divider
+          li role="presentation" == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
     - else
-      /button.btn.btn-outline-success == link_to 'Facebook', user_facebook_omniauth_authorize_path
       == link_to (t ".sign.up"), new_user_registration_path, class: 'btn', id: 'hdr-btn'
       == link_to (t ".sign.in"), new_user_session_path, class: 'btn', id: 'hdr-btn'
