@@ -33,8 +33,9 @@
 
 /public/uploads/*
 
-.gitignore
+# .gitignore
 
 *~
 
 /config/secrets.yml
+/config/local_env.yml
