@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
@@ -20,7 +22,7 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
     answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::String,
+    image: Field::Carrierwave,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
