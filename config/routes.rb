@@ -5,18 +5,17 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :users
       resources :courses
-      resources :radio_image_text_questions
-      resources :radio_questions
-      resources :radio_image_questions
-      resources :text_questions
-      resources :image_questions
       resources :subjects
       resources :lessons
       resources :revisions
       resources :theories
       resources :practices
+      resources :radio_image_questions
+      resources :radio_image_text_questions
+      resources :image_questions
+      resources :radio_questions
+      resources :text_questions
       resources :images
-
       root to: "users#index"
     end
 

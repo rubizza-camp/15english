@@ -55,6 +55,11 @@ GEM
       momentjs-rails (~> 2.8)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
+    administrate-field-carrierwave (0.3.2)
+      administrate (< 1.0.0)
+      rails (>= 4.2, < 6)
+    administrate-field-image (1.1.0)
+      administrate (>= 0.2.0.rc1)
     anbt-sql-formatter (0.0.6)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
@@ -362,6 +367,8 @@ PLATFORMS
 
 DEPENDENCIES
   administrate (~> 0.10.0)
+  administrate-field-carrierwave (~> 0.3.2)
+  administrate-field-image (~> 1.1.0)
   autoprefixer-rails (~> 9.0.2)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)

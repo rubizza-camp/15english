@@ -65,7 +65,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how radio questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(radio_question)
-  #   "RadioQuestion ##{radio_question.id}"
-  # end
+  def display_resource(radio_question)
+    "#{radio_question.title}"
+  end
 end

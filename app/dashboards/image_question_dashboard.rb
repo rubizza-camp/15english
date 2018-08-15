@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
 class ImageQuestionDashboard < Administrate::BaseDashboard
@@ -10,14 +8,13 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    image: Field::String,
+    image: Field::HasOne,
     pages: Field::HasMany,
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    image: Field::String,
     text: Field::String,
     answer: Field::String,
     created_at: Field::DateTime,
@@ -31,7 +28,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :image,
-    :theories,
+    :pages,
     :revisions,
     :practices,
   ].freeze
@@ -46,7 +43,6 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :theories,
     :id,
     :title,
-    :image,
     :text,
     :answer,
     :created_at,
@@ -57,13 +53,14 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
-    :text,
-    :answer,
     :image,
+    :pages,
     :revisions,
     :practices,
     :theories,
+    :title,
+    :text,
+    :answer,
   ].freeze
 
   # Overwrite this method to customize how image questions are displayed

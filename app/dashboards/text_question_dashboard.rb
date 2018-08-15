@@ -63,7 +63,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how text questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(text_question)
-  #   "TextQuestion ##{text_question.id}"
-  # end
+  def display_resource(text_question)
+    "#{text_question.title}"
+  end
 end

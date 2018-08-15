@@ -28,6 +28,8 @@ gem "autoprefixer-rails", "~> 9.0.2"
 gem "simple_form", "~> 4.0.1"
 gem "administrate", "~> 0.10.0"
 gem "will_paginate", "~> 3.1.6"
+gem "administrate-field-image", "~> 1.1.0"
+gem "administrate-field-carrierwave","~> 0.3.2"
 
 #group :development, :test do
   gem "pry-rails", "~> 0.3.6"
