@@ -11,6 +11,7 @@ class RevisionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     lesson: Field::BelongsTo,
+    pages: Field::HasMany,
     text_questions: Field::HasMany,
     image_questions: Field::HasMany,
     radio_questions: Field::HasMany,

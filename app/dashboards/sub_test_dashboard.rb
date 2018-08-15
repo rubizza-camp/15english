@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class TextQuestionDashboard < Administrate::BaseDashboard
+class SubTestDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,16 +10,16 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    subject_sub_tests: Field::HasMany,
+    subjects: Field::HasMany,
     pages: Field::HasMany,
-    revisions: Field::HasMany,
-    practices: Field::HasMany,
-    theories: Field::HasMany,
-    sub_tests: Field::HasMany,
+    text_questions: Field::HasMany,
+    image_questions: Field::HasMany,
+    radio_questions: Field::HasMany,
+    radio_image_questions: Field::HasMany,
+    radio_image_text_questions: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    phrase: Field::String,
-    text: Field::String,
-    answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -30,23 +30,22 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :title,
-    :revisions,
-    :practices,
-    :theories,
+    :subjects,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :phrase,
-    :text,
-    :answer,
-    :revisions,
-    :practices,
-    :theories,
+    :subjects,
+    :text_questions,
+    :image_questions,
+    :radio_questions,
+    :radio_image_questions,
+    :radio_image_text_questions,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -54,18 +53,18 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :phrase,
-    :text,
-    :answer,
-    :revisions,
-    :practices,
-    :theories,
+    :subjects,
+    :text_questions,
+    :image_questions,
+    :radio_questions,
+    :radio_image_questions,
+    :radio_image_text_questions,
   ].freeze
 
-  # Overwrite this method to customize how text questions are displayed
+  # Overwrite this method to customize how sub tests are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(text_question)
-    "#{text_question.title}"
+  def display_resource(sub_test)
+    "#{sub_test.title}"
   end
 end

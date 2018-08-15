@@ -10,4 +10,13 @@ module ApplicationHelper
     when "alert" then "alert alert-warning"
     end
   end
+
+  def present
+    policies = %w(cookie age privacy_terms)
+    policy_content = []
+    policies.each do |policy|
+      policy_content << PolicyManager::Config.rules.find { |o| o.name == policy }.terms.last
+    end
+    policy_content
+  end
 end
