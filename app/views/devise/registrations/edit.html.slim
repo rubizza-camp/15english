@@ -11,12 +11,10 @@ h2
   .form-inputs
     = f.input :username, required: true, autofocus: true
     = f.input :email, required: true, autofocus: true, autocomplete: 'email'
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
-    = f.input :password, autocomplete: "off", hint: t('.leave_blank_if_you_don_t_want_to_change_it'), required: false
-    = f.input :current_password, autocomplete: "off", hint: t('.we_need_your_current_password_to_confirm_your_changes'), required: false
+    = f.input :password, autocomplete: "off", required: false
+    = f.input :current_password, autocomplete: "off", required: false
   .form-actions
-    = f.button :submit, t('.update')
+    = f.button :submit
     .btn
       = link_to t('devise.shared.links.back'), :back
 .btn
