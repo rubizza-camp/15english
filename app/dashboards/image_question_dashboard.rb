@@ -19,6 +19,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    image: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,6 +28,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :title,
     :image,
     :pages,
     :revisions,
@@ -36,8 +38,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :image,
-    :pages,
+    #:pages,
     :revisions,
     :practices,
     :theories,
@@ -47,12 +48,14 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :answer,
     :created_at,
     :updated_at,
+    :image,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+<<<<<<< HEAD
     :image,
     :pages,
     :revisions,
@@ -61,12 +64,22 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :title,
     :text,
     :answer,
+=======
+    #:pages,
+    :revisions,
+    :practices,
+    :theories,
+    :title,
+    :text,
+    :answer,
+    :image,
+>>>>>>> bd0d903... Add dashboards for images
   ].freeze
 
   # Overwrite this method to customize how image questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(image_question)
-  #   "ImageQuestion ##{image_question.id}"
-  # end
+  def display_resource(image_question)
+    "#{image_question.title}"
+  end
 end

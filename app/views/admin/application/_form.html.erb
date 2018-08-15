@@ -40,7 +40,11 @@ and renders all form fields for a resource's editable attributes.
   <% end -%>
 
   <div class="form-actions">
+<<<<<<< HEAD
     <%= f.file_field :title if current_page?(new_admin_radio_image_text_question_path) or current_page?(new_admin_radio_image_question_path) or current_page?(new_admin_image_question_path) %>
+=======
+    <%= f.file_field :image if current_page?(new_admin_radio_image_question_path) or current_page?(new_admin_radio_image_text_question_path) or current_page?(new_admin_image_question_path)%>
+>>>>>>> bd0d903... Add dashboards for images
     <%= f.submit %>
   </div>
 <% end %>

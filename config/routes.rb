@@ -10,12 +10,21 @@ Rails.application.routes.draw do
       resources :revisions
       resources :theories
       resources :practices
+<<<<<<< HEAD
       resources :radio_image_questions
       resources :radio_image_text_questions
+=======
+      resources :radio_image_text_questions
+      resources :radio_image_questions
+>>>>>>> bd0d903... Add dashboards for images
       resources :image_questions
       resources :radio_questions
       resources :text_questions
       resources :images
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd0d903... Add dashboards for images
       root to: "users#index"
     end
 
