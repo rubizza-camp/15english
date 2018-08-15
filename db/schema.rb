@@ -71,6 +71,41 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.index ["theory_id"], name: "index_pages_on_theory_id"
   end
 
+  create_table "policy_manager_portability_requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "state"
+    t.string "attachment"
+    t.string "attachment_file_name"
+    t.string "attachment_file_size"
+    t.datetime "attachment_content_type"
+    t.string "attachment_file_content_type"
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_policy_manager_portability_requests_on_user_id"
+  end
+
+  create_table "policy_manager_terms", force: :cascade do |t|
+    t.text "description"
+    t.string "rule"
+    t.string "state"
+    t.datetime "accepted_at"
+    t.datetime "rejected_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "policy_manager_user_terms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "term_id"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state"], name: "index_policy_manager_user_terms_on_state"
+    t.index ["term_id"], name: "index_policy_manager_user_terms_on_term_id"
+    t.index ["user_id"], name: "index_policy_manager_user_terms_on_user_id"
+  end
+
   create_table "practices", force: :cascade do |t|
     t.integer "lesson_id"
     t.datetime "created_at", null: false
@@ -194,6 +229,8 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
