@@ -15,6 +15,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     image: Field::String,
@@ -33,6 +34,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :title,
     :image,
     :theories,
     :revisions,
@@ -72,7 +74,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how radio image questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(radio_image_question)
-  #   "RadioImageQuestion ##{radio_image_question.id}"
-  # end
+  def display_resource(radio_image_question)
+    "#{radio_image_question.title}"
+  end
 end

@@ -1,3 +1,4 @@
-h4 align="center" E-mail: #{@user.email}
-.btn.btn-outline-success.edit_profile_button
-  == link_to 'Edit profile', edit_user_registration_path
+form.form-inline
+  == link_to 'Check level of English', current_user, class: 'btn', id: 'hdr-btn'
+  == link_to 'Progress', current_user, class: 'btn', id: 'hdr-btn'
+  == link_to 'Dictionary', current_user, class: 'btn', id: 'hdr-btn'

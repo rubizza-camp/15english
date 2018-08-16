@@ -11,6 +11,7 @@ class RevisionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     lesson: Field::BelongsTo,
+    pages: Field::HasMany,
     text_questions: Field::HasMany,
     image_questions: Field::HasMany,
     radio_questions: Field::HasMany,
@@ -36,11 +37,8 @@ class RevisionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :lesson,
-    :text_questions,
-    :image_questions,
     :radio_questions,
     :radio_image_questions,
-    :radio_image_text_questions,
     :id,
     :created_at,
     :updated_at,
@@ -58,7 +56,7 @@ class RevisionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how revisions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(revision)
-  #   "Revision ##{revision.id}"
-  # end
+  def display_resource(revision)
+    "#{revision.lesson_title}"
+  end
 end

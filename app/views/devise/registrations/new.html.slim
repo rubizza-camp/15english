@@ -16,6 +16,10 @@
     .field
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: "off"
+    br
+    = f.check_box :terms_accepted
+    = f.label :terms_accepted, "I agree to the #{link_to 'Terms of Policies', '#exampleModal', data: {toggle: "modal", target: "#exampleModal"}}.".html_safe, style: "padding-left:5px;"
+    = render "layouts/modal"
     .actions
       = f.button
         .save_button

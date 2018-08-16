@@ -14,6 +14,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     phrase: Field::String,
@@ -30,6 +31,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :title,
     :revisions,
     :practices,
     :theories,
@@ -63,7 +65,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how text questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(text_question)
-  #   "TextQuestion ##{text_question.id}"
-  # end
+  def display_resource(text_question)
+    "#{text_question.title}"
+  end
 end
