@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :lessons
     resources :subjects
     resources :courses
+    resources :sub_tests
   end
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

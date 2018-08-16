@@ -2,8 +2,8 @@
 
 # SubTest modek
 class SubTest < ApplicationRecord
-  has_many :subject_sub_tests
-  has_many :subjects, through: :subject_sub_tests
+  has_one :subject_sub_tests
+  has_one :subjects, through: :subject_sub_tests
   has_many :pages
   has_many :text_questions, through: :pages
   has_many :image_questions, through: :pages

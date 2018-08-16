@@ -8,7 +8,6 @@ class RadioImageQuestion < ApplicationRecord
   has_many :practices, through: :pages
   has_many :theories, through: :pages
   has_many :sub_tests, through: :pages
-
   mount_uploader :image, AvatarUploader
 
   validates_integrity_of  :image

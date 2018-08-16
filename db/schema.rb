@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cards", force: :cascade do |t|
+    t.string "image"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -24,11 +31,11 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
 
   create_table "image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "images", force: :cascade do |t|
@@ -107,32 +114,32 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
   end
 
   create_table "practices", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
   end
 
   create_table "radio_image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_image_text_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "first_option"
     t.string "second_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_questions", force: :cascade do |t|
@@ -146,10 +153,10 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
   end
 
   create_table "revisions", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
   end
 
   create_table "sub_tests", force: :cascade do |t|
@@ -192,10 +199,10 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
   end
 
   create_table "theories", force: :cascade do |t|
+    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
@@ -229,14 +236,14 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
     t.string "avatar"
     t.string "username"
+    t.string "provider"
+    t.string "uid"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
