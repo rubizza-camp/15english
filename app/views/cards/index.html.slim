@@ -3,13 +3,13 @@ h1
     table
       - @cards.each do |card|
         .container.card
-          =image_tag(card.url.url, width:'35%', height: "35%", class:"image")
+          =image_tag(card.image.url, width:'35%', height: "35%", class:"image")
           .text  hidden='true'
             |#{card.text}
-          .btn.btn-success==link_to 'Edit', edit_card_path(card.id)
-          .btn.btn-danger==link_to 'Delete', card_path(card), method: :delete
+        .btn.btn-success==link_to 'Edit', edit_card_path(card.id)
+        .btn.btn-danger==link_to 'Delete', card_path(card), method: :delete
 
 = simple_form_for @card do |f|
-  = f.file_field :url
+  = f.file_field :image
   = f.input_field :text
   = f.submit "Add picture"

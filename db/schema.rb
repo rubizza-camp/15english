@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.string "url"
+    t.string "image"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "images", force: :cascade do |t|
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "practices", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,24 +84,24 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
 
   create_table "radio_image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_image_text_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "first_option"
     t.string "second_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_questions", force: :cascade do |t|
@@ -116,7 +115,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "revisions", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,7 +138,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "theories", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,7 +1,7 @@
 # frozen_string_literal: tru
 
 # class UrlUploader
-class UrlUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_limit: [400, 400]
 
