@@ -1,4 +1,8 @@
-form.form-inline
-  == link_to 'Check level of English', current_user, class: 'btn', id: 'hdr-btn'
-  == link_to 'Progress', current_user, class: 'btn', id: 'hdr-btn'
-  == link_to 'Dictionary', current_user, class: 'btn', id: 'hdr-btn'
+h4 align="center" = (t "devise.users.profile.user_profile")
+div align="center"
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.level")
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.progress")
+  .btn.btn-outline-success
+    == link_to (t "devise.users.profile.dictionary")

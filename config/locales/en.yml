@@ -6,6 +6,7 @@ en:
   shared:
     header:
       profile: 'Profile'
+      settings: 'Settings'
       sign:
         out: 'Sign out'
         up: 'Sign up'

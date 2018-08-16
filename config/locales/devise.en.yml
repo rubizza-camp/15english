@@ -113,6 +113,12 @@ en:
         sign_in: Log in
       signed_in: Signed in successfully.
       signed_out: Signed out successfully.
+    users:
+        profile:
+          user_profile: 'My Profile'
+          level: 'Test my English level'
+          progress: 'My Progress'
+          dictionary: 'My Dictionary'
     shared:
       links:
         back: Back
