@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class RadioImageQuestionDashboard < Administrate::BaseDashboard
+class ImageDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,20 +10,11 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pages: Field::HasMany,
-    revisions: Field::HasMany,
-    practices: Field::HasMany,
-    theories: Field::HasMany,
-    sub_tests: Field::HasMany,
+    imageable: Field::Polymorphic,
     id: Field::Number,
     title: Field::String,
-    first_option: Field::String,
-    second_option: Field::String,
-    third_option: Field::String,
-    answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::Carrierwave,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,49 +23,32 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :imageable,
     :title,
-    :image,
-    :pages,
-    :revisions,
-    :practices,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :revisions,
-    :practices,
-    :theories,
+    :imageable,
     :id,
     :title,
-    :first_option,
-    :second_option,
-    :third_option,
-    :answer,
     :created_at,
     :updated_at,
-    :image,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :revisions,
-    :practices,
-    :theories,
+    :imageable,
     :title,
-    :first_option,
-    :second_option,
-    :third_option,
-    :answer,
-    :image,
   ].freeze
 
-  # Overwrite this method to customize how radio image questions are displayed
+  # Overwrite this method to customize how images are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(radio_image_question)
-    "#{radio_image_question.title}"
-  end
+  # def display_resource(image)
+  #   "#{image.pucture.url}"
+  # end
 end

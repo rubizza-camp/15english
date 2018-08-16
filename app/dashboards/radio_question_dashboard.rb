@@ -41,28 +41,31 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :revisions,
+    :practices,
+    :theories,
+    :id,
     :title,
     :first_option,
     :second_option,
     :third_option,
     :answer,
-    :revisions,
-    :practices,
-    :theories,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :revisions,
+    :practices,
+    :theories,
     :title,
     :first_option,
     :second_option,
     :third_option,
     :answer,
-    :revisions,
-    :practices,
-    :theories,
   ].freeze
 
   # Overwrite this method to customize how radio questions are displayed

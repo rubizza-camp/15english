@@ -11,10 +11,10 @@ Rails.application.routes.draw do
       resources :theories
       resources :practices
       resources :radio_image_text_questions
-      resources :radio_questions
       resources :radio_image_questions
-      resources :text_questions
       resources :image_questions
+      resources :radio_questions
+      resources :text_questions
       resources :sub_tests
       resources :test_levels
 

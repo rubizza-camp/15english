@@ -1,9 +1,10 @@
-# frozen_string_literal: tru
+# frozen_string_literal: true
 
-# class UrlUploader
+# class ImageUploade
 class ImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 400]
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 
   if Rails.env.production?
     storage :fog
@@ -37,6 +38,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
+
   def extension_whitelist
     %w(jpg jpeg gif png)
   end
