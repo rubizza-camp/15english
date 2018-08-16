@@ -1,5 +1,5 @@
-h1
+.alert.alert-success
   | 1.Chose
-  @subject.radio_image_questions.each do |sub_test|
-    .alert.alert-success
-      
+- @subject.sub_test.radio_image_questions.each do |question|
+  | #{question.image.url}
+    
