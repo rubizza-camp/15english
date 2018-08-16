@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "practices", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,7 +115,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "revisions", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -140,7 +138,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_090458) do
   end
 
   create_table "theories", force: :cascade do |t|
-    t.integer "question_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

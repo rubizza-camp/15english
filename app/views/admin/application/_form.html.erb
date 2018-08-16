@@ -40,7 +40,6 @@ and renders all form fields for a resource's editable attributes.
   <% end -%>
 
   <div class="form-actions">
-    <%= f.file_field :image if current_page?(new_admin_radio_image_question_path) or current_page?(new_admin_radio_image_text_question_path) or current_page?(new_admin_image_question_path)%>
     <%= f.submit %>
   </div>
 <% end %>
