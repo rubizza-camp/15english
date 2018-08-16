@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "cards", force: :cascade do |t|
+    t.string "image"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -24,11 +31,11 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
 
   create_table "image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "images", force: :cascade do |t|
@@ -110,29 +117,28 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_practices_on_lesson_id"
   end
 
   create_table "radio_image_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_image_text_questions", force: :cascade do |t|
     t.string "title"
-    t.string "image"
     t.string "text"
     t.string "first_option"
     t.string "second_option"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "radio_questions", force: :cascade do |t|
@@ -149,7 +155,6 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_revisions_on_lesson_id"
   end
 
   create_table "sub_tests", force: :cascade do |t|
@@ -195,7 +200,6 @@ ActiveRecord::Schema.define(version: 2018_08_14_101651) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_theories_on_lesson_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
