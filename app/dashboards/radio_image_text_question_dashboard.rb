@@ -14,6 +14,7 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     text: Field::String,
@@ -31,7 +32,6 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-
     :title,
     :image,
     :revisions,

@@ -14,6 +14,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     first_option: Field::String,
@@ -30,7 +31,8 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :pages,
+    :id,
+    :title,
     :revisions,
     :practices,
     :theories,

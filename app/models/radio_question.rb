@@ -11,4 +11,5 @@ class RadioQuestion < ApplicationRecord
 
   validates_integrity_of  :image
   validates_processing_of :image
+  has_many :sub_tests, through: :pages
 end

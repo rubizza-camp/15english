@@ -14,6 +14,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     revisions: Field::HasMany,
     practices: Field::HasMany,
     theories: Field::HasMany,
+    sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     text: Field::String,
@@ -69,7 +70,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how image questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(image_question)
-  #   "ImageQuestion ##{image_question.id}"
-  # end
+  def display_resource(image_question)
+    "#{image_question.title}"
+  end
 end

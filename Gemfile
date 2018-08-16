@@ -29,6 +29,8 @@ gem "simple_form", "~> 4.0.1"
 gem "administrate", "~> 0.10.0"
 gem "will_paginate", "~> 3.1.6"
 gem "administrate-field-carrierwave", "~> 0.3.2"
+gem "gdpr_rails", "~> 0.3.3"
+gem "omniauth-facebook", "~> 5.0.0"
 
 group :development, :test do
   gem "pry-rails", "~> 0.3.6"
@@ -51,6 +53,5 @@ group :test do
   gem "rspec-rails", "~> 3.7.2"
   gem "factory_bot_rails", "~> 4.10.0"
 end
-
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

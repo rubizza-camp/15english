@@ -1,0 +1,17 @@
+div [class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"]
+  div [class="modal-dialog" role="document"]
+    .modal-content
+      .modal-header
+        h3 [class="modal-heading" id="exampleModalLongTitle"]
+          | Terms of policies
+        = link_to "X", class: "close", data: {dismiss: "modal"}
+
+      .modal-body
+        p
+          |
+            Terms and Conditions ("Terms")
+            ==============================
+        - present.each do |policy|
+          == policy.to_html
+      .modal-footer
+        = link_to "Close", class: "btn btn-danger", data: {dismiss: "modal"}
