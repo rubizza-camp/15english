@@ -10,7 +10,6 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    image: Field::String,
     pages: Field::HasMany,
     revisions: Field::HasMany,
     practices: Field::HasMany,
@@ -18,13 +17,13 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
     sub_tests: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    image: Field::String,
     text: Field::String,
     first_option: Field::String,
     second_option: Field::String,
     answer: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    image: Field::Carrierwave,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,41 +32,43 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :title,
     :image,
-    :pages,
     :revisions,
     :practices,
+    :theories,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :revisions,
+    :practices,
+    :theories,
+    :id,
     :title,
-    :image,
     :text,
     :first_option,
     :second_option,
     :answer,
-    :revisions,
-    :practices,
-    :theories,
+    :created_at,
+    :updated_at,
+    :image,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :revisions,
+    :practices,
+    :theories,
     :title,
-    :image,
     :text,
     :first_option,
     :second_option,
     :answer,
-    :revisions,
-    :practices,
-    :theories,
+    :image,
   ].freeze
 
   # Overwrite this method to customize how radio image text questions are displayed

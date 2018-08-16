@@ -11,10 +11,10 @@ Rails.application.routes.draw do
       resources :theories
       resources :practices
       resources :radio_image_text_questions
-      resources :radio_questions
       resources :radio_image_questions
-      resources :text_questions
       resources :image_questions
+      resources :radio_questions
+      resources :text_questions
       resources :sub_tests
       resources :test_levels
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :lessons
     resources :subjects
     resources :courses
+    resources :cards
   end
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class LessonDashboard < Administrate::BaseDashboard
+class ImageDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,12 +10,7 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    subject: Field::BelongsTo,
-    lessons_users: Field::HasMany,
-    users: Field::HasMany,
-    revision: Field::HasOne,
-    theory: Field::HasOne,
-    practice: Field::HasOne,
+    imageable: Field::Polymorphic,
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
@@ -28,35 +23,32 @@ class LessonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :imageable,
     :title,
-    :subject,
-    :users,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :imageable,
+    :id,
     :title,
-    :subject,
-    :users,
-    :revision,
-    :theory,
-    :practice,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :subject,
+    :imageable,
     :title,
-    :users,
   ].freeze
 
-  # Overwrite this method to customize how lessons are displayed
+  # Overwrite this method to customize how images are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(lesson)
-    "#{lesson.title}"
-  end
+  # def display_resource(image)
+  #   "#{image.pucture.url}"
+  # end
 end
