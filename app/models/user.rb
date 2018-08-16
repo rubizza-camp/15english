@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :images, as: :imageable
-  has_many :user_lessons
-  has_many :lessons, through: :user_lessons
+  has_many :lessons_user
+  has_many :lessons, through: :lessons_user
   has_one :test_level
 
   mount_uploader :avatar, AvatarUploader

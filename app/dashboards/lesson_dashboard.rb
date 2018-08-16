@@ -11,7 +11,7 @@ class LessonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     subject: Field::BelongsTo,
-    user_lessons: Field::HasMany,
+    lessons_users: Field::HasMany,
     users: Field::HasMany,
     revision: Field::HasOne,
     theory: Field::HasOne,
@@ -50,6 +50,7 @@ class LessonDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :subject,
     :title,
+    :users,
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
