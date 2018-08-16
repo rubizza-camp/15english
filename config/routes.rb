@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get "user/about", to: "users#about", as: :user_about
     end
     devise_for :users, skip: :omniauth_callbacks
-    resources :users, only: [:show, :about]
+    resources :users, only: [:show]
     resources :lessons
     resources :subjects
     resources :courses

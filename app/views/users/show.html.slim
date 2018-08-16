@@ -1,8 +1,13 @@
-h4 align="center" = (t "devise.users.profile.user_profile")
-div align="center"
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.level")
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.progress")
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.dictionary")
+= stylesheet_link_tag "test_page"
+.content-test
+  = image_tag("Idler.png", height: '500')
+  .content-right-block
+    .content-cloud
+      p = (t "devise.users.profile.ask_level")
+  .content-right
+    .btn.btn-outline-success
+      == link_to (t "devise.users.profile.level")
+    .btn.btn-outline-success
+      == link_to (t "devise.users.profile.progress")
+    .btn.btn-outline-success
+      == link_to (t "devise.users.profile.dictionary")
