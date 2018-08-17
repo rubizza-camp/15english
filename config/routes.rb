@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "welcome#index"
+  root "static_pages#welcome"
+  get "level", to: "static_pages#choose_level"
   namespace :admin do
       resources :users
       resources :courses
@@ -21,12 +22,9 @@ Rails.application.routes.draw do
       root to: "users#index"
     end
 
-  get "/:locale" => "welcome#index"
+  get "/:locale" => "static_pages#index"
 
   scope ":locale", locale: /en|ru/ do
-    devise_scope :user do
-      get "user/about", to: "users#about", as: :user_about
-    end
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
     resources :lessons

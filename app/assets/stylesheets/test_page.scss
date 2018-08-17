@@ -1,7 +1,7 @@
 @import 'bootstrap';
 @import 'colors';
 
-.content-test{
+.content-test {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -35,13 +35,13 @@
   font-size: 40px;
 }
 
-.content-right-block{
+.content-right-block {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.content-right{
+.content-right {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -52,4 +52,39 @@
     margin-top: 50px;
     height: 40px;
   }
+}
+
+.list_of_courses {
+  display: table;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 480px;
+}
+
+.name_of_course {
+  a {
+    color: #010000;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #ffa100;
+  }
+  background: #ffd300;
+  display: block;
+  width: 450px;
+  hight: 60px;
+  border: 1px solid #ffa100;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.link_test_level {
+  margin: 20px 0px 20px 0px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 480px;
+  text-align: center;
 }

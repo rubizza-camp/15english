@@ -24,10 +24,12 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      if current_user.courses.empty?
-        current_user
-      else
-        user_about_path
+      if user_signed_in?
+        if current_user.courses.empty?
+          level_path
+        else
+          current_user # redirect_to map_page will be here
+        end
       end
     end
 end
