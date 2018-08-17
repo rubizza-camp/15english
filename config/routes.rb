@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root "static_pages#index"
+  get "level", to: "static_pages#choose_level"
   namespace :admin do
       resources :users
       resources :courses
@@ -33,8 +34,6 @@ Rails.application.routes.draw do
     resources :users do
       get '/map'=> 'static_pages#map'
     end
-
-
   end
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }

@@ -130,6 +130,7 @@ ru:
         other: "(минимум %{count} знаков)"
     users:
           profile:
+            ask_level: 'Каков Ваш уровень?'
             user_profile: 'Мой профиль'
             level: 'Тест уровня английского'
             progress: 'Мой прогресс'

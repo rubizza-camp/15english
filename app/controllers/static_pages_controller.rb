@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
   def map
   end
 
+  def choose_level
+    @courses = Course.all
+  end
 end
