@@ -22,4 +22,14 @@ class ApplicationController < ActionController::Base
     def default_url_options(options = {})
       { locale: I18n.locale }
     end
+
+    def after_sign_in_path_for(resource)
+      if user_signed_in?
+        if current_user.courses.empty?
+          level_path
+        else
+          current_user # redirect_to map_page will be here
+        end
+      end
+    end
 end
