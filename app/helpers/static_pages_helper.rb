@@ -1,5 +1,4 @@
 module StaticPagesHelper
-
   def current_course
     current_user.courses.first.title
   end
@@ -8,8 +7,7 @@ module StaticPagesHelper
     current_user.courses.first.subjects
   end
 
-  def lesson_now
-    current_user.user_lessons.first.lesson_id
+  def current_lesson
+    (current_user.lessons_user.where passed: false).first.lesson_id
   end
-
 end

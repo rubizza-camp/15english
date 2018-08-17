@@ -1,0 +1,57 @@
+@import 'bootstrap';
+@import 'colors';
+
+/*MAP*/
+
+.map-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dropdown-title{
+  width: 100%;
+}
+
+#hdr-btn-nil {
+  margin: 5px;
+  color: $main_black;
+  background-color: transparent;
+  border-color: $main_black;
+}
+
+#hdr-btn-true {
+  margin: 5px;
+  color: $main_black;
+  background-color: green;
+  border-color: $main_black;
+}
+
+#hdr-btn-false {
+  margin: 5px;
+  color: $main_black;
+  background-color: red;
+  border-color: $main_black;
+}
+
+#hdr-btn-current {
+  margin: 5px;
+  color: $main_black;
+  background-color: yellow;
+  border-color: $main_black;
+}
+
+
+#hdr-btn {
+  margin: 5px;
+  color: $main_black;
+  background-color: transparent;
+  border-color: $main_black;
+}
+
+#hdr-btn:hover {
+  color: #fff;
+  background-color: $main_orange;
+  border-color: $main_black;
+}
+
+/*MAP*/
