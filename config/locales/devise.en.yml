@@ -115,6 +115,7 @@ en:
       signed_out: Signed out successfully.
     users:
         profile:
+          ask_level: What's your level?
           user_profile: 'My Profile'
           level: 'Test my English level'
           progress: 'My Progress'
