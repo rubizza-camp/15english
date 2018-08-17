@@ -10,4 +10,5 @@ class SubTest < ApplicationRecord
   has_many :radio_questions, through: :pages
   has_many :radio_image_questions, through: :pages
   has_many :radio_image_text_questions, through: :pages
+  attr_accessor :radio_image_answer, :radio_image_text_answer
 end

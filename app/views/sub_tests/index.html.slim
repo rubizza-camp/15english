@@ -1,5 +1,19 @@
-.alert.alert-success
-  | 1.Chose
-- @subject.sub_test.radio_image_questions.each do |question|
-  | #{question.image.url}
-    
+= simple_form_for @sub_test, action: :answers_people do |f|
+  = 
+  .alert.alert-success
+    | Chose
+  - @sub_test.radio_image_questions.each do |question|
+    center
+      = question.image.url
+    = f.input :radio_image_answer, as: :radio_buttons,
+    collection: [question.first_option, question.second_option, question.third_option]
+  .alert.alert-success
+    | Match
+  | test_question
+  .alert.alert-success
+    | Type
+  - @sub_test.radio_image_text_questions.each do |question|
+    center
+     = question.image.url
+    = f.input :radio_image_text_answer, as: :radio_buttons, collection: [question.first_option, question.second_option]
+  = f.submit

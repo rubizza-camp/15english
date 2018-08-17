@@ -31,14 +31,12 @@ class SubTestDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :subjects,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :subjects,
     :text_questions,
     :image_questions,
     :radio_questions,
@@ -53,7 +51,6 @@ class SubTestDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :subjects,
     :text_questions,
     :image_questions,
     :radio_questions,
