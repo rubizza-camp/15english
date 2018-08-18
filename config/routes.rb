@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :courses
     resources :cards
     resources :users do
-      get '/map'=> 'static_pages#map'
+      get "/map" => "static_pages#map"
     end
   end
 

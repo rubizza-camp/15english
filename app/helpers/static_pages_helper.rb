@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# comment for StaticPages helper
 module StaticPagesHelper
   def current_course
     current_user.courses.first.title
@@ -7,7 +10,7 @@ module StaticPagesHelper
     current_user.courses.first.subjects
   end
 
-  def current_lesson
-    (current_user.lessons_user.where passed: false).first.lesson_id
+  def current_lesson_id
+    current_user.lessons_user.where(passed: false).first.lesson_id
   end
 end
