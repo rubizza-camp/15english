@@ -1,0 +1,28 @@
+<%= form_for @radio_question do |f| %>
+    <%= f.label :title %>
+    <br>
+    <%= f.radio_button(:first_option, @radio_question.first_option) %>
+    <%= f.label :first_option, @radio_question.first_option %>
+    <br>
+    <%= f.radio_button :second_option, @radio_question.second_option %>
+    <%= f.label :second_option, @radio_question.second_option %>
+    <br>
+    <%= f.radio_button :third_option, @radio_question.third_option %>
+    <%= f.label :third_option, @radio_question.third_option %>
+    <br>
+    <%= f.submit "Check" %>
+<% end %>
+
+<h1>Text to PDF </h1>
+<% form_tag :action => 'parse_answers' do %>
+    <%= text_area :myform, :comments, :cols => '40', :rows => '5' %>
+    <%= submit_tag "Submit" %>
+<% end %>
+<form action = "/radio_questions/answer" >
+  Please enter your name.
+  <br>
+  <input type="text" name="text1">
+  <br>
+  <br>
+  <input type="submit"/>
+</form>

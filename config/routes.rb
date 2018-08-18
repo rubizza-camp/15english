@@ -7,9 +7,7 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
-      resources :revisions
-      resources :theories
-      resources :practices
+      resources :questions
       resources :radio_image_text_questions
       resources :radio_image_questions
       resources :image_questions
@@ -21,6 +19,8 @@ Rails.application.routes.draw do
       root to: "users#index"
     end
 
+  get "/parse_answers" => "radio_questions#parse_answers"
+  resources :radio_questions
   get "/:locale" => "welcome#index"
 
   scope ":locale", locale: /en|ru/ do
