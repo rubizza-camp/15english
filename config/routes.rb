@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "static_pages#welcome"
+  root "static_pages#index"
   get "level", to: "static_pages#choose_level"
   namespace :admin do
       resources :users
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       root to: "users#index"
     end
 
-  get "/:locale" => "static_pages#welcome"
+  get "/:locale" => "static_pages#index"
 
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     resources :subjects
     resources :courses
     resources :cards
+    resources :users do
+      get "/map" => "static_pages#map"
+    end
   end
+
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   mount PolicyManager::Engine => "/policies"

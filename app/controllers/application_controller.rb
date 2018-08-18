@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
         if current_user.courses.empty?
           level_path
         else
-          current_user # redirect_to map_page will be here
+          user_map_path(resource)
         end
       end
     end
