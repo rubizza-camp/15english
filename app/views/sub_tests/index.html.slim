@@ -4,9 +4,11 @@
     | Chose
   - @sub_test.radio_image_questions.each do |question|
     center
-      = question.image.url
+      = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
     = f.input :radio_image_answer, as: :radio_buttons,
     collection: [question.first_option, question.second_option, question.third_option]
+  
+
   .alert.alert-success
     | Match
   | test_question
@@ -14,6 +16,6 @@
     | Type
   - @sub_test.radio_image_text_questions.each do |question|
     center
-     = question.image.url
+     = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
     = f.input :radio_image_text_answer, as: :radio_buttons, collection: [question.first_option, question.second_option]
   = f.submit

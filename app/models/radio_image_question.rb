@@ -7,8 +7,6 @@ class RadioImageQuestion < ApplicationRecord
   has_many :practices, through: :pages
   has_many :theories, through: :pages
   has_many :sub_tests, through: :pages
-  validates_integrity_of  :image
-  validates_processing_of :image
 
   mount_uploader :image, ImageUploader
 end

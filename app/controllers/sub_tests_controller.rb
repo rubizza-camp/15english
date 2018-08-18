@@ -5,7 +5,10 @@ class SubTestsController < ApplicationController
   before_action :find_subject, only: [:show, :edit, :update, :destroy, :index, :caunt_all_questions, :answers_people]
 
   def percent_right_answers
-     caunt_right_answers * 100 / caunt_all_questions
+     percent = caunt_right_answers * 100 / caunt_all_questions
+     puts caunt_right_answers
+     puts caunt_all_questions
+     return percent
   end
 
   # def index
@@ -14,8 +17,10 @@ class SubTestsController < ApplicationController
   # end
 
   def update
-    @all_answers_radio_image = :radio_image_answer
-    @all_answers_radio_image_text = :radio_image_text_answer
+    @all_answers_radio_image_text = []
+    @all_answers_radio_image = []
+    @all_answers_radio_image << :radio_image_answer
+    @all_answers_radio_image_text << :radio_image_text_answer
     percent_right_answers
   end
 

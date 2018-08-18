@@ -34,7 +34,8 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :image,
-    :pages,
+    :sub_tests,
+    :theories,
     :revisions,
     :practices,
   ].freeze
@@ -45,6 +46,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
     :revisions,
     :practices,
     :theories,
+    :sub_tests,
     :id,
     :title,
     :first_option,
@@ -63,6 +65,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
     :revisions,
     :practices,
     :theories,
+    :sub_tests,
     :title,
     :first_option,
     :second_option,

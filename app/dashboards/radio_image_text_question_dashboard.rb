@@ -34,6 +34,7 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :image,
+    :sub_tests,
     :revisions,
     :practices,
     :theories,
@@ -45,6 +46,7 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
     :revisions,
     :practices,
     :theories,
+    :sub_tests,
     :id,
     :title,
     :text,
@@ -63,6 +65,7 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
     :revisions,
     :practices,
     :theories,
+    :sub_tests,
     :title,
     :text,
     :first_option,
