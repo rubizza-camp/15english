@@ -30,6 +30,7 @@ gem "will_paginate", "3.1.6"
 gem "administrate-field-carrierwave", "0.3.2"
 gem "gdpr_rails", "0.3.3"
 gem "omniauth-facebook", "5.0.0"
+gem "fog-aws", group: :production
 
 group :development, :test do
   gem "pry-rails", "0.3.6"
