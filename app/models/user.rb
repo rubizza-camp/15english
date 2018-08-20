@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :radio_questions, through: :answer_users
   has_many :radio_image_questions, through: :answer_users
   has_many :radio_image_text_questions, through: :answer_users
+  attr_accessor :user_answer
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior

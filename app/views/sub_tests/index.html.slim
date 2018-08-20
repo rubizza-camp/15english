@@ -1,26 +1,14 @@
-= simple_form_for @sub_test, action: :answers_people do |f|
-  = 
+= simple_form_for @user, action: :answers_people do |f|
   .alert.alert-success
     | Chose
+  - @sub_test.radio_image_questions.each do |question|
     center
-      = image_tag(@sub_test.radio_image_questions.first.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_answer_1, as: :radio_buttons,
-    collection: [@sub_test.radio_image_questions.first.first_option, @sub_test.radio_image_questions.first.second_option, @sub_test.radio_image_questions.first.third_option]
-  
-    center
-      = image_tag(@sub_test.radio_image_questions.last.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_answer_2, as: :radio_buttons,
-    collection: [@sub_test.radio_image_questions.last.first_option, @sub_test.radio_image_questions.last.second_option, @sub_test.radio_image_questions.last.third_option]
-
+      = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
+    = f.radio_button :answer_user, collection: [question.first_option, question.second_option, question.third_option]
   .alert.alert-success
     | Type
+  - @sub_test.radio_image_text_questions.each do |question|
     center
-     = image_tag(@sub_test.radio_image_text_questions.first.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_text_answer_1, as: :radio_buttons, collection: [@sub_test.radio_image_text_questions.first.first_option, @sub_test.radio_image_text_questions.first.second_option]
-
-    center
-     = image_tag(@sub_test.radio_image_text_questions.last.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_text_answer_2, as: :radio_buttons, collection: [@sub_test.radio_image_text_questions.last.first_option, @sub_test.radio_image_text_questions.last.second_option]
-
-  = f.submit "Answer"
-  | #{@persent}
+     = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
+    = f.radio_button name:"text[id]", collection: [question.first_option, question.second_option]
+  = f.submit

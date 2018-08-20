@@ -13,6 +13,7 @@ class SubTestsController < ApplicationController
   def index
     @subject = Subject.first #Subject.find(params[:id])
     @sub_test = @subject.sub_test
+    @user = current_user
   end
 
   def update
