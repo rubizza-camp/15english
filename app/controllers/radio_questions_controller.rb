@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RadioQuestionsController < ApplicationController
-  before_action :set_radio_question, only: [:show, :answer]
+  before_action :set_radio_question, only: [:show, :update]
 
   def show
   end
@@ -10,26 +10,35 @@ class RadioQuestionsController < ApplicationController
     @radio_questions = RadioQuestion.all
   end
 
+  def new
+    @radio_question = Question.new
+    @radio_question.answers.build
+  end
+
+  def create
+    @radio_question = RadioQuestion.create(radio_questions_params)
+    if @radio_question.save
+      redirect_to radio_question_url
+    else
+      render 'new'
+    end
+  end
+
   def update
-
+    @radio_question.update(radio_questions_params)
+    redirect_to radio_question_url
   end
 
-  # def parse_answer
-  #   answer_from_form = params
-  # end
-
-  def parse_answers
-    comments_from_form = params['myform']['comments']
-    #do your stuff with comments_from_form here
-  end
-
-  def answer
-    @data = params[:text1]
-  end
   private
 
   def radio_questions_params
-    params.require(:radio_question).permit(:title)
+    params.permit(:title,
+                  answers_attributes: [:id,
+                                      :answer,
+                                      :user_id,
+                                      :question_id,
+                                      :learning_process_state_id]
+    )
   end
 
   def set_radio_question

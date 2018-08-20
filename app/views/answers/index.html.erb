@@ -1,0 +1,7 @@
+<% @answers.each do |f| %>
+    <br>
+   <%= f.id %>
+   <%= f.answer %>
+<% end %>
+<br>
+<%= link_to 'New answer', new_answer_path %>

@@ -1,0 +1,9 @@
+<%= form_with(model: @answer, local: true) do |ans| %>
+  <%= ans.fields_for :questions do |que| %>
+    <%= que.label :first_option %>
+    <%= que.label :second_option %>
+    <%= que.label :third_option %>
+  <% end %>
+  <%= ans.submit "Ckeck" %>
+<% end %>
+

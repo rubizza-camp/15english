@@ -26,11 +26,15 @@ Rails.application.routes.draw do
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
-    resources :lessons
+    resources :lessons do
+      resources :questions
+    end
     resources :subjects
     resources :courses
     resources :cards
-    resources :answers, only: [:create]
+    resources :answers, only: [:show, :index, :create, :new]
+    resources :radio_questions, only: [:show, :index, :create, :new]
+    resources :text_questions
   end
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

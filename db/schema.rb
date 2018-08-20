@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_184452) do
+ActiveRecord::Schema.define(version: 2018_08_20_143329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2018_08_19_184452) do
     t.bigint "user_id"
     t.bigint "question_id"
     t.string "answer"
+    t.integer "learning_process_state_id"
+    t.index ["learning_process_state_id"], name: "index_answers_on_learning_process_state_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -46,20 +48,20 @@ ActiveRecord::Schema.define(version: 2018_08_19_184452) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
+  create_table "learning_process_states", id: :serial, force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.boolean "passed", default: false
+    t.bigint "user_id"
+    t.integer "answer_id", default: 0
+    t.index ["lesson_id"], name: "index_learning_process_states_on_lesson_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
-  end
-
-  create_table "lessons_users", id: :serial, force: :cascade do |t|
-    t.bigint "lesson_id", null: false
-    t.boolean "passed", default: false
-    t.bigint "user_id"
-    t.integer "answer_id", default: 0
-    t.index ["lesson_id"], name: "index_lessons_users_on_lesson_id"
   end
 
   create_table "policy_manager_portability_requests", force: :cascade do |t|

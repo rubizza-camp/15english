@@ -1,0 +1,6 @@
+<%= form_with(model: @question, local: true) do |que| %>
+  <%= que.fields_for :answer do |ans| %>
+    <%= ans.label :answer %>
+    <%= ans.text_field :answer %>
+  <% end %>
+<% end %>

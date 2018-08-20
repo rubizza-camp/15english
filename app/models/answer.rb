@@ -2,7 +2,6 @@
 
 # class Card
 class Answer < ApplicationRecord
-  has_many :lessons_user
-  has_many :users, through: :lessons_user
-  belongs_to :question
+  belongs_to :learning_process_state
+  belongs_to :question, optional: true
 end

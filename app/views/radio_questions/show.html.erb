@@ -1,28 +1,20 @@
-<%= form_for @radio_question do |f| %>
-    <%= f.label :title %>
-    <br>
-    <%= f.radio_button(:first_option, @radio_question.first_option) %>
-    <%= f.label :first_option, @radio_question.first_option %>
-    <br>
-    <%= f.radio_button :second_option, @radio_question.second_option %>
-    <%= f.label :second_option, @radio_question.second_option %>
-    <br>
-    <%= f.radio_button :third_option, @radio_question.third_option %>
-    <%= f.label :third_option, @radio_question.third_option %>
-    <br>
-    <%= f.submit "Check" %>
-<% end %>
+<%= form_with(model: @radio_question, local: true) do |que| %>
+    <%= que.fields_for :answers, @radio_question.answers_for_form do |ans| %>
+        <%= que.label @radio_question.title %>
+        <br>
+        <%= que.label :first_option, @radio_question.first_option, :value => @radio_question.first_option %>
+        <%= que.radio_button :answer, @radio_question.first_option %>
 
-<h1>Text to PDF </h1>
-<% form_tag :action => 'parse_answers' do %>
-    <%= text_area :myform, :comments, :cols => '40', :rows => '5' %>
-    <%= submit_tag "Submit" %>
+        <%= que.label :second_option, @radio_question.second_option, :value => @radio_question.second_option %>
+        <%= que.radio_button :answer, @radio_question.second_option %>
+
+        <%= que.label :third_option, @radio_question.third_option, :value => @radio_question.third_option %>
+        <%= que.radio_button :answer, @radio_question.third_option %>
+        <%= ans.hidden_field :question_id, input_html: {value: @radio_question.id} %>
+        <%= ans.hidden_field :user_id, input_html: {value: @radio_question.id} %>
+        <%= ans.hidden_field :learning_process_state_id, input_html: {value: @radio_question.id} %>
+
+        <%= ans.submit "Check" %>
+    <% end %>
+
 <% end %>
-<form action = "/radio_questions/answer" >
-  Please enter your name.
-  <br>
-  <input type="text" name="text1">
-  <br>
-  <br>
-  <input type="submit"/>
-</form>

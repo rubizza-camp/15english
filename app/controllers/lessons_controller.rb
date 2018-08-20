@@ -11,6 +11,7 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+    @lesson.questions.build.answers.build
   end
 
   def create
@@ -46,6 +47,9 @@ class LessonsController < ApplicationController
     end
 
     def lesson_params
-      params.require(:lesson).permit(:title)
+      params.require(:lesson).permit(:title,
+        :questions_attributes => [:title, :image, :text, :answer, :first_option, :second_option,
+          :answers => [:answer]
+        ])
     end
 end
