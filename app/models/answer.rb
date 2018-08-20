@@ -2,6 +2,7 @@
 
 # class Card
 class Answer < ApplicationRecord
-  belongs_to :user
+  has_many :lessons_user
+  has_many :users, through: :lessons_user
   belongs_to :question
 end

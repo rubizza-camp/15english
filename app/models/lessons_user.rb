@@ -4,4 +4,5 @@
 class LessonsUser < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
+  belongs_to :answers
 end
