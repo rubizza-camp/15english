@@ -45,6 +45,10 @@ class User < ApplicationRecord
     end
   end
 
+  def after_confirmation
+    WelcomeMailer.welcome_send(self).deliver
+  end
+
   private
 
     def accept_terms
