@@ -2,43 +2,45 @@
 
 # class SubTestsController
 class SubTestsController < ApplicationController
-  before_action :find_subject, only: [:show, :edit, :update, :destroy, :index, :caunt_all_questions, :answers_people]
+  before_action :find_subject, only: [:show, :edit, :update, :destroy, :index, :caunt_all_questions, :answers_people, :caunt_right_answers]
 
   def percent_right_answers
-     percent = caunt_right_answers * 100 / caunt_all_questions
-     puts caunt_right_answers
-     puts caunt_all_questions
-     return percent
+      @percent = caunt_right_answers * 100 / caunt_all_questions
+      puts @percent
+      redirect_to sub_test_path
   end
 
-  # def index
-  #   @subject = Subject.first #Subject.find(params[:id])
-  #   @sub_test = @subject.sub_test
-  # end
+  def index
+    @subject = Subject.first #Subject.find(params[:id])
+    @sub_test = @subject.sub_test
+  end
 
   def update
-    @all_answers_radio_image_text = []
-    @all_answers_radio_image = []
-    @all_answers_radio_image << :radio_image_answer
-    @all_answers_radio_image_text << :radio_image_text_answer
+    @answer_radio_image_text_1 = params[:sub_test][:radio_image_answer_1]
+    @answer_radio_image_1 = params[:sub_test][:radio_image_answer_1]
+    @answer_radio_image_2 = params[:sub_test][:radio_image_answer_2]
+    @answer_radio_image_text_2 = params[:sub_test][:radio_image_answer_2]
     percent_right_answers
   end
 
   private
     def caunt_right_answers
       index_right_answers = 0
-      all_right_answers_radio_image_text_questions.each do |right_answer|
-        @all_answers_radio_image_text.each do |answer_people|
-          index_right_answers += 1 if right_answer == answer_people
-        end
-      end
+      index_right_answers += 1 if all_right_answers_radio_image_text_questions.include? @answer_radio_image_text_2
+      index_right_answers += 1 if all_right_answers_radio_image_text_questions.include? @answer_radio_image_text_1
+      index_right_answers += 1 if all_right_answers_radio_image_questions.include? @answer_radio_image_1
+      index_right_answers += 1 if all_right_answers_radio_image_questions.include? @answer_radio_image_2
+      # all_right_answers_radio_image_text_questions.each do |right_answer|
+      #   @all_answers_radio_image_text.each do |answer_people|
+      #     index_right_answers += 1 if right_answer == answer_people
+      #   end
+      # end
 
-      all_right_answers_radio_image_questions.each do |right_answer|
-        @all_answers_radio_image.each do |answer_people|
-          index_right_answers += 1 if right_answer == answer_people
-        end
-      end
-
+      # all_right_answers_radio_image_questions.each do |right_answer|
+      #   @all_answers_radio_image.each do |answer_people|
+      #     index_right_answers += 1 if right_answer == answer_people
+      #   end
+      # end
       return index_right_answers
     end
 
@@ -47,6 +49,7 @@ class SubTestsController < ApplicationController
       @subject.sub_test.radio_image_text_questions.each do |question|
         right_answers_radio_image_text_questions << question.answer
       end
+      return right_answers_radio_image_text_questions
     end
 
     def all_right_answers_radio_image_questions
@@ -54,6 +57,7 @@ class SubTestsController < ApplicationController
       @subject.sub_test.radio_image_questions.each do |question|
         right_answers_radio_image_questions << question.answer
       end
+      return right_answers_radio_image_questions
     end
 
     # namber - 100%

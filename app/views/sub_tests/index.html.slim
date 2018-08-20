@@ -2,20 +2,25 @@
   = 
   .alert.alert-success
     | Chose
-  - @sub_test.radio_image_questions.each do |question|
     center
-      = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_answer, as: :radio_buttons,
-    collection: [question.first_option, question.second_option, question.third_option]
+      = image_tag(@sub_test.radio_image_questions.first.image.url, width:'35%', height: "35%", class:"image")
+    = f.input :radio_image_answer_1, as: :radio_buttons,
+    collection: [@sub_test.radio_image_questions.first.first_option, @sub_test.radio_image_questions.first.second_option, @sub_test.radio_image_questions.first.third_option]
   
+    center
+      = image_tag(@sub_test.radio_image_questions.last.image.url, width:'35%', height: "35%", class:"image")
+    = f.input :radio_image_answer_2, as: :radio_buttons,
+    collection: [@sub_test.radio_image_questions.last.first_option, @sub_test.radio_image_questions.last.second_option, @sub_test.radio_image_questions.last.third_option]
 
   .alert.alert-success
-    | Match
-  | test_question
-  .alert.alert-success
     | Type
-  - @sub_test.radio_image_text_questions.each do |question|
     center
-     = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
-    = f.input :radio_image_text_answer, as: :radio_buttons, collection: [question.first_option, question.second_option]
-  = f.submit
+     = image_tag(@sub_test.radio_image_text_questions.first.image.url, width:'35%', height: "35%", class:"image")
+    = f.input :radio_image_text_answer_1, as: :radio_buttons, collection: [@sub_test.radio_image_text_questions.first.first_option, @sub_test.radio_image_text_questions.first.second_option]
+
+    center
+     = image_tag(@sub_test.radio_image_text_questions.last.image.url, width:'35%', height: "35%", class:"image")
+    = f.input :radio_image_text_answer_2, as: :radio_buttons, collection: [@sub_test.radio_image_text_questions.last.first_option, @sub_test.radio_image_text_questions.last.second_option]
+
+  = f.submit "Answer"
+  | #{@persent}
