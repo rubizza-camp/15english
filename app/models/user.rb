@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :lessons_user
   has_many :lessons, through: :lessons_user
   has_one :test_level
+  has_one :dictionary
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior
