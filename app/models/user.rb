@@ -45,6 +45,11 @@ class User < ApplicationRecord
     end
   end
 
+  def self.send_reminder_mail
+    user = User.find(4)
+    UserNotifierMailer.send_reminder_email(user).deliver
+  end
+
   private
 
     def accept_terms
