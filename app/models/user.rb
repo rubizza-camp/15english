@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :lessons_user
   has_many :lessons, through: :lessons_user
   has_one :test_level
+  has_many :radio_questions, through: :answer_users
+  has_many :radio_image_questions, through: :answer_users
+  has_many :radio_image_text_questions, through: :answer_users
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior
