@@ -48,8 +48,8 @@ class LessonsController < ApplicationController
 
     def lesson_params
       params.require(:lesson).permit(:title,
-        :questions_attributes => [:title, :image, :text, :answer, :first_option, :second_option,
-          :answers => [:answer]
+        questions_attributes: [:title, :image, :text, :answer, :first_option, :second_option,
+          answers: [:answer]
         ])
     end
 end

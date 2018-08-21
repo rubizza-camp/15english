@@ -26,11 +26,11 @@ class AnswersController < ApplicationController
 
   private
 
-  def answer_params
-    params.require(:answer).permit(:answer, :id, :user_id, :question_id, :learning_process_state_id)
-  end
+    def answer_params
+      params.require(:answer).permit(:answer, :id, :user_id, :question_id, :learning_process_state_id)
+    end
 
-  def set_answer
-    @answer = Answer.find(params[:id])
-  end
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
 end

@@ -20,7 +20,7 @@ class RadioQuestionsController < ApplicationController
     if @radio_question.save
       redirect_to radio_question_url
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -31,17 +31,17 @@ class RadioQuestionsController < ApplicationController
 
   private
 
-  def radio_questions_params
-    params.permit(:title,
-                  answers_attributes: [:id,
-                                      :answer,
-                                      :user_id,
-                                      :question_id,
-                                      :learning_process_state_id]
-    )
-  end
+    def radio_questions_params
+      params.permit(:title,
+                    answers_attributes: [:id,
+                                        :answer,
+                                        :user_id,
+                                        :question_id,
+                                        :learning_process_state_id]
+      )
+    end
 
-  def set_radio_question
-    @radio_question = RadioQuestion.find(params[:id])
-  end
+    def set_radio_question
+      @radio_question = RadioQuestion.find(params[:id])
+    end
 end
