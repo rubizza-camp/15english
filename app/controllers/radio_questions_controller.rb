@@ -4,6 +4,8 @@ class RadioQuestionsController < ApplicationController
   before_action :set_radio_question, only: [:show, :update]
 
   def show
+    @user = current_user
+    @learning_process_state
   end
 
   def index
@@ -11,11 +13,12 @@ class RadioQuestionsController < ApplicationController
   end
 
   def new
-    @radio_question = Question.new
+    @radio_question = RadioQuestion.new
     @radio_question.answers.build
   end
 
   def create
+    binding.pry
     @radio_question = RadioQuestion.create(radio_questions_params)
     if @radio_question.save
       redirect_to radio_question_url
@@ -25,6 +28,7 @@ class RadioQuestionsController < ApplicationController
   end
 
   def update
+    binding.pry
     @radio_question.update(radio_questions_params)
     redirect_to radio_question_url
   end

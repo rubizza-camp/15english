@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
+    post "/answer" => "answers#create", as: :create_answer
   end
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

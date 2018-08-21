@@ -1,20 +1,13 @@
-<%= form_with(model: @radio_question, local: true) do |que| %>
-    <%= que.fields_for :answers, @radio_question.answers_for_form do |ans| %>
-        <%= que.label @radio_question.title %>
-        <br>
-        <%= que.label :first_option, @radio_question.first_option, :value => @radio_question.first_option %>
-        <%= que.radio_button :answer, @radio_question.first_option %>
-
-        <%= que.label :second_option, @radio_question.second_option, :value => @radio_question.second_option %>
-        <%= que.radio_button :answer, @radio_question.second_option %>
-
-        <%= que.label :third_option, @radio_question.third_option, :value => @radio_question.third_option %>
-        <%= que.radio_button :answer, @radio_question.third_option %>
-        <%= ans.hidden_field :question_id, input_html: {value: @radio_question.id} %>
-        <%= ans.hidden_field :user_id, input_html: {value: @radio_question.id} %>
-        <%= ans.hidden_field :learning_process_state_id, input_html: {value: @radio_question.id} %>
-
-        <%= ans.submit "Check" %>
-    <% end %>
-
+<%= @radio_question.title %>
+<%= form_tag(controller: "answers", action: "create", method: "post") do %>
+    <%= hidden_field_tag :question_id, @radio_question.id %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= hidden_field_tag :learning_process_state_id, @user.learning_process_states.ids %>
+    <%= label_tag :first_option, @radio_question.first_option, :value => @radio_question.first_option %>
+    <%= radio_button_tag :answer, @radio_question.first_option %>
+    <%= label_tag :second_option, @radio_question.second_option, :value => @radio_question.second_option %>
+    <%= radio_button_tag :answer, @radio_question.second_option %>
+    <%= label_tag :third_option, @radio_question.third_option, :value => @radio_question.third_option %>
+    <%= radio_button_tag :answer, @radio_question.third_option %>
+    <%= submit_tag("Check") %>
 <% end %>
