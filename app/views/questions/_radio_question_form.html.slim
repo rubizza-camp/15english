@@ -1,0 +1,16 @@
+= question.text
+= form_tag(controller: "answers", action: "create", method: "post") do
+  = hidden_field_tag :question_id, question.id
+  = hidden_field_tag :user_id, current_user.id
+  = hidden_field_tag :learning_process_state_id, @user.learning_process_states.ids
+
+  = label_tag :first_option, question.first_option, :value => question.first_option
+  = radio_button_tag :answer, question.first_option
+
+  = label_tag :second_option, question.second_option, :value => question.second_option
+  = radio_button_tag :answer, question.second_option
+
+  = label_tag :third_option, question.third_option, :value => question.third_option
+  = radio_button_tag :answer, question.third_option
+
+  = submit_tag("Check")

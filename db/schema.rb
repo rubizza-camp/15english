@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_064832) do
+ActiveRecord::Schema.define(version: 2018_08_21_201911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_064832) do
     t.string "questionable_type"
     t.bigint "questionable_id"
     t.string "type"
+    t.integer "position"
     t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
   end
 

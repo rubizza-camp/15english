@@ -8,16 +8,16 @@ class AnswersController < ApplicationController
     end
   end
 
-  def check_answer
-    @question = Question.find(@answer.question_id)
-    if @answer.answer == @question.correct_answer
-      flash[:success] = "Answer correct!"
-    else
-      flash[:error] =  "Answer incorrect!"
-    end
-  end
-
   private
+
+    def check_answer
+      @question = Question.find(@answer.question_id)
+      if @answer.answer == @question.correct_answer
+        flash[:success] = "Answer correct!"
+      else
+        flash[:error] =  "Answer incorrect!"
+      end
+    end
 
     def answer_params
       params.permit(:answer, :user_id, :question_id, :learning_process_state_id)

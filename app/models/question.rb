@@ -6,9 +6,4 @@ class Question < ApplicationRecord
   belongs_to :questionable, polymorphic: true
   belongs_to :lesson, optional: true
   accepts_nested_attributes_for :answers
-
-  def answers_for_form
-    collection = answers.where(question_id: id)
-    collection.any? ? collection : answers.build
-  end
 end

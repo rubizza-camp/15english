@@ -1,0 +1,25 @@
+- @questions.each do |question|
+  /Revise block
+
+  - if question.type == "RadioImageTextQuestion"
+    = render partial: "questions/radio_image_text_question_form", locals: {question: question }
+
+  - if question.type == "RadioQuestion"
+    = render partial: "questions/radio_question_form", locals: {question: question }
+
+    /Learn block
+
+    /Here should be cards
+
+  - if question.type == "RadioImageQuestion"
+    = render partial: "questions/radio_image_question_form", locals: {question: question }
+
+  - if question.type == "ImageQuestion"
+    = render partial: "questions/image_question_form", locals: {question: question }
+
+    /Practise block
+
+    /Matching type of questions
+
+  - if question.type == "TextQuestion"
+    = render partial: "questions/text_question_form", locals: {question: question }

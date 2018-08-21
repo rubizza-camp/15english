@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
-    resources :lessons do
+    resources :lessons, only: [:show] do
       resources :questions
     end
     resources :subjects
