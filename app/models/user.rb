@@ -5,8 +5,9 @@ class User < ApplicationRecord
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :images, as: :imageable
-  has_many :lessons_user
-  has_many :lessons, through: :lessons_user
+  has_many :learning_process_states
+  has_many :lessons, through: :learning_process_states
+  has_many :answers, through: :learning_process_states
   has_one :test_level
   has_one :dictionary
 

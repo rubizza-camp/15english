@@ -11,6 +11,6 @@ module StaticPagesHelper
   end
 
   def current_lesson_id
-    current_user.lessons_user.where(passed: false).first.lesson_id
+    current_user.learning_process_states.where(passed: false).first.lesson_id
   end
 end
