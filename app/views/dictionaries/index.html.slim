@@ -3,10 +3,8 @@ h1 Listing dictionaries
 table
   thead
     tr
-      th Word
-      th Translated word
       th User
-      th Lesson
+      th Dictionary word
       th
       th
       th
@@ -14,10 +12,8 @@ table
   tbody
     - @dictionaries.each do |dictionary|
       tr
-        td = dictionary.word
-        td = dictionary.translated_word
-        td = dictionary.user_id
-        td = dictionary.lesson_id
+        td = dictionary.user
+        td = dictionary.dictionary_word
         td = link_to 'Show', dictionary
         td = link_to 'Edit', edit_dictionary_path(dictionary)
         td = link_to 'Destroy', dictionary, data: { confirm: 'Are you sure?' }, method: :delete

@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Word:
+  = @dictionary_word.word
+p
+  strong Dictionary:
+  = @dictionary_word.dictionary
+
+=> link_to 'Edit', edit_dictionary_word_path(@dictionary_word)
+'|
+=< link_to 'Back', dictionary_words_path

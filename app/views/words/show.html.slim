@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong En:
+  = @word.en
+p
+  strong Ru:
+  = @word.ru
+p
+  strong Lesson:
+  = @word.lesson_id
+
+=> link_to 'Edit', edit_word_path(@word)
+'|
+=< link_to 'Back', words_path

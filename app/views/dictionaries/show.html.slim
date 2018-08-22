@@ -1,17 +1,11 @@
 p#notice = notice
 
 p
-  strong Word:
-  = @dictionary.word
-p
-  strong Translated word:
-  = @dictionary.translated_word
-p
   strong User:
-  = @dictionary.user_id
+  = @dictionary.user
 p
-  strong Lesson:
-  = @dictionary.lesson_id
+  strong Dictionary word:
+  = @dictionary.dictionary_word
 
 => link_to 'Edit', edit_dictionary_path(@dictionary)
 '|

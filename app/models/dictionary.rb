@@ -3,5 +3,5 @@
 # Comment for Dictionary model
 class Dictionary < ApplicationRecord
   belongs_to :user
-  has_many :lessons
+  has_many :words, through: :dictionary_words
 end

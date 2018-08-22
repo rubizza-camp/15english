@@ -1,0 +1,15 @@
+= form_for @dictionary_word do |f|
+  - if @dictionary_word.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@dictionary_word.errors.count, "error")} prohibited this dictionary_word from being saved:"
+      ul
+        - @dictionary_word.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :word
+    = f.text_field :word
+  .field
+    = f.label :dictionary
+    = f.text_field :dictionary
+  .actions = f.submit

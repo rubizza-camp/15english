@@ -69,6 +69,6 @@ class DictionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dictionary_params
-      params.require(:dictionary).permit(:word, :translated_word, :user_id, :lesson_id)
+      params.require(:dictionary).permit(:user, :dictionary_word)
     end
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :dictionary_words
   resources :dictionaries
   root "static_pages#index"
   get "level", to: "static_pages#choose_level"
