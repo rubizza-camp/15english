@@ -1,8 +1,6 @@
 = question.text
 = form_tag(controller: "answers", action: "create", method: "post") do
-  = hidden_field_tag :question_id, question.id
-  = hidden_field_tag :user_id, current_user.id
-  = hidden_field_tag :learning_process_state_id, @user.learning_process_states.ids
+  = render partial: "answers/hidden_fields", locals: {question: question }
 
   /Add image_tag with url after setting up administrate
 

@@ -17,7 +17,8 @@ class QuestionsController < ApplicationController
   private
 
     def questions_params
-      params.require(:question).permit(:title,
+      params.require(:question).permit(
+        :title,
         answers_attributes: [:answer]
       )
     end
