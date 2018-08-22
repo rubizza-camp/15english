@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class LessonDashboard < Administrate::BaseDashboard
+class DictionaryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,16 +10,13 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    subject: Field::BelongsTo,
-    learning_process_states: Field::HasMany,
-    users: Field::HasMany,
-    questions: Field::HasMany,
+    user: Field::BelongsTo,
+    dictionary_words: Field::HasMany,
     words: Field::HasMany,
     id: Field::Number,
-    title: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    word_id: Field::Number,
+    dictionary_word_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,44 +25,38 @@ class LessonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :subject,
-    :learning_process_states,
-    :users,
-    :questions,
+    :user,
+    :dictionary_words,
+    :words,
+    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :subject,
-    :learning_process_states,
-    :users,
-    :questions,
+    :user,
+    :dictionary_words,
     :words,
     :id,
-    :title,
     :created_at,
     :updated_at,
-    :word_id,
+    :dictionary_word_id,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :subject,
-    :learning_process_states,
-    :users,
-    :questions,
+    :user,
+    :dictionary_words,
     :words,
-    :title,
-    :word_id,
+    :dictionary_word_id,
   ].freeze
 
-  # Overwrite this method to customize how lessons are displayed
+  # Overwrite this method to customize how dictionaries are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
+  # def display_resource(dictionary)
+  #   "Dictionary ##{dictionary.id}"
   # end
 end

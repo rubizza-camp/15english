@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :dictionary_words
-  resources :dictionaries
   root "static_pages#index"
   get "level", to: "static_pages#choose_level"
   namespace :admin do
@@ -10,6 +8,9 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
+      # resources :dictionary_words
+      resources :dictionaries
+      resources :words
       resources :questions
       resources :radio_image_text_questions
       resources :radio_image_questions
