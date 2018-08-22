@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "welcome#index"
+  root "static_pages#index"
+  get "level", to: "static_pages#choose_level"
   namespace :admin do
       resources :users
       resources :courses
@@ -19,9 +20,7 @@ Rails.application.routes.draw do
       root to: "users#index"
     end
 
-  get "/parse_answers" => "radio_questions#parse_answers"
-  resources :radio_questions
-  get "/:locale" => "welcome#index"
+  get "/:locale" => "static_pages#index"
 
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
@@ -36,7 +35,11 @@ Rails.application.routes.draw do
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
     post "/answer" => "answers#create", as: :create_answer
+    resources :users do
+      get "/map" => "static_pages#map"
+    end
   end
+
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   mount PolicyManager::Engine => "/policies"

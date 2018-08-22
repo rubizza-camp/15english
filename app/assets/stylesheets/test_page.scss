@@ -1,0 +1,89 @@
+@import 'bootstrap';
+@import 'colors';
+
+.content-test {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.content-cloud {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px; height: 150px;
+  margin-left: 60px;
+  background: $lemon;
+  position: relative;
+  border: $border_gray;
+  border-radius: 50px;
+}
+
+.content-cloud:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 100%; top: calc(1% + 65px);
+  border-top: 40px solid transparent;
+  border-right: 60px solid $lemon;
+}
+
+.content-cloud p{
+  text-align: center;
+  font-family: 'comic sans ms';
+  font-size: 40px;
+}
+
+.content-right-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 40px;
+  height: 130px;
+  margin-top: 160px;
+  .btn.btn-outline-success {
+    margin-top: 50px;
+    height: 40px;
+  }
+}
+
+.list_of_courses {
+  display: table;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 480px;
+}
+
+.name_of_course {
+  a {
+    color: #010000;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #ffa100;
+  }
+  background: #ffd300;
+  display: block;
+  width: 450px;
+  border: 1px solid #ffa100;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.link_test_level {
+  margin: 20px 0px 20px 0px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 480px;
+  text-align: center;
+}

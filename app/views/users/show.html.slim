@@ -1,8 +1,7 @@
-h4 align="center" = (t "devise.users.profile.user_profile")
-div align="center"
+.content-right
   .btn.btn-outline-success
     == link_to (t "devise.users.profile.level")
   .btn.btn-outline-success
-    == link_to (t "devise.users.profile.progress")
+    == link_to (t "devise.users.profile.progress"), user_map_path(@user)
   .btn.btn-outline-success
     == link_to (t "devise.users.profile.dictionary")
