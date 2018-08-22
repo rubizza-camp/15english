@@ -19,7 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 set :environment, :development
-set :output, "/home/evenstein/RubymineProjects/15english/config/cron_log.log"
 
 every 2.minutes do
   rake "send_remainder_mail_task:send_mail"

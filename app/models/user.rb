@@ -46,8 +46,7 @@ class User < ApplicationRecord
   end
 
   def self.send_reminder_mail
-    user = User.find(4)
-    UserNotifierMailer.send_reminder_email(user).deliver
+    User.all.each { |user| UserNotifierMailer.send_reminder_email(user).deliver }
   end
 
   private

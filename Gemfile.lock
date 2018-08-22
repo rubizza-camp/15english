@@ -442,7 +442,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (= 4.1.18)
   web-console (= 3.6.2)
-  whenever
+  whenever (= 0.10.0)
   will_paginate (= 3.1.6)
 
 RUBY VERSION

@@ -6,7 +6,6 @@ class UserNotifierMailer < ApplicationMailer
 
   def send_reminder_email(user)
     @user = user
-    #binding.pry
     mail(to: @user.email,
          subject: "15english lesson remind")
   end
