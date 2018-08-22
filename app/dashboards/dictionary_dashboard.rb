@@ -25,22 +25,17 @@ class DictionaryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :user,
-    :dictionary_words,
-    :words,
-    :id,
+    :user
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :user,
-    :dictionary_words,
     :words,
     :id,
     :created_at,
     :updated_at,
-    :dictionary_word_id,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -48,9 +43,7 @@ class DictionaryDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
-    :dictionary_words,
-    :words,
-    :dictionary_word_id,
+    :words
   ].freeze
 
   # Overwrite this method to customize how dictionaries are displayed

@@ -32,6 +32,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :learning_process_states,
     :users,
     :questions,
+    :words
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,8 +46,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :created_at,
-    :updated_at,
-    :word_id,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -58,14 +58,12 @@ class LessonDashboard < Administrate::BaseDashboard
     :users,
     :questions,
     :words,
-    :title,
-    :word_id,
+    :title
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
-  # end
+  def display_resource(lesson)
+    lesson.title
+  end
 end

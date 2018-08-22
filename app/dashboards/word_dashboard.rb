@@ -52,8 +52,7 @@ class WordDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how words are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(word)
-  #   "Word ##{word.id}"
-  # end
+  def display_resource(word)
+    word.en
+  end
 end

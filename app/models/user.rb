@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates_processing_of :avatar
 
   before_validation :accept_terms, if: :terms_accepted?
+  after_create_commit :create_dictionary
 
   attr_accessor :terms_accepted
 
@@ -57,5 +58,10 @@ class User < ApplicationRecord
 
     def terms_accepted?
       (terms_accepted == "1" || terms_accepted == true) && new_record?
+    end
+
+    def create_dictionary
+      dictionary = Dictionary.new(user: User.find(id))
+      dictionary.save
     end
 end
