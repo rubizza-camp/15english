@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DictionaryWordsController < ApplicationController
   before_action :set_dictionary_word, only: [:show, :edit, :update, :destroy]
 

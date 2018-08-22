@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
@@ -20,7 +22,7 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if @word.save
-        format.html { redirect_to @word, notice: 'Word was successfully created.' }
+        format.html { redirect_to @word, notice: "Word was successfully created." }
         format.json { render :show, status: :created, location: @word }
       else
         format.html { render :new }
