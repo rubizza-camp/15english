@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :sub_tests
       resources :test_levels
       resources :cards
+      resources :answers
 
       root to: "users#index"
     end
