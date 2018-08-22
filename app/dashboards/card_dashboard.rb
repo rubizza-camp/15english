@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
-class ImageDashboard < Administrate::BaseDashboard
+class CardDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,11 +8,15 @@ class ImageDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    imageable: Field::Polymorphic,
     id: Field::Number,
-    title: Field::String,
+    image: Field::Carrierwave.with_options(
+      image: :standard,
+      image_on_index: true,
+      ),
+    remove_image: Field::Boolean,
+    text: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,32 +25,35 @@ class ImageDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :imageable,
-    :title,
+    :id,
+    :image,
+    :text,
+    :created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :imageable,
     :id,
-    :title,
+    :image,
+    :text,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :imageable,
-    :title,
+    :image,
+    :remove_image,
+    :text
   ].freeze
 
-  # Overwrite this method to customize how images are displayed
+  # Overwrite this method to customize how cards are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(image)
-  #   "#{image.pucture.url}"
+  # def display_resource(card)
+  #   "Card ##{card.id}"
   # end
 end

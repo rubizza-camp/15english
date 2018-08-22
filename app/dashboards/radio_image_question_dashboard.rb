@@ -11,16 +11,24 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     answers: Field::HasMany,
-    questionable: Field::Polymorphic,
+    questionable: Field::Polymorphic.with_options(
+      classes: [Lesson, SubTest, TestLevel]
+      ),
+    lesson: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
-    image: Field::String,
+    image: Field::Carrierwave.with_options(
+      image: :standard,
+      image_on_index: true,
+      ),
+    remove_image: Field::Boolean,
     text: Field::String,
-    answer: Field::String,
+    correct_answer: Field::String,
     first_option: Field::String,
     second_option: Field::String,
     third_option: Field::String,
     type: Field::String,
+    position: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,35 +38,34 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :answers,
-    :questionable,
+    :questionable
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :questionable,
     :title,
     :image,
-    :answer,
     :first_option,
     :second_option,
     :third_option,
-    :type,
-    :questionable,
+    :answers
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :questionable,
     :title,
     :image,
-    :answer,
+    :remove_image,
     :first_option,
     :second_option,
     :third_option,
-    :type,
-    :questionable,
+    :answers,
+    :type
   ].freeze
 
   # Overwrite this method to customize how radio image questions are displayed
