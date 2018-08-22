@@ -44,7 +44,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
     :first_option,
     :second_option,
     :third_option,
-    :answers
+    :correct_answer
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -56,7 +56,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
     :first_option,
     :second_option,
     :third_option,
-    :answers,
+    :correct_answer,
     :type
   ].freeze
 

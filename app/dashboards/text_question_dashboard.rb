@@ -47,7 +47,7 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     :questionable,
     :title,
     :text,
-    :answers,
+    :correct_answer,
     :image
   ].freeze
 
@@ -57,10 +57,10 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :questionable,
     :title,
-    :text,
-    :answers,
     :image,
     :remove_image,
+    :text,
+    :correct_answer,
     :type
   ].freeze
 

@@ -48,7 +48,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :title,
     :image,
     :text,
-    :answers
+    :correct_answer
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -60,7 +60,7 @@ class ImageQuestionDashboard < Administrate::BaseDashboard
     :image,
     :remove_image,
     :text,
-    :answers,
+    :correct_answer,
     :type
   ].freeze
 
