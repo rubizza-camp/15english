@@ -38,7 +38,8 @@ class RadioImageTextQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :questionable
+    :questionable,
+    :image
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
