@@ -3,7 +3,7 @@
 # Comment for User model
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :username, use: :slugged
+  friendly_id :username,  :use => [:slugged, :finders]
 
   has_many :user_courses
   has_many :courses, through: :user_courses
