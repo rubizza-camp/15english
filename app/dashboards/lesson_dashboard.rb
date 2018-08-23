@@ -11,13 +11,13 @@ class LessonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     subject: Field::BelongsTo,
-    lessons_user: Field::HasMany,
+    learning_process_states: Field::HasMany,
     users: Field::HasMany,
     questions: Field::HasMany,
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,8 +28,7 @@ class LessonDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :subject,
-    :users,
-    :questions,
+    :users
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,11 +36,9 @@ class LessonDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :subject,
     :users,
-    :questions,
-    :id,
     :title,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -50,14 +47,13 @@ class LessonDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :title,
     :subject,
-    :users,
-    :questions,
+    :users
   ].freeze
 
   # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lesson)
-  #   "Lesson ##{lesson.id}"
-  # end
+  def display_resource(lesson)
+    lesson.title
+  end
 end

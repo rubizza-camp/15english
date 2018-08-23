@@ -15,7 +15,7 @@ class TestLevelDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,7 +27,7 @@ class TestLevelDashboard < Administrate::BaseDashboard
     :user,
     :questions,
     :id,
-    :title,
+    :title
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +38,7 @@ class TestLevelDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -47,13 +47,13 @@ class TestLevelDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :user,
     :questions,
-    :title,
+    :title
   ].freeze
 
   # Overwrite this method to customize how test levels are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(test_level)
-  #   "TestLevel ##{test_level.id}"
-  # end
+  def display_resource(test_level)
+    test_level.title
+  end
 end
