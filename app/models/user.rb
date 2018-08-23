@@ -2,6 +2,9 @@
 
 # Comment for User model
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :images, as: :imageable
@@ -16,7 +19,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :recoverable, :omniauthable, omniauth_providers: %i[facebook]
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   # User Avatar Validation
   validates_integrity_of  :avatar
