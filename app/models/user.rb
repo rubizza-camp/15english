@@ -49,6 +49,10 @@ class User < ApplicationRecord
     end
   end
 
+  def self.send_reminder_mail
+    User.where(admin: false).each { |user| UserNotifierMailer.send_reminder_email(user).deliver }
+  end
+
   private
 
     def accept_terms

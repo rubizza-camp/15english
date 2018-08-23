@@ -44,6 +44,7 @@ group :development do
   gem "letter_opener", "1.6.0"
   gem "spring", "2.0.2"
   gem "spring-watcher-listen", "2.0.1"
+  gem "whenever", "0.10.0", require: false
   gem "brakeman", "4.3.1"
 end
 
