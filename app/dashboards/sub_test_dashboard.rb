@@ -16,7 +16,7 @@ class SubTestDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,7 +27,7 @@ class SubTestDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :subjects,
     :questions,
-    :id,
+    :id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +38,7 @@ class SubTestDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -47,13 +47,13 @@ class SubTestDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :subjects,
     :questions,
-    :title,
+    :title
   ].freeze
 
   # Overwrite this method to customize how sub tests are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(sub_test)
-  #   "SubTest ##{sub_test.id}"
-  # end
+  def display_resource(sub_test)
+    sub_test.title
+  end
 end

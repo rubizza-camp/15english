@@ -17,7 +17,7 @@ class SubjectDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +28,7 @@ class SubjectDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :course,
-    :lessons,
+    :lessons
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,7 +39,7 @@ class SubjectDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :course,
-    :lessons,
+    :lessons
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -47,7 +47,7 @@ class SubjectDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :course,
-    :title,
+    :title
   ].freeze
 
   # Overwrite this method to customize how subjects are displayed

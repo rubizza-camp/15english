@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
-      resources :questions
       resources :radio_image_text_questions
       resources :radio_image_questions
       resources :image_questions
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
       resources :text_questions
       resources :sub_tests
       resources :test_levels
+      resources :cards
 
       root to: "users#index"
     end
@@ -33,7 +33,9 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
-    get "/map" => "static_pages#map"
+    resources :users do
+      get "/map" => "static_pages#map"
+    end
     post "/answer" => "answers#create", as: :create_answer
   end
 
