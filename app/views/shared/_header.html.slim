@@ -12,6 +12,7 @@ nav.navbar.navbar-light.hdr-color
         ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
           li role="presentation" == link_to (t ".profile"), current_user
           li role="presentation" == link_to (t ".settings"), edit_user_registration_path
+          li role="presentation" == link_to "My Dictionary", dictionary_path(current_user.id)
           .dropdown-divider
           li role="presentation" == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
     - else

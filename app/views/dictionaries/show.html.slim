@@ -1,12 +1,79 @@
 p#notice = notice
 
-p
-  strong User:
-  = @dictionary.user
-p
-  strong Dictionary word:
-  = @dictionary.dictionary_word
+div
+  | Level:
+  .btn.btn-outline-success
+    == link_to "Elementary", "#"
+br
+div
+  | Letter:
+  .card.w-25
+    .card-body.card-links
+      - ('A'..'Z').to_a.each do |letter|
+        == link_to letter, dictionary_path(letter: letter), class: "letter-link"
+      == link_to "show all", dictionary_path, class: "show-all-link"
+- counter = 0
+- while counter < @words.size
+  - if (counter + 2) < @words.size
+    .card-group
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter].ru
+            p.card-text
+              == sanitize @words[counter].usage, tags: %w(span)
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter + 1].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter + 1].ru
+            p.card-text
+              == sanitize @words[counter + 1].usage, tags: %w(span)
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter + 2].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter + 2].ru
+            p.card-text
+              == sanitize @words[counter + 2].usage, tags: %w(span)
+  - elsif (counter + 1) < @words.size
+    .card-group
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter].ru
+            p.card-text
+              == sanitize @words[counter].usage, tags: %w(span)
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter + 1].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter + 1].ru
+            p.card-text
+              == sanitize @words[counter + 1].usage, tags: %w(span)
+  - else
+    .row
+      .col-sm-4
+        .card.text-center
+          .card-header
+            == @words[counter].en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == @words[counter].ru
+            p.card-text
+              == sanitize @words[counter].usage, tags: %w(span)
 
-=> link_to 'Edit', edit_dictionary_path(@dictionary)
-'|
-=< link_to 'Back', dictionaries_path
+  - counter += 3
+

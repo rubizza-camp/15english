@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
 class DictionariesController < ApplicationController
-  before_action :set_dictionary, only: [:show, :edit, :update]
+  before_action :set_dictionary, only: [:index, :show, :edit, :update]
 
   def index
-    @dictionaries = Dictionary.all
+
+    redirect_to :show, params: :words
   end
 
   def show
+    if params[:letter].nil?
+      @words = current_user.dictionary.words
+    else
+      @words = current_user.dictionary.words.where("en LIKE ?", "#{params[:letter]}%")
+    end
   end
 
   def new

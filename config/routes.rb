@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
-      # resources :dictionary_words
       resources :dictionaries
       resources :words
       resources :questions
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
+    resources :dictionaries, only: [:show]
     resources :subjects
     resources :courses
     resources :lessons, only: [:show, :index]
