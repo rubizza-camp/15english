@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :cards
 
       root to: "users#index"
+      mount PolicyManager::Engine => "/policies"
     end
 
   get "/:locale" => "static_pages#index"
@@ -40,6 +41,4 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-
-  mount PolicyManager::Engine => "/policies"
 end
