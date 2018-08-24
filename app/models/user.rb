@@ -27,7 +27,7 @@ class User < ApplicationRecord
   validates_processing_of :avatar
 
   before_validation :accept_terms, if: :terms_accepted?
-  after_create_commit :create_dictionary
+  after_create :create_dictionary
 
   attr_accessor :terms_accepted
 
