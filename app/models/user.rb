@@ -3,7 +3,7 @@
 # Comment for User model
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :username, use: :slugged
+  friendly_id :username,  :use => [:slugged, :finders]
 
   has_many :user_courses
   has_many :courses, through: :user_courses
@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :lessons, through: :learning_process_states
   has_many :answers, through: :learning_process_states
   has_one :test_level
+  has_one :dictionary
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior
@@ -26,6 +27,7 @@ class User < ApplicationRecord
   validates_processing_of :avatar
 
   before_validation :accept_terms, if: :terms_accepted?
+  after_create :create_dictionary
 
   attr_accessor :terms_accepted
 
@@ -63,5 +65,9 @@ class User < ApplicationRecord
 
     def terms_accepted?
       (terms_accepted == "1" || terms_accepted == true) && new_record?
+    end
+
+    def create_dictionary
+      Dictionary.create(user: self)
     end
 end
