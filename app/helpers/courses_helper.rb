@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# comment for StaticPages helper
-
+# comment for Courses helper
 module CoursesHelper
   def current_lesson(lesson_id)
     lesson_id == current_lesson_id
