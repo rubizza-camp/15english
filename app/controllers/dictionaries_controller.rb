@@ -4,7 +4,6 @@ class DictionariesController < ApplicationController
   before_action :set_dictionary, only: [:show, :edit, :update]
 
   def index
-
   end
 
   def show

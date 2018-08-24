@@ -7,6 +7,7 @@ en:
     header:
       profile: 'Profile'
       settings: 'Settings'
+      dictionary: 'Му Dictionary'
       sign:
         out: 'Sign out'
         up: 'Sign up'

@@ -68,7 +68,6 @@ class User < ApplicationRecord
     end
 
     def create_dictionary
-      dictionary = Dictionary.new(user: User.find(id))
-      dictionary.save
+      Dictionary.create(user: User.find(id))
     end
 end

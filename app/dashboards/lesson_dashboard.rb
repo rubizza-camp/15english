@@ -40,7 +40,6 @@ class LessonDashboard < Administrate::BaseDashboard
     :users,
     :questions,
     :words,
-    :id,
     :title,
     :created_at,
     :updated_at

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       resources :lessons
       resources :dictionaries
       resources :words
-      resources :questions
       resources :radio_image_text_questions
       resources :radio_image_questions
       resources :image_questions

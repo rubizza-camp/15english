@@ -6,6 +6,7 @@ ru:
     header:
       profile: 'Профиль'
       settings: 'Настройки'
+      dictionary: 'Мой словарь'
       sign:
         out: 'Выйти'
         up: 'Зарегестрироваться'
