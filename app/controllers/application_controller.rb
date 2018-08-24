@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for_user(resource)
-      current_user.courses.empty? ? level_path : user_map_path(resource)
+      current_user.courses.empty? ? level_users_path : course_path(resource)
     end
 
     def after_sign_in_path_for(resource)
