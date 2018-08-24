@@ -1,12 +1,14 @@
 p#notice = notice
 
 div
-  | Level:
-  .btn.btn-outline-success
-    == link_to "Elementary", "#"
+  .dropdown.dropright
+    = link_to (t ".level"), "#", class: "btn btn-success dropdown-toggle", role: "button", id: "dropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }
+    div class="dropdown-menu" aria-labelledby="dropdownMenu2"
+      - @courses.each do |course|
+        = link_to course.title, "#", class: "dropdown-item"
 br
 div
-  | Letter:
+  == (t ".search")
   .card.w-25
     .card-body.card-links
       - ('A'..'Z').to_a.each do |letter|
@@ -18,62 +20,62 @@ div
     .card-group
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter].ru
             p.card-text
-              == sanitize @words[counter].usage, tags: %w(span)
+              == sanitize @words[counter].usage, tags: %w(span s)
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter + 1].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter + 1].ru
             p.card-text
-              == sanitize @words[counter + 1].usage, tags: %w(span)
+              == sanitize @words[counter + 1].usage, tags: %w(span s)
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter + 2].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter + 2].ru
             p.card-text
-              == sanitize @words[counter + 2].usage, tags: %w(span)
+              == sanitize @words[counter + 2].usage, tags: %w(span s)
   - elsif (counter + 1) < @words.size
     .card-group
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter].ru
             p.card-text
-              == sanitize @words[counter].usage, tags: %w(span)
+              == sanitize @words[counter].usage, tags: %w(span s)
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter + 1].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter + 1].ru
             p.card-text
-              == sanitize @words[counter + 1].usage, tags: %w(span)
+              == sanitize @words[counter + 1].usage, tags: %w(span s)
   - else
     .row
       .col-sm-4
         .card.text-center
-          .card-header
+          .card-header.dictionary-header
             == @words[counter].en
           .card-body
             h6.card-subtitle.mb-2.text-muted
               == @words[counter].ru
             p.card-text
-              == sanitize @words[counter].usage, tags: %w(span)
+              == sanitize @words[counter].usage, tags: %w(span s)
 
   - counter += 3
 

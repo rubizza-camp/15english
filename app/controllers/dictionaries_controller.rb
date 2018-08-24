@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class DictionariesController < ApplicationController
-  before_action :set_dictionary, only: [:index, :show, :edit, :update]
+  before_action :set_dictionary, only: [:show, :edit, :update]
 
   def index
 
-    redirect_to :show, params: :words
   end
 
   def show
+    @courses = Course.all
     if params[:letter].nil?
       @words = current_user.dictionary.words
     else

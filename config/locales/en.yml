@@ -11,3 +11,8 @@ en:
         out: 'Sign out'
         up: 'Sign up'
         in: 'Sign in'
+
+  dictionaries:
+    show:
+      level: 'Choose your Level'
+      search: 'Search by Letter:'
