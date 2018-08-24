@@ -2,6 +2,9 @@
 
 # Comment for User model
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :username,  :use => [:slugged, :finders]
+
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :images, as: :imageable
@@ -17,7 +20,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :recoverable, :omniauthable, omniauth_providers: %i[facebook]
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   # User Avatar Validation
   validates_integrity_of  :avatar
@@ -46,6 +49,10 @@ class User < ApplicationRecord
       # user.image = auth.info.image
       user.skip_confirmation!
     end
+  end
+
+  def self.send_reminder_mail
+    User.where(admin: false).each { |user| UserNotifierMailer.send_reminder_email(user).deliver }
   end
 
   private

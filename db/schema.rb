@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.index ["word_id"], name: "index_dictionary_words_on_word_id"
   end
 
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "title"
     t.string "imageable_type"
@@ -68,11 +80,10 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
 
   create_table "learning_process_states", id: :serial, force: :cascade do |t|
     t.bigint "lesson_id", null: false
-    t.bigint "user_id", null: false
     t.boolean "passed", default: false
+    t.bigint "user_id"
     t.integer "answer_id", default: 0
     t.index ["lesson_id"], name: "index_learning_process_states_on_lesson_id"
-    t.index ["user_id"], name: "index_learning_process_states_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -195,6 +206,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.boolean "admin", default: false
     t.string "avatar"
     t.string "username"
+    t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

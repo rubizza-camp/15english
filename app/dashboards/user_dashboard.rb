@@ -13,8 +13,13 @@ class UserDashboard < Administrate::BaseDashboard
     user_courses: Field::HasMany,
     courses: Field::HasMany,
     images: Field::HasMany,
-    user_lessons: Field::HasMany,
+    learning_process_states: Field::HasMany,
     lessons: Field::HasMany,
+    answers: Field::HasMany,
+    test_level: Field::HasOne,
+    user_terms: Field::HasMany.with_options(class_name: "PolicyManager::UserTerm"),
+    terms: Field::HasMany,
+    portability_requests: Field::HasMany.with_options(class_name: "PolicyManager::PortabilityRequest"),
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -28,12 +33,14 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    provider: Field::String,
+    uid: Field::String,
     confirmation_token: Field::String,
     confirmed_at: Field::DateTime,
     confirmation_sent_at: Field::DateTime,
     admin: Field::Boolean,
     avatar: Field::String,
-    username: Field::String,
+    username: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,7 +52,7 @@ class UserDashboard < Administrate::BaseDashboard
     :id,
     :courses,
     :username,
-    :email,
+    :email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -75,11 +82,12 @@ class UserDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :confirmed_at,
     :admin,
-    :avatar,
+    :avatar
   ].freeze
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
+  #
   def display_resource(user)
     user.username
   end
