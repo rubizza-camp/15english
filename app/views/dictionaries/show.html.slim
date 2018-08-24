@@ -14,68 +14,15 @@ div
       - ('A'..'Z').to_a.each do |letter|
         == link_to letter, dictionary_path(letter: letter), class: "letter-link"
       == link_to "show all", dictionary_path, class: "show-all-link"
-- counter = 0
-- while counter < @words.size
-  - if (counter + 2) < @words.size
-    .card-group
+- @words.in_groups_of(3, false).each do |group|
+  .card-group
+    - group.each do |word|
       .col-sm-4
         .card.text-center
           .card-header.dictionary-header
-            == @words[counter].en
+            == word.en
           .card-body
             h6.card-subtitle.mb-2.text-muted
-              == @words[counter].ru
+              == word.ru
             p.card-text
-              == sanitize @words[counter].usage, tags: %w(span s)
-      .col-sm-4
-        .card.text-center
-          .card-header.dictionary-header
-            == @words[counter + 1].en
-          .card-body
-            h6.card-subtitle.mb-2.text-muted
-              == @words[counter + 1].ru
-            p.card-text
-              == sanitize @words[counter + 1].usage, tags: %w(span s)
-      .col-sm-4
-        .card.text-center
-          .card-header.dictionary-header
-            == @words[counter + 2].en
-          .card-body
-            h6.card-subtitle.mb-2.text-muted
-              == @words[counter + 2].ru
-            p.card-text
-              == sanitize @words[counter + 2].usage, tags: %w(span s)
-  - elsif (counter + 1) < @words.size
-    .card-group
-      .col-sm-4
-        .card.text-center
-          .card-header.dictionary-header
-            == @words[counter].en
-          .card-body
-            h6.card-subtitle.mb-2.text-muted
-              == @words[counter].ru
-            p.card-text
-              == sanitize @words[counter].usage, tags: %w(span s)
-      .col-sm-4
-        .card.text-center
-          .card-header.dictionary-header
-            == @words[counter + 1].en
-          .card-body
-            h6.card-subtitle.mb-2.text-muted
-              == @words[counter + 1].ru
-            p.card-text
-              == sanitize @words[counter + 1].usage, tags: %w(span s)
-  - else
-    .row
-      .col-sm-4
-        .card.text-center
-          .card-header.dictionary-header
-            == @words[counter].en
-          .card-body
-            h6.card-subtitle.mb-2.text-muted
-              == @words[counter].ru
-            p.card-text
-              == sanitize @words[counter].usage, tags: %w(span s)
-
-  - counter += 3
-
+              == sanitize word.usage, tags: %w(span)
