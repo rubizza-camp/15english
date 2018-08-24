@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_095018) do
+ActiveRecord::Schema.define(version: 2018_08_23_110510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,24 @@ ActiveRecord::Schema.define(version: 2018_08_22_095018) do
     t.index ["title"], name: "index_courses_on_title"
   end
 
+  create_table "dictionaries", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "dictionary_word_id"
+    t.index ["dictionary_word_id"], name: "index_dictionaries_on_dictionary_word_id"
+    t.index ["user_id"], name: "index_dictionaries_on_user_id"
+  end
+
+  create_table "dictionary_words", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "dictionary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dictionary_id"], name: "index_dictionary_words_on_dictionary_id"
+    t.index ["word_id"], name: "index_dictionary_words_on_word_id"
+  end
+
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -62,10 +80,11 @@ ActiveRecord::Schema.define(version: 2018_08_22_095018) do
 
   create_table "learning_process_states", id: :serial, force: :cascade do |t|
     t.bigint "lesson_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "passed", default: false
-    t.bigint "user_id"
     t.integer "answer_id", default: 0
     t.index ["lesson_id"], name: "index_learning_process_states_on_lesson_id"
+    t.index ["user_id"], name: "index_learning_process_states_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -73,7 +92,9 @@ ActiveRecord::Schema.define(version: 2018_08_22_095018) do
     t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "word_id"
     t.index ["subject_id"], name: "index_lessons_on_subject_id"
+    t.index ["word_id"], name: "index_lessons_on_word_id"
   end
 
   create_table "policy_manager_portability_requests", force: :cascade do |t|
@@ -192,6 +213,22 @@ ActiveRecord::Schema.define(version: 2018_08_22_095018) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "words", force: :cascade do |t|
+    t.string "en"
+    t.string "ru"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "usage"
+    t.index ["lesson_id"], name: "index_words_on_lesson_id"
+  end
+
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "dictionaries", "dictionary_words"
+  add_foreign_key "dictionaries", "users"
+  add_foreign_key "dictionary_words", "dictionaries"
+  add_foreign_key "dictionary_words", "words"
+  add_foreign_key "lessons", "words"
+  add_foreign_key "words", "lessons"
 end

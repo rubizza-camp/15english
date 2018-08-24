@@ -6,7 +6,12 @@ ru:
     header:
       profile: 'Профиль'
       settings: 'Настройки'
+      dictionary: 'Мой словарь'
       sign:
         out: 'Выйти'
         up: 'Зарегестрироваться'
         in: 'Войти'
+  dictionaries:
+      show:
+        level: 'Выберите Ваш уровень'
+        search: 'Поиск по букве:'
