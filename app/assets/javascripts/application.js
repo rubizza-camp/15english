@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require_tree .
+//= require test_level

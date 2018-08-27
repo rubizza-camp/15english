@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
+    resources :test_level, only: [:show]
     resources :users do
       get "/map" => "static_pages#map"
     end
