@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.string "user_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end  
+  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "user_id"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
-    t.string "questionable_type"
+    t.string "questionable_type", default: "Lesson"
     t.bigint "questionable_id"
     t.string "type"
     t.integer "position"
@@ -207,14 +207,14 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
     t.string "avatar"
     t.string "username"
+    t.string "provider"
+    t.string "uid"
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

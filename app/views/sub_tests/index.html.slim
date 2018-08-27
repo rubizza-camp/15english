@@ -1,14 +1,13 @@
-= simple_form_for @user, action: :answers_people do |f|
+= simple_form_for @sub_test, action: :answers_people do |f|
   .alert.alert-success
     | Chose
-  - @sub_test.radio_image_questions.each do |question|
+  - @sub_test.questions.where(type: "RadioImageTextQuestion").each_with_index do |q,i|
     center
-      = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
-    = f.radio_button :answer_user, collection: [question.first_option, question.second_option, question.third_option]
+     = image_tag(q.image.url, width:'35%', height: "35%", class:"image")  if q.image?
+    = f.radio_button_tag "answer#{i+1}", "#{q.first_option}", true
+    = f.radio_button_tag "answer#{i+1}", "#{q.second_option}", true
+    = f.radio_button_tag "answer#{i+1}", "#{q.third_option}", true
   .alert.alert-success
     | Type
-  - @sub_test.radio_image_text_questions.each do |question|
-    center
-     = image_tag(question.image.url, width:'35%', height: "35%", class:"image")
-    = f.radio_button name:"text[id]", collection: [question.first_option, question.second_option]
+  br
   = f.submit

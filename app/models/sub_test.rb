@@ -14,4 +14,6 @@ class SubTest < ApplicationRecord
   has_many :subject_sub_tests
   has_many :subjects, through: :subject_sub_tests
   has_many :questions, as: :questionable
+
+#  attr_accessor :answer1,:answer2,:answer3,:answer4,:answer5
 end
