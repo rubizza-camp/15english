@@ -30,6 +30,7 @@ gem "will_paginate", "3.1.6"
 gem "administrate-field-carrierwave", "0.3.2"
 gem "gdpr_rails", "0.3.3"
 gem "omniauth-facebook", "5.0.0"
+gem "friendly_id", "5.2.0"
 
 #group :development, :test do
   gem "pry-rails", "0.3.6"
@@ -43,7 +44,9 @@ gem "omniauth-facebook", "5.0.0"
   gem "letter_opener", "1.6.0"
   gem "spring", "2.0.2"
   gem "spring-watcher-listen", "2.0.1"
-#end
+  gem "whenever", "0.10.0", require: false
+  gem "brakeman", "4.3.1"
+# end
 
 #group :test do
   gem "capybara", ">= 2.15", "< 4.0"
@@ -51,6 +54,11 @@ gem "omniauth-facebook", "5.0.0"
   gem "chromedriver-helper", "1.2.0"
   gem "rspec-rails", "3.7.2"
   gem "factory_bot_rails", "4.10.0"
-#end
+# end
+
+# group :production do
+  gem "fog-aws", "3.0.0"
+# end
+
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

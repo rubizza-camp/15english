@@ -1,0 +1,17 @@
+h1
+  =current_course
+.map-content
+  - current_subjects.each do |subject|
+    .btn.dropdown-title.dropdown-toggle#hdr-btn Topic: #{subject.title}
+    .dropdown-content
+      - subject.lessons.each do |lesson|
+        - if lesson.learning_process_states.first.nil?
+          == link_to lesson.title, lesson, class: "btn another-lesson-nil", id: "hdr-btn-nil"
+        - elsif lesson.learning_process_states.first.passed
+          == link_to lesson.title, lesson, class: "btn complete-lesson-true", id: "hdr-btn-true"
+        - elsif lesson.learning_process_states.first.passed == false && lesson.learning_process_states.first.lesson_id == current_lesson_id
+          == link_to lesson.title, lesson, class: "btn closed-lesson-current", id: "hdr-btn-current"
+        - else
+          == link_to lesson.title, lesson, class: "btn closed-lesson-false", id: "hdr-btn-false"
+      end
+  end

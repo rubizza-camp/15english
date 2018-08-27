@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class ImageDashboard < Administrate::BaseDashboard
+class WordDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,9 +10,10 @@ class ImageDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    imageable: Field::Polymorphic,
+    lesson: Field::BelongsTo,
     id: Field::Number,
-    title: Field::String,
+    en: Field::String,
+    ru: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,16 +24,19 @@ class ImageDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :imageable,
-    :title,
+    :lesson,
+    :id,
+    :en,
+    :ru,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :imageable,
+    :lesson,
     :id,
-    :title,
+    :en,
+    :ru,
     :created_at,
     :updated_at,
   ].freeze
@@ -41,14 +45,14 @@ class ImageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :imageable,
-    :title,
+    :lesson,
+    :en,
+    :ru,
   ].freeze
 
-  # Overwrite this method to customize how images are displayed
+  # Overwrite this method to customize how words are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(image)
-  #   "#{image.pucture.url}"
-  # end
+  def display_resource(word)
+    word.en
+  end
 end

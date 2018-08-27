@@ -1,0 +1,30 @@
+@import "colors";
+
+.card {
+  margin-top: 20px;
+}
+
+.dictionary-header {
+  background-color: $lemon !important;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.letter-link {
+  padding-right: 7px;
+  text-decoration: underline;
+}
+
+.show-all-link {
+  padding-left: 95px;
+  text-decoration: underline;
+}
+
+.card-text span {
+  color: blue;
+  font-style: italic;
+}
+
+.card-links {
+  background-color: $light_white;
+}

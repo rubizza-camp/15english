@@ -10,20 +10,25 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    pages: Field::HasMany,
-    revisions: Field::HasMany,
-    practices: Field::HasMany,
-    theories: Field::HasMany,
-    sub_tests: Field::HasMany,
+    answers: Field::HasMany,
+    questionable: Field::Polymorphic.with_options(
+      classes: [Lesson, SubTest, TestLevel]
+      ),
+    lesson: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
+    image: Field::Carrierwave.with_options(
+      image: :standard,
+      image_on_index: true,
+      ),
+    remove_image: Field::Boolean,
+    text: Field::String,
+    correct_answer: Field::String,
     first_option: Field::String,
     second_option: Field::String,
     third_option: Field::String,
-    answer: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    image: Field::Carrierwave,
+    type: Field::String,
+    position: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,51 +38,41 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :image,
-    :sub_tests,
-    :theories,
-    :revisions,
-    :practices,
+    :questionable,
+    :image
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :revisions,
-    :practices,
-    :theories,
-    :sub_tests,
-    :id,
+    :questionable,
     :title,
+    :image,
     :first_option,
     :second_option,
     :third_option,
-    :answer,
-    :created_at,
-    :updated_at,
-    :image,
+    :correct_answer
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :revisions,
-    :practices,
-    :theories,
-    :sub_tests,
+    :questionable,
     :title,
+    :image,
+    :remove_image,
     :first_option,
     :second_option,
     :third_option,
-    :answer,
-    :image,
+    :correct_answer,
+    :type
   ].freeze
 
   # Overwrite this method to customize how radio image questions are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(radio_image_question)
-    "#{radio_image_question.title}"
-  end
+  # def display_resource(radio_image_question)
+  #   "RadioImageQuestion ##{radio_image_question.id}"
+  # end
 end

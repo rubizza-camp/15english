@@ -23,13 +23,11 @@ class ApplicationController < ActionController::Base
       { locale: I18n.locale }
     end
 
+    def after_sign_in_path_for_user(resource)
+      current_user.courses.empty? ? level_path : user_map_path(resource)
+    end
+
     def after_sign_in_path_for(resource)
-      if user_signed_in?
-        if current_user.courses.empty?
-          level_path
-        else
-          current_user # redirect_to map_page will be here
-        end
-      end
+      current_user.admin ? admin_root_path : after_sign_in_path_for_user(resource)
     end
 end

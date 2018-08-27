@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
-class PracticeDashboard < Administrate::BaseDashboard
+class CardDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,16 +8,15 @@ class PracticeDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    lesson: Field::BelongsTo,
-    pages: Field::HasMany,
-    text_questions: Field::HasMany,
-    image_questions: Field::HasMany,
-    radio_questions: Field::HasMany,
-    radio_image_questions: Field::HasMany,
-    radio_image_text_questions: Field::HasMany,
     id: Field::Number,
+    image: Field::Carrierwave.with_options(
+      image: :standard,
+      image_on_index: true,
+      ),
+    remove_image: Field::Boolean,
+    text: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,34 +25,35 @@ class PracticeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
+    :id,
+    :image,
+    :text,
+    :created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
+    :id,
+    :image,
+    :text,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :lesson,
-    :text_questions,
-    :image_questions,
+    :image,
+    :remove_image,
+    :text
   ].freeze
 
-  # Overwrite this method to customize how practices are displayed
+  # Overwrite this method to customize how cards are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(practice)
-    "#{practice.lesson_title}"
-  end
+  # def display_resource(card)
+  #   "Card ##{card.id}"
+  # end
 end

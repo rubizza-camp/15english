@@ -15,9 +15,8 @@ class CourseDashboard < Administrate::BaseDashboard
     subjects: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    user_id: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +27,7 @@ class CourseDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :subjects,
-    :users,
+    :users
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,14 +36,14 @@ class CourseDashboard < Administrate::BaseDashboard
     :title,
     :created_at,
     :updated_at,
-    :subjects,
+    :subjects
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
+    :title
   ].freeze
 
   # Overwrite this method to customize how courses are displayed
