@@ -1,0 +1,17 @@
+h4
+  | Question #
+  = counter
+  | /
+  = @questions.size
+  h6 = question.title
+  br
+  = radio_button_tag :answer, question.first_option
+  = label_tag :first_option, question.first_option, :value => question.first_option
+
+  = radio_button_tag :answer, question.second_option
+  = label_tag :second_option, question.second_option, :value => question.second_option
+
+  = radio_button_tag :answer, question.third_option
+  = label_tag :third_option, question.third_option, :value => question.third_option
+  br
+  .dropdown-divider

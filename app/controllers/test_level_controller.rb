@@ -11,6 +11,5 @@ class TestLevelController < ApplicationController
   end
 
   def check
-    flash[:success] = "Answer correct!"
   end
 end
