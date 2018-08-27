@@ -1,0 +1,28 @@
+p#notice = notice
+
+div
+  .dropdown.dropright
+    = link_to (t ".level"), "#", class: "btn btn-success dropdown-toggle", role: "button", id: "dropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }
+    div class="dropdown-menu" aria-labelledby="dropdownMenu2"
+      - @courses.each do |course|
+        = link_to course.title, "#", class: "dropdown-item"
+br
+div
+  == (t ".search")
+  .card.w-25
+    .card-body.card-links
+      - ('A'..'Z').to_a.each do |letter|
+        == link_to letter, dictionary_path(letter: letter), class: "letter-link"
+      == link_to "show all", dictionary_path, class: "show-all-link"
+- @words.in_groups_of(3, false).each do |group|
+  .card-group
+    - group.each do |word|
+      .col-sm-4
+        .card.text-center
+          .card-header.dictionary-header
+            == word.en
+          .card-body
+            h6.card-subtitle.mb-2.text-muted
+              == word.ru
+            p.card-text
+              == sanitize word.usage, tags: %w(span)

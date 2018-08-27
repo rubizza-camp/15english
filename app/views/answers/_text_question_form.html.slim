@@ -1,0 +1,15 @@
+= question.title
+= form_tag(controller: "answers", action: "create", method: "post") do
+  = render partial: "answers/hidden_fields", locals: {question: question }
+
+  /Add image_tag with url after setting up administrate
+
+  = question.text
+
+  = label_tag :first_option, question.first_option, :value => question.first_option
+  = radio_button_tag :answer, question.first_option
+
+  = label_tag :second_option, question.second_option, :value => question.second_option
+  = radio_button_tag :answer, question.second_option
+
+  = submit_tag("Check")

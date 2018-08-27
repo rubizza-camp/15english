@@ -8,9 +8,8 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
-      resources :revisions
-      resources :theories
-      resources :practices
+      resources :dictionaries
+      resources :words
       resources :radio_image_text_questions
       resources :radio_image_questions
       resources :image_questions
@@ -18,8 +17,10 @@ Rails.application.routes.draw do
       resources :text_questions
       resources :sub_tests
       resources :test_levels
+      resources :cards
 
       root to: "users#index"
+      mount PolicyManager::Engine => "/policies"
     end
 
   get "/:locale" => "static_pages#index"
@@ -27,16 +28,20 @@ Rails.application.routes.draw do
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
     resources :users, only: [:show]
-    resources :lessons
+    resources :dictionaries, only: [:show]
     resources :subjects
     resources :courses
+    resources :lessons, only: [:show, :index]
+    resources :questions
     resources :cards
+    resources :answers, only: [:show, :index, :create, :new]
+    resources :radio_questions, only: [:show, :index, :create, :new]
+    resources :text_questions
     resources :users do
       get "/map" => "static_pages#map"
     end
+    post "/answer" => "answers#create", as: :create_answer
   end
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-
-  mount PolicyManager::Engine => "/policies"
 end

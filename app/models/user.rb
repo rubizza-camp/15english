@@ -2,12 +2,17 @@
 
 # Comment for User model
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :username,  :use => [:slugged, :finders]
+
   has_many :user_courses
   has_many :courses, through: :user_courses
   has_many :images, as: :imageable
-  has_many :lessons_user
-  has_many :lessons, through: :lessons_user
+  has_many :learning_process_states
+  has_many :lessons, through: :learning_process_states
+  has_many :answers, through: :learning_process_states
   has_one :test_level
+  has_one :dictionary
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior
@@ -15,13 +20,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :recoverable, :omniauthable, omniauth_providers: %i[facebook]
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
   before_validation :accept_terms, if: :terms_accepted?
+  after_create :create_dictionary
 
   attr_accessor :terms_accepted
 
@@ -49,6 +55,10 @@ class User < ApplicationRecord
     WelcomeMailer.welcome_send(self).deliver
   end
 
+  def self.send_reminder_mail
+    User.where(admin: false).each { |user| UserNotifierMailer.send_reminder_email(user).deliver }
+  end
+
   private
 
     def accept_terms
@@ -59,5 +69,9 @@ class User < ApplicationRecord
 
     def terms_accepted?
       (terms_accepted == "1" || terms_accepted == true) && new_record?
+    end
+
+    def create_dictionary
+      Dictionary.create(user: self)
     end
 end

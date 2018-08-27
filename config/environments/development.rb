@@ -39,7 +39,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      user_name: ENV["SENDGRID_LOGIN"],
+      password: ENV["SENDGRID_PASS"],
+      domain: "no-reply@15english.com",
+      address: "smtp.sendgrid.net",
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
+  }
   config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
