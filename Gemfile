@@ -28,7 +28,7 @@ gem "simple_form", "4.0.1"
 gem "administrate", "0.10.0"
 gem "will_paginate", "3.1.6"
 gem "administrate-field-carrierwave", "0.3.2"
-gem 'trix'
+gem 'trix', "0.11.1"
 gem "gdpr_rails", "0.3.3"
 gem "omniauth-facebook", "5.0.0"
 gem "friendly_id", "5.2.0"
