@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :courses
       resources :subjects
       resources :lessons
+      resources :dictionaries
+      resources :words
       resources :radio_image_text_questions
       resources :radio_image_questions
       resources :image_questions
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show] do
       get "level", on: :collection
     end
+    resources :dictionaries, only: [:show]
     resources :subjects
     resources :courses, only: [:index, :show] do
       post "choose_level", on: :member

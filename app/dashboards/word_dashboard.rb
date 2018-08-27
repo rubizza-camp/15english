@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class LessonDashboard < Administrate::BaseDashboard
+class WordDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,16 +10,12 @@ class LessonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    subject: Field::BelongsTo,
-    learning_process_states: Field::HasMany,
-    users: Field::HasMany,
-    questions: Field::HasMany,
-    words: Field::HasMany,
+    lesson: Field::BelongsTo,
     id: Field::Number,
-    title: Field::String,
+    en: Field::String,
+    ru: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    word_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,35 +24,35 @@ class LessonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users
+    :lesson,
+    :id,
+    :en,
+    :ru,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :subject,
-    :users,
-    :questions,
-    :words,
-    :title,
+    :lesson,
+    :id,
+    :en,
+    :ru,
     :created_at,
-    :updated_at
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
-    :subject,
-    :users
+    :lesson,
+    :en,
+    :ru,
   ].freeze
 
-  # Overwrite this method to customize how lessons are displayed
+  # Overwrite this method to customize how words are displayed
   # across all pages of the admin dashboard.
-  def display_resource(lesson)
-    lesson.title
+  def display_resource(word)
+    word.en
   end
 end

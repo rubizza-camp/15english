@@ -7,7 +7,13 @@ en:
     header:
       profile: 'Profile'
       settings: 'Settings'
+      dictionary: 'Му Dictionary'
       sign:
         out: 'Sign out'
         up: 'Sign up'
         in: 'Sign in'
+
+  dictionaries:
+    show:
+      level: 'Choose your Level'
+      search: 'Search by Letter:'
