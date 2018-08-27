@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     if current_user.courses.where(id: params[:id]).empty?
       current_user.courses << @course
-      current_first_lesson.update(current: true)
+      user_first_lesson.update(current: true)
     end
     redirect_to @course
   end
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
       @course.subjects.first.lessons.first.id
     end
 
-    def current_first_lesson
-      current_lessons.where(lesson_id: first_lesson_id)
+    def user_first_lesson
+      user_lessons.where(lesson_id: first_lesson_id)
     end
 end

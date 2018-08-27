@@ -28,7 +28,9 @@ Rails.application.routes.draw do
       get "level", on: :collection
     end
     resources :subjects
-    resources :courses, only: [:index, :show]
+    resources :courses, only: [:index, :show] do
+      post "choose_level", on: :member
+    end
     resources :lessons, only: [:show, :index]
     resources :questions
     resources :cards
@@ -37,7 +39,6 @@ Rails.application.routes.draw do
     resources :text_questions
     resources :users
     post "/answer" => "answers#create", as: :create_answer
-    post "/choose_level" => "courses#choose_level"
   end
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
