@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class DictionariesController < ApplicationController before_action :set_dictionary, only: [:show]
+class DictionariesController < ApplicationController
+  before_action :set_dictionary, only: [:show]
 
   def index
     @dictionary = Dictionary.new
