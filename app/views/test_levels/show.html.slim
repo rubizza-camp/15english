@@ -1,0 +1,26 @@
+= form_for :test_level, url: answer_questions_path do |f|
+  div id='submit_form'
+    - @questions.each.with_index do |question, index|
+      div class="quest" id="question_#{index}"
+        h4
+          | Question #
+          = index + 1
+          | /
+          = @questions.size
+        h6 = question.title
+        br
+        = f.radio_button "#{index}", question.first_option
+        = label :first_option, question.first_option, value: question.first_option
+
+        = f.radio_button "#{index}", question.second_option
+        = label :second_option, question.second_option, value: question.second_option
+
+        = f.radio_button "#{index}", question.third_option
+        = label :third_option, question.third_option, value: question.third_option
+
+  br
+  == link_to "Next question", "#", class: "ans_link", id: "next_question"
+  hr
+  == link_to "Previous question", "#", class: "ans_link", id: "previous_question"
+  hr
+  = f.submit

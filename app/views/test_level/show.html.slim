@@ -1,6 +1,0 @@
-- counter = 1
-= form_tag(controller: "test_level", action: "check", method: "post") do
-  - @questions.each do |question|
-    = render partial: "test_level/form", locals: { question: question, counter: counter }
-    - counter += 1
-  = submit_tag "Check"

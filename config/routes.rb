@@ -37,8 +37,8 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
-    match "/test_level/:id", action: "check", via: [:post], controller: "test_level"
-    resources :test_level, only: [:show, :check]
+    resources :test_levels, only: [:show]
+    post 'test_levels/answer' => "test_levels#answer", as: :answer_questions
     resources :users do
       get "/map" => "static_pages#map"
     end
