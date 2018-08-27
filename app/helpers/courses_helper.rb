@@ -2,17 +2,14 @@
 
 # comment for Courses helper
 module CoursesHelper
-  def current_lesson(lesson_id)
-    lesson_id == current_lesson_id
+
+  def subjects_of_user
+    @subjects.each_with_object({}) do |subject, sub_lessons|
+      sub_lessons[subject.title] = @lessons.where(subject_id: subject.id).sort
+    end
   end
 
-  private
-
-    def current_lesson_id
-      @course.subjects.each do |subject|
-        subject.lessons.each do |lesson|
-          return lesson.id unless lesson.learning_process_states.first.passed
-        end
-      end
-    end
+  def current_lessons
+    current_user.learning_process_states
+  end
 end

@@ -3,9 +3,9 @@
   .content-right-block
     .content-cloud
       p= (t "devise.users.profile.ask_level")
-.list_of_courses
-  - @courses.each do |f|
-    .name_of_course
+.active_buttons
+  .list_of_courses
+    - @courses.each do |f|
       = button_to f.title, { controller: "courses", action: "choose_level", id: f.id }, { method: :post }
-.link_test_level
-  = link_to "I don't know my level"
+  .link_test_level
+    = link_to "I don't know my level"

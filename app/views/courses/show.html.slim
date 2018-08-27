@@ -1,13 +1,13 @@
 h1 #{@course.title}
 .map-content
-  - @course.subjects.each do |subject|
-    .btn.dropdown-title.dropdown-toggle#hdr-btn Topic: #{subject.title}
+  - subjects_of_user.each do |subject, lessons|
+    .btn.dropdown-title.dropdown-toggle#hdr-btn Topic: #{subject}
     .dropdown-content
-      - subject.lessons.each do |lesson|
-        - if lesson.learning_process_states.first.passed
-          == link_to lesson.title, lesson, class: "btn complete-lesson-true", id: "hdr-btn-true"
-        - elsif current_lesson(lesson.id)
+      - lessons.each do |lesson|
+        - if current_lessons.where(lesson_id: lesson.id, current: true).any?
           == link_to lesson.title, lesson, class: "btn closed-lesson-current", id: "hdr-btn-current"
+        - elsif current_lessons.where(lesson_id: lesson.id, passed: true).any?
+          == link_to lesson.title, lesson, class: "btn complete-lesson-true", id: "hdr-btn-true"
         - else
           == link_to lesson.title, lesson, class: "btn closed-lesson-false", id: "hdr-btn-false"
         end
