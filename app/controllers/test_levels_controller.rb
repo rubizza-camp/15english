@@ -9,9 +9,11 @@ class TestLevelsController < ApplicationController
     result = 0
     @answers = params[:test_level]
     @title = params[:level]
-    @questions =  TestLevel.where(title: @title).first.questions.order(:id)
-    @answers.each do |key, answer|
-      result += 1 if @questions[key.to_i].correct_answer == answer
+    @questions = TestLevel.where(title: @title).first.questions.order(:id)
+    unless @answers.nil?
+      @answers.each do |key, answer|
+        result += 1 if @questions[key.to_i].correct_answer == answer
+      end
     end
     if result >= @questions.size * 0.6
       redirect_to test_level_path(type: "Advanced", id: current_user.id) if @title == "Elementary"
@@ -23,8 +25,11 @@ class TestLevelsController < ApplicationController
   end
 
   def show
-    @title = params[:type]
-    @title = "Elementary" if params[:type].nil?
+    if params[:type].nil?
+      @title = "Elementary"
+    else
+      @title = params[:type]
+    end
     @questions = TestLevel.where(title: "Elementary").first.questions.order(:id)
     @questions = TestLevel.where(title: params[:type]).first.questions.order(:id) unless params[:type].nil?
   end

@@ -1,6 +1,8 @@
+- unless @title == "Elementary"
+  = render partial: "test_levels/modal_test_level"
 = form_for :test_level, url: answer_questions_path do |f|
-  div id='submit_form'
-    - @questions.each.with_index do |question, index|
+  #submit_form
+    - @questions.each_with_index do |question, index|
       div class="quest" id="question_#{index}"
         h4
           | Question #
@@ -21,7 +23,8 @@
   br
   == link_to "Next question", "#", class: "ans_link", id: "next_question"
   hr
-  == link_to "Previous question", "#", class: "ans_link", id: "previous_question"
-  hr
+  / == link_to "Previous question", "#", class: "ans_link", id: "previous_question"
+  / hr
   = hidden_field_tag :level, @title
-  = f.submit
+  = content_tag :div, class: "temp_information", data: {temp: @questions.size} do
+  = f.submit(id: "submit_form_button")
