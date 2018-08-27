@@ -22,7 +22,7 @@ class RadioImageQuestionDashboard < Administrate::BaseDashboard
       image_on_index: true,
       ),
     remove_image: Field::Boolean,
-    text: Field::String,
+    text: TrixField,
     correct_answer: Field::String,
     first_option: Field::String,
     second_option: Field::String,

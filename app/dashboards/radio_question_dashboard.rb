@@ -17,7 +17,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
     lesson: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
-    text: Field::String,
+    text: TrixField,
     correct_answer: Field::String,
     first_option: Field::String,
     second_option: Field::String,
