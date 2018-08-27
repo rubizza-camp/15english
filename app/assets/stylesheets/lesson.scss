@@ -54,6 +54,7 @@
 }
 
 .check-answer {
+  margin-top: 20px;
   input[type=submit]  {
     background: #ffd300;
     border-radius: 3px;
@@ -71,4 +72,16 @@
   background-color: blue;
 }
 
+#message_box {
+  height: 50px;
+  width: 100%;
+  background-color: #ADFF2F;
+  border-radius: 10px;
+  padding-top: 12px;
+  font-size: 15px;
+  font-weight: bold;
+}
 
+.hidden {
+  display: none;
+}

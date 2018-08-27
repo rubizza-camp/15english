@@ -2,12 +2,13 @@
 
 class AnswersController < ApplicationController
   def create
+    # raise params.inspect
     @answer = Answer.new(answer_params)
     if @answer.save
       if check_answer
-        render json: { message: 'Answer OK' }
+        render json: { message: 'Answer is correct' }
       else
-        render json: { message: 'Answer neOK' }
+        render json: { message: 'Answer is incorrect' }
       end
     end
   end
@@ -25,6 +26,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.permit(:answer, :user_id, :question_id, :learning_process_state_id)
+    params.require(:answer).permit(:answer, :user_id, :question_id, :learning_process_state_id)
   end
 end

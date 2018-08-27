@@ -1,4 +1,4 @@
-.main-lesson-box
+.main-lesson-box id="question-box-#{question.position}"
   .lesson-text
     = question.text
   img src="#{question.image}"
@@ -20,7 +20,6 @@
           = label_tag "#{:answer}_#{question.third_option}", question.third_option
             = question.third_option
       #check-message
-        #notice
       .check-answer
         = submit_tag "Check", id: 'check_answer'
 
