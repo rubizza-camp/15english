@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   root to: "static_pages#index"
-  get "level", to: "static_pages#choose_level"
   namespace :admin do
       resources :users
       resources :courses
@@ -27,19 +26,21 @@ Rails.application.routes.draw do
 
   scope ":locale", locale: /en|ru/ do
     devise_for :users, skip: :omniauth_callbacks
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      get "level", on: :collection
+    end
     resources :dictionaries, only: [:show]
     resources :subjects
-    resources :courses
+    resources :courses, only: [:index, :show] do
+      post "choose_level", on: :member
+    end
     resources :lessons, only: [:show, :index]
     resources :questions
     resources :cards
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
-    resources :users do
-      get "/map" => "static_pages#map"
-    end
+    resources :users
     post "/answer" => "answers#create", as: :create_answer
   end
 

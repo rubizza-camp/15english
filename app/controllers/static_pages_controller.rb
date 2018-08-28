@@ -6,11 +6,4 @@ class StaticPagesController < ApplicationController
       redirect_to admin_root_path
     end
   end
-
-  def map
-  end
-
-  def choose_level
-    @courses = Course.all
-  end
 end

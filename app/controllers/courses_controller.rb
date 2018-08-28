@@ -1,50 +1,33 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-
-  def new
-    @course = Course.new
-  end
-
-  def show
-  end
-
   def index
     @course = Course.new
     @courses = Course.all
   end
 
-  def create
-    @course = Course.create(course_params)
-    redirect_to courses_url
+  def choose_level
+    @course = Course.find(params[:id])
+    if current_user.courses.where(id: params[:id]).empty?
+      current_user.courses << @course
+      user_first_lesson.update(current: true)
+    end
+    redirect_to @course
   end
 
-  def edit
-  end
-
-  def update
-    @course.update(course_params)
-    redirect_to courses_url
-  end
-
-  def destroy
-    @course.destroy
-    redirect_to courses_url
+  def show
+    @course = Course.find(params[:id])
+    @subjects = Subject.where(course_id: @course.id)
+    @lessons = Lesson.where(subject_id: @subjects.ids)
   end
 
   private
 
-    def set_course
-      @course = Course.find(params[:id])
+    def first_lesson_id
+      @course.subjects.first.lessons.first.id
     end
 
-    def admin_user
-      redirect_to(course_path) unless current_user.admin?
-    end
-
-    def course_params
-      params.require(:course).permit(:title)
+    def user_first_lesson
+      user_lessons.where(lesson_id: first_lesson_id)
     end
 end
