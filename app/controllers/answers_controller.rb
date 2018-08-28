@@ -17,12 +17,7 @@ class AnswersController < ApplicationController
 
   def check_answer
     @question = Question.find(@answer.question_id)
-
-    if @answer.answer == @question.correct_answer
-      true
-    else
-      false
-    end
+    @answer.answer == @question.correct_answer
   end
 
   def answer_params
