@@ -2,7 +2,7 @@
 
 # class SubTestsController
 class SubTestsController < ApplicationController
-  before_action :find_subject, only: [:show, :edit, :update, :destroy, :index, :caunt_all_questions, :answers_people, :caunt_right_answers]
+  #before_action :find_subject, only: [:show, :edit, :update, :destroy, :index, :caunt_all_questions, :answers_people, :caunt_right_answers]
 
   def percent_right_answers
       @percent = caunt_right_answers * 100 / caunt_all_questions
@@ -11,10 +11,22 @@ class SubTestsController < ApplicationController
   end
 
   def index
+    if params[:type].nil?
+      @title = "Elementary"
+    else
+      @title = params[:type]
+    end
     @subject = Subject.first #Subject.find(params[:id])
     @sub_test = @subject.sub_test
+    @questions = @sub_test.questions
     @user = current_user
   end
+
+  # def index
+  #   @subject = Subject.first #Subject.find(params[:id])
+  #   @sub_test = @subject.sub_test
+  #   @user = current_user
+  # end
 
   def update
     @answer_radio_image_text_1 = params[:sub_test][:answer1]
