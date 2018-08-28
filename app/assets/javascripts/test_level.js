@@ -10,7 +10,6 @@ $(document).ready(function() {
     $(`#question_${current_question}`).toggle();
     current_question += 1;
     if (current_question === size - 1) {
-        // $(`#submit_form_button`).toggle();
         $(`.btn.btn-info.ans_link`).hide();
     }
     if (current_question < size) {
