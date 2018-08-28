@@ -3,28 +3,29 @@
 = form_for :test_level, url: answer_questions_path do |f|
   #submit_form
     - @questions.each_with_index do |question, index|
-      div class="quest" id="question_#{index}"
-        h4
+      div class="card w-50 mx-auto border-info quest" id="question_#{index}"
+        .card-header.bg-info.text-white
           | Question #
           = index + 1
           | /
           = @questions.size
-        h6 = question.title
-        br
-        = f.radio_button "#{index}", question.first_option
-        = label :first_option, question.first_option, value: question.first_option
-
-        = f.radio_button "#{index}", question.second_option
-        = label :second_option, question.second_option, value: question.second_option
-
-        = f.radio_button "#{index}", question.third_option
-        = label :third_option, question.third_option, value: question.third_option
-
-  br
-  == link_to "Next question", "#", class: "ans_link", id: "next_question"
-  hr
-  / == link_to "Previous question", "#", class: "ans_link", id: "previous_question"
-  / hr
+        .card-body
+          h4.card-title = question.title
+          br
+          .radio_test_level
+            = f.radio_button "#{index}", question.first_option, class: "radio"
+            = label "test_level", "#{index}", "#{question.first_option}", value: question.first_option
+          .radio_test_level
+            = f.radio_button "#{index}", question.second_option, class: "radio"
+            = label "test_level", "#{index}", "#{question.second_option}", value: question.second_option
+          .radio_test_level
+            = f.radio_button "#{index}", question.third_option, class: "radio"
+            = label "test_level", "#{index}", "#{question.third_option}", value: question.third_option
+          br
+        .card-footer
+          - if index == @questions.size - 1
+            = f.submit(class: "btn btn-success submit_form_button", id: "submit_form_button")
+          else
+            = link_to "Next question", "#", class: "btn btn-info ans_link", id: "next_question"
   = hidden_field_tag :level, @title
   = content_tag :div, class: "temp_information", data: {temp: @questions.size} do
-  = f.submit(id: "submit_form_button")

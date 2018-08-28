@@ -10,17 +10,11 @@ $(document).ready(function() {
     $(`#question_${current_question}`).toggle();
     current_question += 1;
     if (current_question === size - 1) {
-        $(`#submit_form_button`).toggle();
-        $(`#next_question`).toggle();
+        // $(`#submit_form_button`).toggle();
+        $(`.btn.btn-info.ans_link`).hide();
     }
     if (current_question < size) {
         $(`#question_${current_question}`).toggle();
     }
   });
-
-  /*$(`#previous_question`).on("click", function() {
-    $(`#question_${current_question}`).hide();
-    current_question -= 1;
-    $(`#question_${current_question}`).show();
-  });*/
 });
