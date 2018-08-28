@@ -2,7 +2,6 @@
 
 # comment for application mailer
 class UserNotifierMailer < ApplicationMailer
-  default from: "from@example.com"
 
   def send_reminder_email(user)
     @user = user
