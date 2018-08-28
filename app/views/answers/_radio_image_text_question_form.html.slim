@@ -19,7 +19,7 @@
           = radio_button_tag :answer, question.third_option
           = label_tag "#{:answer}_#{question.third_option}", question.third_option
             = question.third_option
-      #check-message
+      .check-message
       .check-answer
-        = submit_tag "Check", id: 'check_answer'
+        = submit_tag "Check", class: 'check_answer'
 
