@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2018_08_29_112929) do
     t.bigint "question_id"
     t.string "answer"
     t.integer "learning_process_state_id"
-    t.bigint "sub_test_session_id_id"
+    t.bigint "sub_test_session_id"
     t.index ["learning_process_state_id"], name: "index_answers_on_learning_process_state_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["sub_test_session_id_id"], name: "index_answers_on_sub_test_session_id_id"
+    t.index ["sub_test_session_id"], name: "index_answers_on_sub_test_session_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -160,8 +160,8 @@ ActiveRecord::Schema.define(version: 2018_08_29_112929) do
 
   create_table "sub_test_sessions", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "sub_test_sessions_id_id"
-    t.index ["sub_test_sessions_id_id"], name: "index_sub_test_sessions_on_sub_test_sessions_id_id"
+    t.bigint "sub_test_sessions_id"
+    t.index ["sub_test_sessions_id"], name: "index_sub_test_sessions_on_sub_test_sessions_id"
     t.index ["user_id"], name: "index_sub_test_sessions_on_user_id"
   end
 

@@ -12,9 +12,10 @@ class User < ApplicationRecord
   has_many :lessons, through: :learning_process_states
   has_many :answers, through: :learning_process_states
   has_one :test_level
-  has_many :radio_questions, through: :answer_users
-  has_many :radio_image_questions, through: :answer_users
-  has_many :radio_image_text_questions, through: :answer_users
+  has_many :sub_test_session
+  # has_many :radio_questions, through: :answer_users
+  # has_many :radio_image_questions, through: :answer_users
+  # has_many :radio_image_text_questions, through: :answer_users
   attr_accessor :user_answer
   has_one :dictionary
 

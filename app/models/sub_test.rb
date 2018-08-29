@@ -10,4 +10,5 @@ class SubTest < ApplicationRecord
   has_many :questions, as: :questionable
   has_many :answers
   accepts_nested_attributes_for :answers
+  has_one :sub_test_session
 end
