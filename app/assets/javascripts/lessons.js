@@ -11,9 +11,9 @@ $(document).ready(function() {
         var question_id = document.getElementById("question_id").value;
         var user_id = document.getElementById("user_id").value;
         var learning_process_state_id = document.getElementById("learning_process_state_id").value;
-        var radios = document.getElementsByName('answer');
-        var checkedButton;
         var checkButton = document.getElementsByClassName("check_answer");
+
+        var checkedButton = document.querySelector('input[name="answer"]:checked').value;
 
         if (checkButton[0].value === "Next") {
             var checkButton = document.querySelectorAll(".check_answer");
@@ -25,12 +25,6 @@ $(document).ready(function() {
             return;
         }
 
-        for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-                checkedButton = radios[i].value;
-                break;
-            }
-        }
 
         $.ajax({
             url: '/en/answer',
