@@ -10,15 +10,13 @@ class SubTestsController < ApplicationController
       redirect_to sub_test_path
   end
 
-  def index
-    if params[:type].nil?
-      @title = "Elementary"
-    else
-      @title = params[:type]
-    end
+  def new
     @subject = Subject.first #Subject.find(params[:id])
     @sub_test = @subject.sub_test
     @questions = @sub_test.questions
+    @questions.each do |question|
+      @sub_test.answers.build(question: question)
+    end
     @user = current_user
   end
 
@@ -27,6 +25,10 @@ class SubTestsController < ApplicationController
   #   @sub_test = @subject.sub_test
   #   @user = current_user
   # end
+
+  def create
+    binding.pry
+  end
 
   def update
     @answer_radio_image_text_1 = params[:sub_test][:answer1]
@@ -37,7 +39,7 @@ class SubTestsController < ApplicationController
   end
 
   private
-    def caunt_right_answers
+    def count_right_answers
       index_right_answers = 0
       index_right_answers += 1 if all_right_answers_radio_image_text_questions.include? @answer_radio_image_text_2
       index_right_answers += 1 if all_right_answers_radio_image_text_questions.include? @answer_radio_image_text_1

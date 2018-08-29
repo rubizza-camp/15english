@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_110510) do
+ActiveRecord::Schema.define(version: 2018_08_29_112929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.bigint "question_id"
     t.string "answer"
     t.integer "learning_process_state_id"
+    t.bigint "sub_test_session_id_id"
     t.index ["learning_process_state_id"], name: "index_answers_on_learning_process_state_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["sub_test_session_id_id"], name: "index_answers_on_sub_test_session_id_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.bigint "user_id", null: false
     t.boolean "passed", default: false
     t.integer "answer_id", default: 0
+    t.boolean "current", default: false
     t.index ["lesson_id"], name: "index_learning_process_states_on_lesson_id"
     t.index ["user_id"], name: "index_learning_process_states_on_user_id"
   end
@@ -153,6 +156,13 @@ ActiveRecord::Schema.define(version: 2018_08_23_110510) do
     t.string "type"
     t.integer "position"
     t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+  end
+
+  create_table "sub_test_sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "sub_test_sessions_id_id"
+    t.index ["sub_test_sessions_id_id"], name: "index_sub_test_sessions_on_sub_test_sessions_id_id"
+    t.index ["user_id"], name: "index_sub_test_sessions_on_user_id"
   end
 
   create_table "sub_tests", force: :cascade do |t|
