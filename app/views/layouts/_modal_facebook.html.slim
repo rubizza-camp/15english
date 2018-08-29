@@ -1,18 +1,18 @@
-div [class="modal fade" id="socialModal" tabindex="-1" role="dialog" aria-labelledby="socialModalLabel" aria-hidden="true"]
-  div [class="modal-dialog" role="document"]
-    .modal-content
-      .modal-header
-        h3 [class="modal-heading" id="socialModalLongTitle"]
-          | Terms of policies
-        = link_to "X", class: "close", data: {dismiss: "modal"}
-
-      .modal-body
-        p
-          |
-            Terms and Conditions ("Terms")
-            ==============================
-        - present.each do |policy|
-          == policy.to_html
-      .modal-footer
-        = link_to "Close", class: "btn btn-danger", data: {dismiss: "modal"}
-        = link_to "I accept Terms of Policies", user_facebook_omniauth_authorize_path, class: "btn btn-success"
+/div [class="modal fade" id="socialModal" tabindex="-1" role="dialog" aria-labelledby="socialModalLabel" aria-hidden="true"]
+/  div [class="modal-dialog" role="document"]
+/    .modal-content
+/      .modal-header
+/        h3 [class="modal-heading" id="socialModalLongTitle"]
+/          | Terms of policies
+/        = link_to "X", class: "close", data: {dismiss: "modal"}
+/
+/      .modal-body
+/        p
+/          |
+/            Terms and Conditions ("Terms")
+/            ==============================
+/        - present.each do |policy|
+/          == policy.to_html
+/      .modal-footer
+/        = link_to "Close", class: "btn btn-danger", data: {dismiss: "modal"}
+/        = link_to "I accept Terms of Policies", user_facebook_omniauth_authorize_path, class: "btn btn-success"
