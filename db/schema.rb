@@ -80,12 +80,11 @@ ActiveRecord::Schema.define(version: 2018_08_27_111215) do
 
   create_table "learning_process_states", id: :serial, force: :cascade do |t|
     t.bigint "lesson_id", null: false
-    t.bigint "user_id", null: false
     t.boolean "passed", default: false
+    t.bigint "user_id"
     t.integer "answer_id", default: 0
     t.boolean "current", default: false
     t.index ["lesson_id"], name: "index_learning_process_states_on_lesson_id"
-    t.index ["user_id"], name: "index_learning_process_states_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
