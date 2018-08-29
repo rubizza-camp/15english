@@ -15,4 +15,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require activestorage
-//= require_tree .
+//= require cable
+//= require static_page
+//= require cable
+//= require trix

@@ -14,6 +14,13 @@
  *= require lesson
  *= require static_page
  *= require _colors
- *= require_tree .
+ *= require dictionary_page
+ *= require edit_profile_page
+ *= require header
+ *= require profile_page
+ *= require sign_in_page
+ *= require sign_up_page
+ *= require test_page
+ *= require trix
  *= require_self
  */

@@ -398,6 +398,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    trix (0.10.1)
+      rails
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.18)
@@ -467,6 +469,7 @@ DEPENDENCIES
   slim-rails (= 3.1.3)
   spring (= 2.0.2)
   spring-watcher-listen (= 2.0.1)
+  trix (= 0.10.1)
   tzinfo-data
   uglifier (= 4.1.18)
   web-console (= 3.6.2)

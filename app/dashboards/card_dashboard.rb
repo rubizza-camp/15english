@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
+# class CardDashboard
 class CardDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
