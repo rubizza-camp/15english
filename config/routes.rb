@@ -41,8 +41,10 @@ Rails.application.routes.draw do
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
     resources :users
+    mount PolicyManager::Engine => "/policies"
     post "/answer" => "answers#create", as: :create_answer
   end
+
 
   devise_for :users, only: :omniauth_callbacks, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 end
