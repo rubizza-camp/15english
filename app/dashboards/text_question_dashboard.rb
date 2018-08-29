@@ -48,6 +48,8 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     :questionable,
     :title,
     :text,
+    :first_option,
+    :second_option,
     :correct_answer,
     :image
   ].freeze
@@ -61,6 +63,8 @@ class TextQuestionDashboard < Administrate::BaseDashboard
     :image,
     :remove_image,
     :text,
+    :first_option,
+    :second_option,
     :correct_answer,
     :type
   ].freeze

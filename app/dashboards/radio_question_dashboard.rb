@@ -41,6 +41,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :questionable,
     :title,
+    :text,
     :first_option,
     :second_option,
     :third_option,
@@ -53,6 +54,7 @@ class RadioQuestionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :questionable,
     :title,
+    :text,
     :first_option,
     :second_option,
     :third_option,

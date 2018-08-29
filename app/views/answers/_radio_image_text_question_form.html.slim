@@ -8,17 +8,12 @@
         li
           = radio_button_tag :answer, question.first_option
           = label_tag "#{:answer}_#{question.first_option}", question.first_option
-            = question.first_option
-
         li
           = radio_button_tag :answer, question.second_option
           = label_tag "#{:answer}_#{question.second_option}", question.second_option
-            = question.second_option
-
         li
           = radio_button_tag :answer, question.third_option
           = label_tag "#{:answer}_#{question.third_option}", question.third_option
-            = question.third_option
       .check-message
       .check-answer
         = submit_tag "Check", class: 'check_answer'
