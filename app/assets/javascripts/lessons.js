@@ -2,8 +2,8 @@
 $(document).ready(function() {
     var current_question = 1;
     var collectionSize = document.getElementById("questions_wrapper").children.length;
-
-    $(`#question-box-${current_question}`).show().siblings().hide();
+    var currentQuestionForm = $(`#question-box-${current_question}`)
+    currentQuestionForm.show().siblings().hide();
 
     $('#questions_wrapper').on('click', '.check_answer', function (e) {
         e.preventDefault();
@@ -13,18 +13,21 @@ $(document).ready(function() {
         var learning_process_state_id = document.getElementById("learning_process_state_id").value;
         var checkButton = document.getElementsByClassName("check_answer");
 
-        var checkedButton = document.querySelector('input[name="answer"]:checked').value;
+        var checkedButton = currentQuestionForm.find('input[name="answer"]:checked').prop('value');
 
         if (checkButton[0].value === "Next") {
-            var checkButton = document.querySelectorAll(".check_answer");
-            checkButton.forEach(function(e) {
-                e.value = "Check";
-            });
             current_question += 1;
-            $(`#question-box-${current_question}`).show().siblings().hide();
-            return;
+            if (current_question == collectionSize) {
+                window.location.href = JsRoutesRails.course_path({id: 1})
+            } else {
+                var checkButton = document.querySelectorAll(".check_answer");
+                checkButton.forEach(function(e) {
+                    e.value = "Check";
+                });
+                $(`#question-box-${current_question}`).show().siblings().hide();
+                return;
+            }
         }
-
 
         $.ajax({
             url: '/en/answer',

@@ -1,4 +1,4 @@
-.main-lesson-box
+.main-lesson-box id="question-box-#{question.position}"
   img src="#{question.image}"
   = form_tag(controller: "answers", action: "create", method: "post") do
     = render partial: "answers/hidden_fields", locals: {question: question}
@@ -6,6 +6,6 @@
 
     = text_field_tag(:question)
     = question.text
-
+    .check-message
     .check-answer
-      = submit_tag("Check")
+      = submit_tag "Check", class: 'check_answer'

@@ -1,4 +1,4 @@
-.main-lesson-box
+.main-lesson-box id="question-box-#{question.position}"
   .lesson-text
     = question.text
   = form_tag(controller: "answers", action: "create", method: "post") do
@@ -15,7 +15,7 @@
       li
         = radio_button_tag :answer, question.third_option
         = label_tag "#{:answer}_#{question.third_option}", question.third_option
-
+    .check-message
     .check-answer
-      = submit_tag "Check"
+      = submit_tag "Check", class: 'check_answer'
 

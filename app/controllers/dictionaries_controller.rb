@@ -30,7 +30,7 @@ class DictionariesController < ApplicationController
 
   private
   def set_dictionary
-    @dictionary = Dictionary.find(params[:id])
+    @dictionary = Dictionary.where(user_id: params[:id])
   end
 
   def dictionary_params
