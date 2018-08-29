@@ -3,6 +3,4 @@
     = f.simple_fields_for :answers do |af|
       = af.input :question_id, as: :hidden
       = af.input :answer, as: :radio_buttons, collection: [af.object.question.first_option, af.object.question.second_option]
-  = hidden_field_tag :level, @title
-  = content_tag :div, class: "temp_information", data: {temp: @questions.size} do
   = f.submit

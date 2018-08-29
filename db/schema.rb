@@ -160,8 +160,8 @@ ActiveRecord::Schema.define(version: 2018_08_29_112929) do
 
   create_table "sub_test_sessions", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "sub_test_sessions_id"
-    t.index ["sub_test_sessions_id"], name: "index_sub_test_sessions_on_sub_test_sessions_id"
+    t.bigint "sub_test_id"
+    t.index ["sub_test_id"], name: "index_sub_test_sessions_on_sub_test_id"
     t.index ["user_id"], name: "index_sub_test_sessions_on_user_id"
   end
 

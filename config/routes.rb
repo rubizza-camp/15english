@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :dictionaries, only: [:show]
     resources :subjects
     resources :courses
-    resources :sub_tests
+    resources :sub_test_sessions
     resources :lessons, only: [:show, :index]
     resources :questions
     resources :cards
