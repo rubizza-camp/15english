@@ -1,23 +1,20 @@
-.main-lesson-box
+.main-lesson-box id="question-box-#{question.position}"
   .lesson-text
     = question.text
   img src="#{question.image}"
     = form_tag(controller: "answers", action: "create", method: "post") do
-      = render partial: "answers/hidden_fields", locals: {question: question}
+      = render partial: "answers/hidden_fields", locals: { question: question }
       ul class="lesson-answers"
         li
           = radio_button_tag :answer, question.first_option
           = label_tag "#{:answer}_#{question.first_option}", question.first_option
-
         li
           = radio_button_tag :answer, question.second_option
           = label_tag "#{:answer}_#{question.second_option}", question.second_option
-
         li
           = radio_button_tag :answer, question.third_option
           = label_tag "#{:answer}_#{question.third_option}", question.third_option
-
-      #check-message
-        #notice
+      .check-message
       .check-answer
-        = submit_tag "Check", id: 'check_answer'
+        = submit_tag "Check", class: 'check_answer'
+

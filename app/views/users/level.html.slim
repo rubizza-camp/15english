@@ -1,0 +1,11 @@
+.content-test
+  = image_tag("Idler.png", height: '300')
+  .content-right-block
+    .content-cloud
+      p= (t "devise.users.profile.ask_level")
+.active_buttons
+  .list_of_courses
+    - @courses.each do |f|
+      = button_to f.title, { controller: "courses", action: "choose_level", id: f.id }, { method: :post }
+  .link_test_level
+    = link_to "I don't know my level"
