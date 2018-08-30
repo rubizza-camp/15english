@@ -1,18 +1,16 @@
-
 $(document).ready(function() {
     var current_question = 1;
     var collectionSize = document.getElementById("questions_wrapper").children.length;
-    var currentQuestionForm = $(`#question-box-${current_question}`)
+    var currentQuestionForm = $(`#question-box-${current_question}`);
     currentQuestionForm.show().siblings().hide();
 
     $('#questions_wrapper').on('click', '.check_answer', function (e) {
         e.preventDefault();
-
-        var question_id = document.getElementById("question_id").value;
-        var user_id = document.getElementById("user_id").value;
-        var learning_process_state_id = document.getElementById("learning_process_state_id").value;
+        currentQuestionForm = $(`#question-box-${current_question}`);
+        var question_id = $(`#question-box-${current_question}`).find('#question_id').val();
+        var user_id = $(`#question-box-${current_question}`).find('#user_id').val();
+        var learning_process_state_id = $(`#question-box-${current_question}`).find('#learning_process_state_id').val();
         var checkButton = document.getElementsByClassName("check_answer");
-
         var checkedButton = currentQuestionForm.find('input[name="answer"]:checked').prop('value');
 
         if (checkButton[0].value === "Next") {
@@ -35,9 +33,9 @@ $(document).ready(function() {
             dataType: "json",
             data: { answer: { answer: checkedButton, question_id: question_id, user_id: user_id, learning_process_state_id: learning_process_state_id } },
             success: function (check) {
-                var messageBox = document.querySelectorAll(".check-message");
+                var messageBox = $(`#question-box-${current_question} form .check-message`);
                 var box = document.createElement('div');
-                box.id = "box";
+                box.className = "box";
                 if (check.message == 'Answer is correct') {
                     var box = document.createElement('div');
                     box.style.height = "50px";
@@ -48,7 +46,7 @@ $(document).ready(function() {
                     box.style.fontSize = "15px";
                     box.style.fontWeight = "bold";
                     box.innerHTML = check.message;
-                    messageBox[current_question - 1].appendChild(box);
+                    messageBox.append(box);
                 } else {
                     box.style.height = "50px";
                     box.style.width = "100%";
@@ -58,10 +56,8 @@ $(document).ready(function() {
                     box.style.fontSize = "15px";
                     box.style.fontWeight = "bold";
                     box.innerHTML = check.message;
-                    messageBox[current_question - 1].appendChild(box);
+                    messageBox.append(box);
                 }
-
-
 
                 var checkButton = document.querySelectorAll(".check_answer");
                 checkButton.forEach(function(e) {

@@ -2,7 +2,6 @@
 
 class AnswersController < ApplicationController
   def create
-    # raise params.inspect
     @answer = Answer.new(answer_params)
     if @answer.save
       if check_answer
@@ -17,6 +16,7 @@ class AnswersController < ApplicationController
 
   def check_answer
     @question = Question.find(@answer.question_id)
+
     @answer.answer == @question.correct_answer
   end
 
