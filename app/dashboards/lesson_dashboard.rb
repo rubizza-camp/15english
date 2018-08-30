@@ -38,7 +38,6 @@ class LessonDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :subject,
     :users,
-    :questions,
     :words,
     :title,
     :created_at,
