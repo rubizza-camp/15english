@@ -11,7 +11,6 @@ $(document).ready(function() {
         var user_id = $(`#question-box-${current_question}`).find('#user_id').val();
         var learning_process_state_id = $(`#question-box-${current_question}`).find('#learning_process_state_id').val();
         var checkButton = document.getElementsByClassName("check_answer");
-        // debugger;
         var checkedButton = currentQuestionForm.find('input[name="answer"]:checked').prop('value');
 
         if (checkButton[0].value === "Next") {
