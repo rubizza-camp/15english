@@ -1,0 +1,18 @@
+- unless @title == "Elementary"
+  = render partial: "test_level_sessions/modal_test_level"
+= simple_form_for @session do |f|
+  #submit_form
+    = f.simple_fields_for :answers do |af|
+      .card.w-75.mx-auto.text-center.border-info.quest
+        .card-header.mx-auto.quest
+          | Question
+        = af.input :question_id, as: :hidden
+        .radio_test_level
+          = af.input :answer, as: :radio_buttons, collection: [af.object.question.first_option, af.object.question.second_option, af.object.question.third_option],
+          label: af.object.question.title
+    = hidden_field_tag :level, @title
+    = content_tag :div, class: "temp_information", data: {temp: @questions.size} do
+    .btn.next-question
+      | Next Question
+    = f.button :submit, "Finish Test", class: "finish-test-button"
+br

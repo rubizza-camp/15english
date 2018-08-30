@@ -1,0 +1,100 @@
+@import "colors";
+
+.card.w-75.mx-auto.border-info.quest {
+  display: none;
+  margin-bottom: 40px;
+  border-color: $main_brown !important;
+}
+
+.card-header.mx-auto.quest {
+  background-color: $main_brown;
+  margin: 0 0 !important;
+  color: $main_milk;
+}
+
+.btn.next-question {
+  width: 143px;
+  height: 42px;
+  background-color: $main_orange;
+  margin: 0 auto;
+  display: block;
+  color: $main_milk;
+}
+
+.btn.finish-test-button {
+  display: block;
+  background-color: $lemon;
+  margin: 0 auto;
+  color: $main_milk;
+}
+
+.temp_information {
+  display: none;
+}
+
+.form-group.radio_buttons.optional.test_level_session_answers_answer.radio-non-available {
+  clear: both;
+  margin: 0 30px;
+}
+
+label {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid $radio_white
+}
+
+/* hide input */
+input.form-check-input.radio_buttons.optional:empty {
+ display: none;
+}
+
+/* style label */
+input.form-check-input.radio_buttons.optional:empty ~ label {
+  position: relative;
+  //float: left;
+  line-height: 2.0em;
+  text-indent: 3.25em;
+  margin-top: 0.5em;
+  cursor: pointer;
+  user-select: none;
+}
+
+input.form-check-input.radio_buttons.optional:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: $radio_white;
+  border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.form-check-input.radio_buttons.optional:hover:not(:checked) ~ label:before {
+  content:'\2714';
+  text-indent: .1em;
+  color: $radio_dark_white;
+}
+
+input.form-check-input.radio_buttons.optional:hover:not(:checked) ~ label {
+  color: $radio_gray;
+}
+
+/* toggle on */
+input.form-check-input.radio_buttons.optional:checked ~ label:before {
+  content:'\2714';
+  text-indent: .1em;
+  color: $radio_light_green;
+  background-color: $radio_green;
+}
+
+input.form-check-input.radio_buttons.optional:checked ~ label {
+  color: $radio_dark_gray;
+}
+
+/* radio focus */
+input.form-check-input.radio_buttons.optional:focus ~ label:before {
+  box-shadow: 0 0 0 3px $radio_light_gray;
+}

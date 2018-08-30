@@ -3,7 +3,9 @@
 # This model will be used for testing English level of user
 class TestLevel < ApplicationRecord
   has_many :questions, as: :questionable
-  accepts_nested_attributes_for :questions
+  has_many :test_level_sessions
+  has_many :answers
+  accepts_nested_attributes_for :answers
 
   validates :title, presence: true
 end

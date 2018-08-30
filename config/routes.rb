@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
     resources :test_levels, only: [:show]
+    resources :test_level_sessions
     post "test_levels/answer" => "test_levels#answer", as: :answer_questions
     resources :users do
       get "/map" => "static_pages#map"
