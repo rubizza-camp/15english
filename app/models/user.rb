@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_one :dictionary
 
   mount_uploader :avatar, AvatarUploader
-  # include PolicyManager::Concerns::UserBehavior
+  include PolicyManager::Concerns::UserBehavior
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :recoverable, :omniauthable, omniauth_providers: %i[facebook]
