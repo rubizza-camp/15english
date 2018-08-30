@@ -2,10 +2,10 @@
   img src="#{question.image}"
   = form_tag(controller: "answers", action: "create", method: "post") do
     = render partial: "answers/hidden_fields", locals: {question: question}
-    /Add image_tag with url after setting up administrate
 
-    = text_field_tag(:question)
+    = text_field_tag(:answer_image)
     = question.text
+    /= binding.pry
     .check-message
     .check-answer
       = submit_tag "Check", class: 'check_answer'
