@@ -32,7 +32,6 @@ gem "administrate-field-carrierwave", "0.3.2"
 gem "gdpr_rails", "0.3.3"
 gem "omniauth-facebook", "5.0.0"
 gem "friendly_id", "5.2.0"
-gem "fog-aws", "3.0.0"
 
 group :development, :test do
   gem "pry-rails", "0.3.6"
@@ -56,6 +55,10 @@ group :test do
   gem "chromedriver-helper", "1.2.0"
   gem "rspec-rails", "3.7.2"
   gem "factory_bot_rails", "4.10.0"
+end
+
+group :production do
+  gem "fog", "1.42"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
