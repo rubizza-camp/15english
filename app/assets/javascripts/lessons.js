@@ -11,7 +11,12 @@ $(document).ready(function() {
         var user_id = $(`#question-box-${current_question}`).find('#user_id').val();
         var learning_process_state_id = $(`#question-box-${current_question}`).find('#learning_process_state_id').val();
         var checkButton = document.getElementsByClassName("check_answer");
-        var checkedButton = currentQuestionForm.find('input[name="answer"]:checked').prop('value');
+
+        if ($(`#question-box-${current_question} form input[type="text"]`)[0] != null) {
+            var answerPickedByUser = currentQuestionForm.find('input[name="answer_image"]').prop('value');
+        } else {
+            var answerPickedByUser = currentQuestionForm.find('input[name="answer"]:checked').prop('value');
+        }
 
         if (checkButton[0].value === "Next") {
             current_question += 1;
@@ -31,7 +36,7 @@ $(document).ready(function() {
             url: '/en/answer',
             type: 'POST',
             dataType: "json",
-            data: { answer: { answer: checkedButton, question_id: question_id, user_id: user_id, learning_process_state_id: learning_process_state_id } },
+            data: { answer: { answer: answerPickedByUser, question_id: question_id, user_id: user_id, learning_process_state_id: learning_process_state_id } },
             success: function (check) {
                 var messageBox = $(`#question-box-${current_question} form .check-message`);
                 var box = document.createElement('div');
