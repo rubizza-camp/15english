@@ -21,7 +21,7 @@ $(document).ready(function() {
         if (checkButton[0].value === "Next") {
             current_question += 1;
             if (current_question == collectionSize) {
-                window.location.href = JsRoutesRails.course_path({id: 1})
+                window.location.href = JsRoutesRails.course_path({id: 1});
             } else {
                 var checkButton = document.querySelectorAll(".check_answer");
                 checkButton.forEach(function(e) {
