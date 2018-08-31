@@ -2,6 +2,6 @@
 
 # comment for application mailer
 class ApplicationMailer < ActionMailer::Base
-  default from: "admin@15english.com"
+  default from: "15@english.com"
   layout "mailer"
 end
