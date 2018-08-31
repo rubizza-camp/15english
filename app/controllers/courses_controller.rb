@@ -53,5 +53,4 @@ class CoursesController < ApplicationController
     def user_lessons
       current_user.learning_process_states
     end
-
 end

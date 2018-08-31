@@ -58,4 +58,8 @@ group :test do
   gem "factory_bot_rails", "4.10.0"
 end
 
+group :production do
+  gem "fog-aws", "3.0.0"
+end
+
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

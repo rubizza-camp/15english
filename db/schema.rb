@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_111215) do
+ActiveRecord::Schema.define(version: 2018_08_29_112929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2018_08_27_111215) do
     t.bigint "question_id"
     t.string "answer"
     t.integer "learning_process_state_id"
+    t.bigint "sub_test_session_id"
     t.index ["learning_process_state_id"], name: "index_answers_on_learning_process_state_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["sub_test_session_id"], name: "index_answers_on_sub_test_session_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -140,11 +142,18 @@ ActiveRecord::Schema.define(version: 2018_08_27_111215) do
     t.string "first_option"
     t.string "second_option"
     t.string "third_option"
-    t.string "questionable_type"
+    t.string "questionable_type", default: "Lesson"
     t.bigint "questionable_id"
     t.string "type"
     t.integer "position"
     t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+  end
+
+  create_table "sub_test_sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "sub_test_id"
+    t.index ["sub_test_id"], name: "index_sub_test_sessions_on_sub_test_id"
+    t.index ["user_id"], name: "index_sub_test_sessions_on_user_id"
   end
 
   create_table "sub_tests", force: :cascade do |t|
@@ -199,14 +208,14 @@ ActiveRecord::Schema.define(version: 2018_08_27_111215) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
     t.string "avatar"
     t.string "username"
+    t.string "provider"
+    t.string "uid"
     t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
