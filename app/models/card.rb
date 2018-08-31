@@ -2,7 +2,10 @@
 
 # class Card
 class Card < ApplicationRecord
+  belongs_to :lesson
+
   mount_uploader :image, ImageUploader
+
   validate :picture_size
   validates :image, presence: true
   validates :text, presence: true
