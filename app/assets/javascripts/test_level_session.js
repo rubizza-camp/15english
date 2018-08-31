@@ -1,6 +1,9 @@
 $(document).ready(function () {
     var current_question = 0;
     var cards = document.getElementsByClassName("card w-75 mx-auto border-info quest");
+    $(`#levelModal`).modal({
+        keyboard: true
+    });
     $(".btn.finish-test-button").toggle();
     $(".form-group.radio_buttons.optional.test_level_session_answers_answer")
         .wrap("<div class=\"card-body mx-auto\"></div>");

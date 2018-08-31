@@ -1,5 +1,5 @@
-- unless @title == "Elementary"
-  = render partial: "test_level_sessions/modal_test_level"
+- if @title != "Elementary"
+  = render "test_level_sessions/modal_test_level_sessions"
 = simple_form_for @session do |f|
   #submit_form
     = f.simple_fields_for :answers do |af|

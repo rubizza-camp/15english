@@ -28,6 +28,31 @@
   color: $main_milk;
 }
 
+.cup-image {
+  margin: 0 auto;
+  display: block;
+  width: 128px;
+  height: 128px;
+}
+
+.congrat-image {
+  margin: 0 auto;
+  display: block;
+  width: 50%;
+  height: 80%;
+}
+
+.text-level.text {
+  margin: 0 auto;
+  display: block;
+  font-style: oblique;
+  font-size: 2.0em;
+}
+
+.text-level.value {
+  font-style: italic;
+}
+
 .temp_information {
   display: none;
 }
