@@ -19,7 +19,9 @@ h2
     = f.button :submit
     .btn
       = link_to t('devise.shared.links.back'), :back
-.btn
-  = link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
-  br
-  = link_to t('.change_course'), level_users_path, data: {confirm:"If you change your course you lost all information about befor course"}
+    br
+    br
+    = link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class:"alert alert-danger"
+    br
+    br
+    = link_to t('.change_course'), level_users_path, data: {confirm:"If you change your course you lost all information about befor course"}, class:"alert alert-success"
