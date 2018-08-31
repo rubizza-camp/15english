@@ -1,50 +1,57 @@
 # frozen_string_literal: true
 
 class CoursesController < ApplicationController
-  before_action :admin_user, only: [:show, :edit, :update, :destroy, :index]
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-
-  def new
-    @course = Course.new
-  end
-
-  def show
-  end
-
+  before_action :lessons_of_course, only: [:show, :choose_level]
   def index
     @course = Course.new
     @courses = Course.all
   end
 
-  def create
-    @course = Course.create(course_params)
-    redirect_to courses_url
+  def choose_level
+    if current_user.courses.where(id: params[:id]).empty?
+      current_user.courses << @course
+      add_lessons_to_user
+      reset_current_of_lesson
+      change_current_of_new_lesson
+    end
+    redirect_to @course
   end
 
-  def edit
-  end
-
-  def update
-    @course.update(course_params)
-    redirect_to courses_url
-  end
-
-  def destroy
-    @course.destroy
-    redirect_to courses_url
+  def show
   end
 
   private
 
-    def set_course
+    def first_lesson_id
+      @course.subjects.first.lessons.first.id
+    end
+
+    def user_first_lesson
+      user_lessons.where(lesson_id: first_lesson_id)
+    end
+
+    def lessons_of_course
       @course = Course.find(params[:id])
+      @subjects = Subject.where(course_id: @course.id)
+      @lessons = Lesson.where(subject_id: @subjects.ids)
     end
 
-    def admin_user
-      redirect_to(course_path) unless current_user.admin?
+    def add_lessons_to_user
+      @lessons.each do |lesson|
+        user_lessons.create(lesson_id: lesson.id, user_id: current_user.id)
+      end
     end
 
-    def course_params
-      params.require(:course).permit(:title)
+    def reset_current_of_lesson
+      user_lessons.where(current: true).update(current: false)
     end
+
+    def change_current_of_new_lesson
+      user_first_lesson.update(current: true)
+    end
+
+    def user_lessons
+      current_user.learning_process_states
+    end
+
 end

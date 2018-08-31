@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
-class TextQuestionDashboard < Administrate::BaseDashboard
+class CardQuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,15 +10,15 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     answers: Field::HasMany,
     questionable: Field::Polymorphic.with_options(
-      classes: [Lesson, SubTest, TestLevel]
-      ),
+        classes: [Lesson, SubTest, TestLevel]
+    ),
     lesson: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
     image: Field::Carrierwave.with_options(
-      image: :standard,
-      image_on_index: true,
-      ),
+        image: :standard,
+        image_on_index: true,
+    ),
     remove_image: Field::Boolean,
     text: Field::String,
     correct_answer: Field::String,
@@ -37,45 +35,36 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :position,
-    :title,
+    :id,
+    :image,
     :questionable,
-    :image
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :position,
     :questionable,
-    :title,
+    :image,
     :text,
-    :first_option,
-    :second_option,
-    :correct_answer,
-    :image
+    :type,
+    :position,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :position,
     :questionable,
-    :title,
     :image,
-    :remove_image,
     :text,
-    :first_option,
-    :second_option,
-    :correct_answer,
-    :type
+    :type,
+    :position,
   ].freeze
 
-  # Overwrite this method to customize how text questions are displayed
+  # Overwrite this method to customize how card questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(text_question)
-  #   "TextQuestion ##{text_question.id}"
+  # def display_resource(card_question)
+  #   "CardQuestion ##{card_question.id}"
   # end
 end

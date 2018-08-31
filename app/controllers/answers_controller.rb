@@ -4,22 +4,23 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      check_answer
+      if check_answer
+        render json: { message: 'Answer is correct' }
+      else
+        render json: { message: 'Answer is incorrect' }
+      end
     end
   end
 
   private
 
-    def check_answer
-      @question = Question.find(@answer.question_id)
-      if @answer.answer == @question.correct_answer
-        flash[:success] = "Answer correct!"
-      else
-        flash[:error] =  "Answer incorrect!"
-      end
-    end
+  def check_answer
+    @question = Question.find(@answer.question_id)
 
-    def answer_params
-      params.permit(:answer, :user_id, :question_id, :learning_process_state_id)
-    end
+    @answer.answer == @question.correct_answer
+  end
+
+  def answer_params
+    params.require(:answer).permit(:answer, :user_id, :question_id, :learning_process_state_id)
+  end
 end

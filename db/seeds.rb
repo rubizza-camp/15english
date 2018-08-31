@@ -1,6 +1,7 @@
-User.create!(email: "admin@admin.com",
+User.create!(email: "fadmin@fadmin.com",
              password:              "ffengadmin",
              password_confirmation: "ffengadmin",
-             username: "admin",
+             username: "fadmin",
              admin: true,
+             slug: "fadmin",
              confirmed_at: Time.zone.now)

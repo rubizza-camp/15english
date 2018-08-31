@@ -10,13 +10,12 @@ class CardDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     image: Field::Carrierwave.with_options(
-      image: :standard,
-      image_on_index: true,
-      ),
-    remove_image: Field::Boolean,
+        image: :standard,
+        image_on_index: true,
+    ),
     text: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,7 +27,6 @@ class CardDashboard < Administrate::BaseDashboard
     :id,
     :image,
     :text,
-    :created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +36,7 @@ class CardDashboard < Administrate::BaseDashboard
     :image,
     :text,
     :created_at,
-    :updated_at
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -46,8 +44,7 @@ class CardDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :image,
-    :remove_image,
-    :text
+    :text,
   ].freeze
 
   # Overwrite this method to customize how cards are displayed

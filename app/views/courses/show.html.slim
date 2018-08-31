@@ -1,0 +1,15 @@
+h1 #{@course.title}
+.map-content
+  - subjects_of_user.each do |subject, lessons|
+    .btn.dropdown-title.dropdown-toggle#hdr-btn Topic: #{subject}
+    .dropdown-content
+      - lessons.each do |lesson|
+        - if user_lessons.where(lesson_id: lesson.id, current: true).any?
+          == link_to lesson.title, lesson, class: "btn closed-lesson-current", id: "hdr-btn-current"
+        - elsif user_lessons.where(lesson_id: lesson.id, passed: true).any?
+          == link_to lesson.title, lesson, class: "btn complete-lesson-true", id: "hdr-btn-true"
+        - else
+          == link_to lesson.title, lesson, class: "btn closed-lesson-false", id: "hdr-btn-false"
+        end
+      end
+  end

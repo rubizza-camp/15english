@@ -52,6 +52,10 @@ class User < ApplicationRecord
     end
   end
 
+  def after_confirmation
+    WelcomeMailer.welcome_send(self).deliver
+  end
+
   def self.send_reminder_mail
     User.where(admin: false).each { |user| UserNotifierMailer.send_reminder_email(user).deliver }
   end

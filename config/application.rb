@@ -24,7 +24,9 @@ module Fifteenglish
       g.template_engine :slim
     end
 
-    config.i18n.default_locale = :en
+    I18n.enforce_available_locales = true
+
+    config.serve_static_assets = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
