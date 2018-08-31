@@ -1,10 +1,15 @@
 = simple_form_for @session do |f|
-  = f.input :sub_test_id, as: :hidden
-    = f.simple_fields_for :answers do |af|
+  - f.input :sub_test_id, as: :hidden
+  = f.simple_fields_for :answers do |af|
+    center
       = af.input :question_id, as: :hidden
       = af.input :user_id, as: :hidden
       - if af.object.question.type == "RadioImageTextQuestion"
-        = af.input :answer, as: :radio_buttons, collection: [af.object.question.first_option, af.object.question.second_option], label: af.object.question.title
-      = if af.object.question.type == "RadioImageQuestion"
-        = af.input :answer,label: af.object.question.title, as: :radio_buttons, collection: [af.object.question.first_option, af.object.question.second_option, af.object.question.third_option]
+        - if af.object.question.image
+          = image_tag(af.object.question.image.url, width:'35%', height: "35%", class:"image")
+        = af.input :answer, as: :radio_buttons, collection: [af.object.question.first_option, af.object.question.second_option], label: ''
+      - if af.object.question.type == "RadioImageQuestion"
+        - if af.object.question.image
+          = image_tag(af.object.question.image.url, width:'35%', height: "35%", class:"image")
+        = af.input :answer,label: "", collection: [af.object.question.first_option, af.object.question.second_option, af.object.question.third_option], as: :radio_buttons
   = f.submit

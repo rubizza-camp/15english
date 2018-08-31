@@ -9,7 +9,6 @@ class SubTestSession < ApplicationRecord
   end
 
   def percent_right_answers(index,count_all_questions)
-    percent = index * 100 / count_all_questions
-    puts percent
+    index * 100 / count_all_questions
   end
 end

@@ -22,14 +22,19 @@ class SubTestSessionsController < ApplicationController
     answers.each_index do |i|
       index += 1 if answers[i] == correct_answers[i]
     end
-    @session.percent_right_answers(index, count)
-    redirect_to sub_test_sessions_path
+    params[:percent] = @session.percent_right_answers(index, count)
+    redirect_to sub_test_sessions_path(passed_parameter: params[:percent])
+    binding.pry
   end
 
-  def index  
+  def index
+    sub_test = Subject.first.sub_test
+    @session = SubTestSession.find_by(sub_test: sub_test, user: current_user)
+    @percent = params[:passed_parameter]
   end
 
   private
+
   def sub_test_sessions_attributes
     params.require(:sub_test_session).permit(:sub_test_id, answers_attributes: [:answer, :question_id, :user_id]).merge(user: current_user)
   end

@@ -10,8 +10,4 @@ class Answer < ApplicationRecord
   def correct?(answer,correct)
     answer == correct
   end
-
-  # def correct?
-  #   answer == question.correct_answer
-  # end
 end
