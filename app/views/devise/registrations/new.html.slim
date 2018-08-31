@@ -5,20 +5,20 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     .field
-      = f.label :email
+      = f.label :email, class: "sign-in"
       = f.email_field :email, autofocus: true, autocomplete: "email"
     .field
-      = f.label :username
+      = f.label :username, class: "sign-in"
       = f.text_field :username
     .field
-      = f.label :password
+      = f.label :password, class: "sign-in"
       = f.password_field :password, autocomplete: "off"
     .field
-      = f.label :password_confirmation
+      = f.label :password_confirmation, class: "sign-in"
       = f.password_field :password_confirmation, autocomplete: "off"
     br
     = f.check_box :terms_accepted
-    = f.label :terms_accepted, "I agree to the #{link_to 'Terms of Policies', '#exampleModal', data: {toggle: "modal", target: "#exampleModal"}}.".html_safe, style: "padding-left:5px;"
+    = f.label :terms_accepted, "I agree to the #{link_to 'Terms of Policies', '#exampleModal', data: {toggle: "modal", target: "#exampleModal"}}.".html_safe, class: "sign-up-terms"
     = render "layouts/modal"
     .actions
       = f.button
