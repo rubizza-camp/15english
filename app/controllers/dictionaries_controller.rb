@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class DictionariesController < ApplicationController before_action :set_dictionary, only: [:show]
+class DictionariesController < ApplicationController
+  before_action :set_dictionary, only: [:show]
 
   def index
     @dictionary = Dictionary.new
@@ -29,7 +30,7 @@ class DictionariesController < ApplicationController before_action :set_dictiona
 
   private
   def set_dictionary
-    @dictionary = Dictionary.find(params[:id])
+    @dictionary = Dictionary.where(user_id: params[:id])
   end
 
   def dictionary_params

@@ -1,2 +1,3 @@
-- @questions.each do |question|
-  = render partial: "answers/#{question.type.underscore}_form", locals: {question: question }
+#questions_wrapper
+  - @questions.each do |question|
+    = render partial: "answers/#{question.type.underscore}_form", locals: {question: question }

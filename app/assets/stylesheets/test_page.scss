@@ -55,35 +55,28 @@
 }
 
 .list_of_courses {
-  display: table;
   align-content: center;
   margin-right: auto;
   margin-left: auto;
   width: 480px;
 }
 
-.name_of_course {
-  a {
-    color: #010000;
-    text-decoration: none;
-  }
-  a:hover {
-    color: #ffa100;
-  }
-  background: #ffd300;
-  display: block;
+.active_buttons{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+form.button_to input{
   width: 450px;
-  border: 1px solid #ffa100;
+  border: 1px solid $main_yellow;
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 30px;
+  background-color: $main_yellow;
 }
 
 .link_test_level {
-  margin: 20px 0px 20px 0px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 480px;
   text-align: center;
 }

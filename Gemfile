@@ -17,6 +17,7 @@ gem "devise", "4.4.3"
 gem "slim-rails", "3.1.3"
 gem "bootstrap", "4.1.3"
 gem "jquery-rails", "4.3.3"
+gem "js-routes-rails", "1.0.0"
 gem "listen", ">= 3.0.5", "< 3.2"
 gem "rails-i18n", "5.1.1"
 gem "rails_best_practices", "1.19.3"
@@ -31,6 +32,7 @@ gem "administrate-field-carrierwave", "0.3.2"
 gem "gdpr_rails", "0.3.3"
 gem "omniauth-facebook", "5.0.0"
 gem "friendly_id", "5.2.0"
+gem "fog-aws", "3.0.0"
 
 group :development, :test do
   gem "pry-rails", "0.3.6"
@@ -58,6 +60,5 @@ end
 group :production do
   gem "fog-aws", "3.0.0"
 end
-
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

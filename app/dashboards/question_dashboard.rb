@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
-class TextQuestionDashboard < Administrate::BaseDashboard
+class QuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,24 +9,19 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     answers: Field::HasMany,
-    questionable: Field::Polymorphic.with_options(
-      classes: [Lesson, SubTest, TestLevel]
-      ),
+    questionable: Field::Polymorphic,
     lesson: Field::BelongsTo,
+    test_level: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
-    image: Field::Carrierwave.with_options(
-      image: :standard,
-      image_on_index: true,
-      ),
-    remove_image: Field::Boolean,
+    image: Field::String,
     text: Field::String,
     correct_answer: Field::String,
     first_option: Field::String,
     second_option: Field::String,
     third_option: Field::String,
     type: Field::String,
-    position: Field::Number
+    position: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -37,45 +30,44 @@ class TextQuestionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :position,
     :title,
-    :questionable,
-    :image
+    :correct_answer,
+    :type,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :position,
-    :questionable,
     :title,
+    :image,
     :text,
+    :correct_answer,
     :first_option,
     :second_option,
-    :correct_answer,
-    :image
+    :third_option,
+    :type,
+    :position,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :position,
-    :questionable,
     :title,
     :image,
-    :remove_image,
     :text,
+    :correct_answer,
     :first_option,
     :second_option,
-    :correct_answer,
-    :type
+    :third_option,
+    :type,
+    :position,
   ].freeze
 
-  # Overwrite this method to customize how text questions are displayed
+  # Overwrite this method to customize how questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(text_question)
-  #   "TextQuestion ##{text_question.id}"
+  # def display_resource(question)
+  #   "Question ##{question.id}"
   # end
 end

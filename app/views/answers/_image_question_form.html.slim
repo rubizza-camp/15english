@@ -1,9 +1,11 @@
-= question.text
-= form_tag(controller: "answers", action: "create", method: "post") do
-  = render partial: "answers/hidden_fields", locals: {question: question }
+.main-lesson-box id="question-box-#{question.position}"
+  img src="#{question.image}"
+  = form_tag(controller: "answers", action: "create", method: "post") do
+    = render partial: "answers/hidden_fields", locals: {question: question}
 
-  /Add image_tag with url after setting up administrate
+    = text_field_tag(:answer_image)
+    = question.text
 
-  = text_field_tag(:question)
-
-  = submit_tag("Check")
+    .check-message
+    .check-answer
+      = submit_tag "Check", class: 'check_answer'
