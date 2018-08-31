@@ -5,5 +5,5 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
       t.references :question, index: true, foreign_key: true
       t.string "answer"
     end
-  end
+  end 
 end

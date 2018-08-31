@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
     resources :dictionaries, only: [:show]
     resources :subjects
+    resources :sub_test_sessions
     resources :courses, only: [:index, :show] do
       post "choose_level", on: :member
     end

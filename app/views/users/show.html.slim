@@ -1,7 +1,4 @@
 .content-right
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.level")
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.progress"), course_path(current_course_id)
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.dictionary"), dictionary_path
+  == link_to (t "devise.users.profile.level"), root_url, class:"btn btn-outline-success btn-lg"
+  == link_to (t "devise.users.profile.progress"), course_path(current_course_id), class:"btn btn-outline-success btn-lg"
+  == link_to (t "devise.users.profile.dictionary"), dictionary_path, class:"btn btn-outline-success btn-lg"
