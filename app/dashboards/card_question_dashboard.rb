@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CardDashboard < Administrate::BaseDashboard
+class CardQuestionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,25 @@ class CardDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    answers: Field::HasMany,
+    questionable: Field::Polymorphic.with_options(
+        classes: [Lesson, SubTest, TestLevel]
+    ),
+    lesson: Field::BelongsTo,
     id: Field::Number,
+    title: Field::String,
     image: Field::Carrierwave.with_options(
         image: :standard,
         image_on_index: true,
     ),
+    remove_image: Field::Boolean,
     text: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    correct_answer: Field::String,
+    first_option: Field::String,
+    second_option: Field::String,
+    third_option: Field::String,
+    type: Field::String,
+    position: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,31 +37,34 @@ class CardDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :image,
-    :text,
+    :questionable,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
+    :questionable,
     :image,
     :text,
-    :created_at,
-    :updated_at,
+    :type,
+    :position,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :questionable,
     :image,
     :text,
+    :type,
+    :position,
   ].freeze
 
-  # Overwrite this method to customize how cards are displayed
+  # Overwrite this method to customize how card questions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(card)
-  #   "Card ##{card.id}"
+  # def display_resource(card_question)
+  #   "CardQuestion ##{card_question.id}"
   # end
 end
