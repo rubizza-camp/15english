@@ -51,6 +51,7 @@
   .btn.btn-outline-success {
     margin-top: 50px;
     height: 40px;
+    border-width: 2px;
   }
 }
 
@@ -79,4 +80,22 @@ form.button_to input{
 
 .link_test_level {
   text-align: center;
+}
+
+
+.dropdown-menu {
+  li{
+    a.btn {
+      background-color:transparent;
+      border-collapse:collapse;
+      width:100%;
+      text-align:left;
+    }
+    .dropdown-divider{
+      background-color:transparent;
+      border-collapse:collapse;
+      width:100%;
+      text-align:left;
+    }
+  }
 }

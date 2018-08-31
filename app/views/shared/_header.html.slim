@@ -10,11 +10,12 @@ nav.navbar.navbar-light.hdr-color
           .text
             = current_user.username
         ul class="dropdown-menu" role="menu" aria-labelledby="menu1"
-          li role="presentation" == link_to (t ".profile"), current_user
-          li role="presentation" == link_to (t ".settings"), edit_user_registration_path
-          li role="presentation" == link_to (t ".dictionary"), dictionary_path(current_user.id)
+          li role="presentation" == link_to (t ".profile"), current_user, class:"btn", style:"background-color:transparent"
+          li role="presentation" == link_to (t ".settings"), edit_user_registration_path, class:"btn", style:"background-color:transparent"
+          li role="presentation" == link_to (t ".dictionary"), dictionary_path(current_user.id), class:"btn", style:"background-color:transparent"
+          li role="presentation" == link_to (t ".map"), new_user_registration_path, class:"btn", style:"background-color:transparent"
           .dropdown-divider
-          li role="presentation" == link_to (t ".sign.out"), destroy_user_session_path, method: :delete
+          li role="presentation" == link_to (t ".sign.out"), destroy_user_session_path, method: :delete, class: 'btn'
     - else
       == link_to (t ".sign.up"), new_user_registration_path, class: 'btn', id: 'hdr-btn'
       == link_to (t ".sign.in"), new_user_session_path, class: 'btn', id: 'hdr-btn'
