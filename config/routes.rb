@@ -14,9 +14,10 @@ Rails.application.routes.draw do
       resources :image_questions
       resources :radio_questions
       resources :text_questions
+      resources :card_questions
       resources :sub_tests
       resources :test_levels
-      resources :cards
+
 
       root to: "users#index"
       mount PolicyManager::Engine => "/policies"
