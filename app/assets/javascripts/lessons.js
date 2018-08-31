@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var current_question = 1;
-    var collectionSize = document.getElementById("questions_wrapper").children.length;
+    var collectionSize = document.getElementById("questions_wrapper").children.length + 1;
     var currentQuestionForm = $(`#question-box-${current_question}`);
     currentQuestionForm.show().siblings().hide();
 
