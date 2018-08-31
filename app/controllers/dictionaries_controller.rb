@@ -29,11 +29,11 @@ class DictionariesController < ApplicationController
   end
 
   private
-  def set_dictionary
-    @dictionary = Dictionary.where(user_id: params[:id])
-  end
+    def set_dictionary
+      @dictionary = Dictionary.where(user_id: params[:id])
+    end
 
-  def dictionary_params
-    params.require(:dictionary).permit(:user, :dictionary_word)
-  end
+    def dictionary_params
+      params.require(:dictionary).permit(:user, :dictionary_word)
+    end
 end

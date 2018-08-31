@@ -36,7 +36,8 @@ gem "fog-aws", "3.0.0"
 
 group :development, :test do
   gem "pry-rails", "0.3.6"
-  gem "rails-flog", "1.4.0", require: "flog"end
+  gem "rails-flog", "1.4.0", require: "flog"
+end
 
 group :development do
   gem "reek", "5.0.2"

@@ -3,20 +3,17 @@
 # Comment for User model
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :username,  :use => [:slugged, :finders]
+  friendly_id :username,  use: [:slugged, :finders]
 
   has_many :user_courses
   has_many :courses, through: :user_courses
-  #has_many :images, as: :imageable
+  has_many :images, as: :imageable # need delete
   has_many :learning_process_states
   has_many :lessons, through: :learning_process_states
   has_many :answers, through: :learning_process_states
   has_one :test_level
-  has_many :sub_test_session
-  # has_many :radio_questions, through: :answer_users
-  # has_many :radio_image_questions, through: :answer_users
-  # has_many :radio_image_text_questions, through: :answer_users
   has_one :dictionary
+  has_many :sub_test_session
 
   mount_uploader :avatar, AvatarUploader
   include PolicyManager::Concerns::UserBehavior

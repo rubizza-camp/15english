@@ -7,7 +7,7 @@ class Answer < ApplicationRecord
   belongs_to :sub_test_session
   belongs_to :user
 
-  def correct?(answer,correct)
+  def correct?(answer, correct)
     answer == correct
   end
 end
