@@ -42,6 +42,10 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :index, :create, :new]
     resources :radio_questions, only: [:show, :index, :create, :new]
     resources :text_questions
+    resources :test_level_sessions
+    resources :users do
+      get "/map" => "static_pages#map"
+    end
     resources :users
     mount PolicyManager::Engine => "/policies"
     post "/answer" => "answers#create", as: :create_answer

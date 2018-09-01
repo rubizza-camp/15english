@@ -7,5 +7,7 @@
   .list_of_courses
     - @courses.each do |f|
       = button_to f.title, { controller: "courses", action: "choose_level", id: f.id }, { method: :post }
+br
   .link_test_level
-    = link_to "I don't know my level"
+    = link_to "I don't know my level", new_test_level_session_path
+br

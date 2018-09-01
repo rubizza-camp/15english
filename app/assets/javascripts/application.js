@@ -14,4 +14,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require activestorage
+//= require test_level_session
 //= require_tree .

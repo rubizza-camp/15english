@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :learning_process_states
   has_many :lessons, through: :learning_process_states
   has_many :answers, through: :learning_process_states
+  has_many :test_level_sessions
   has_one :test_level
   has_one :dictionary
 

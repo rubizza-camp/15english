@@ -1,6 +1,49 @@
-.btn.btn-outline-success.edit_profile_button {
+@import "colors";
+
+.image-map-idler {
+  width: 20%;
+  height: 20%;
+  margin-left: 15.5em;
+}
+
+.btn-squared-default {
+  font-size: 10px;
+}
+
+a.profile {
+  width: 310px;
+  line-height: 270px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 16%;
+  text-align: center;
+  background: $main_orange;
+  color: $main_milk;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+a.dictionary {
+  width: 310px;
+  line-height: 270px;
+  display: block;
+  text-align: center;
+  background: $lemon;
+  color: $main_milk;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.profile a {
+  margin-top: 48% !important;
+}
+
+.btn-squared-default-plain
+{
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-squared-default-plain:hover
+{
+  border: 0px solid $main_milk;
 }
