@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "administrate/base_dashboard"
 
 class WordDashboard < Administrate::BaseDashboard
@@ -16,6 +14,7 @@ class WordDashboard < Administrate::BaseDashboard
     ru: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    usage: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -39,6 +38,7 @@ class WordDashboard < Administrate::BaseDashboard
     :ru,
     :created_at,
     :updated_at,
+    :usage,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -48,11 +48,13 @@ class WordDashboard < Administrate::BaseDashboard
     :lesson,
     :en,
     :ru,
+    :usage,
   ].freeze
 
   # Overwrite this method to customize how words are displayed
   # across all pages of the admin dashboard.
-  def display_resource(word)
-    word.en
-  end
+  #
+  # def display_resource(word)
+  #   "Word ##{word.id}"
+  # end
 end
