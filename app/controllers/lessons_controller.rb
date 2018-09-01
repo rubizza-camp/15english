@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class LessonsController < ApplicationController
+  before_action :set_lesson, only: [:show, :ending]
+
   def index
     @lessons = Lesson.all
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
     @questions = @lesson.questions.reverse
     @user = current_user
   end
@@ -24,5 +25,14 @@ class LessonsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def ending
+    @course = @lesson.subject.course
+    @words = @lesson.words
+  end
+
+  def set_lesson
+    @lesson = Lesson.find(params[:id])
   end
 end

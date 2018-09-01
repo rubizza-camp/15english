@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       resources :sub_tests
       resources :test_levels
 
-
       root to: "users#index"
       mount PolicyManager::Engine => "/policies"
     end
@@ -35,7 +34,9 @@ Rails.application.routes.draw do
     resources :courses, only: [:index, :show] do
       post "choose_level", on: :member
     end
-    resources :lessons, only: [:show, :index]
+    resources :lessons do
+      get "ending", to: "lessons#ending"
+    end
     resources :questions
     resources :cards
     resources :answers, only: [:show, :index, :create, :new]
