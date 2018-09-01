@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2018_08_30_211453) do
     t.bigint "question_id"
     t.string "answer"
     t.integer "learning_process_state_id"
+    t.bigint "test_level_session_id"
     t.index ["learning_process_state_id"], name: "index_answers_on_learning_process_state_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["test_level_session_id"], name: "index_answers_on_test_level_session_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -169,6 +171,13 @@ ActiveRecord::Schema.define(version: 2018_08_30_211453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_subjects_on_course_id"
+  end
+
+  create_table "test_level_sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "test_level_id"
+    t.index ["test_level_id"], name: "index_test_level_sessions_on_test_level_id"
+    t.index ["user_id"], name: "index_test_level_sessions_on_user_id"
   end
 
   create_table "test_levels", force: :cascade do |t|

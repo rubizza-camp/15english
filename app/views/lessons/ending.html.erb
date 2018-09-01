@@ -1,0 +1,24 @@
+<div class="ending-picture">
+  <%= image_tag("len8.png", size: "300x300", :alt => "Smooth in glasses") %>
+</div>
+<div class="ending-message">
+  Well done! The lesson is over
+</div>
+<div class="ending-words">
+  You have <%= @words.length %> new words in your dictionary
+  <div>
+    <% @words.each do |w| %>
+      <div class="ending-word">
+        <%= w.en %>
+      </div>
+    <% end %>
+  </div>
+  <div class="ending-buttons">
+    <div class="ending-menu-button">
+      <%= link_to "Menu", @course %>
+    </div>
+    <div class="ending-next-button">
+      <%= link_to "Next lesson", @lesson.next %>
+    </div>
+  </div>
+</div>

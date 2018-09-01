@@ -1,4 +1,6 @@
-.content-right
-  == link_to (t "devise.users.profile.level"), root_url, class:"btn btn-outline-success btn-lg"
-  == link_to (t "devise.users.profile.progress"), course_path(current_course_id), class:"btn btn-outline-success btn-lg"
-  == link_to (t "devise.users.profile.dictionary"), dictionary_path, class:"btn btn-outline-success btn-lg"
+= image_tag("len7.png", class: "image-map-idler")
+.row.justify-content-center
+  .col-md-4
+    == link_to (t "devise.users.profile.level"), new_test_level_session_path, class: "btn btn-squared-default profile"
+  .col-md-4
+    == link_to (t "devise.users.profile.dictionary"), dictionary_path, class: "btn btn-squared-default dictionary"

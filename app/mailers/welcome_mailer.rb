@@ -4,6 +4,7 @@
 class WelcomeMailer < ApplicationMailer
   def welcome_send(user)
     @user = user
-    mail to: user.email, subject: "Welcome to site"
+    attachments.inline["len9.jpg"] = File.read("#{Rails.root}/app/assets/images/len9.jpg")
+    mail to: user.email, subject: "Welcome to fifteenglish"
   end
 end

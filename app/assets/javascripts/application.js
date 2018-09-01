@@ -11,8 +11,8 @@
 // about supported directives.
 //= require jquery3
 //= require jquery_ujs
-//= require js-routes-rails
 //= require popper
 //= require bootstrap-sprockets
 //= require activestorage
+//= require test_level_session
 //= require_tree .
