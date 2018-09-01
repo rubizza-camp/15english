@@ -30,6 +30,8 @@ class LessonsController < ApplicationController
   def ending
     @course = @lesson.subject.course
     @words = @lesson.words
+    @user = current_user
+    @user.dictionary.words << @words unless @user.dictionary.words.include?(@words)
   end
 
   def set_lesson

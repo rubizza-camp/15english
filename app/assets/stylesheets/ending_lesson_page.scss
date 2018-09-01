@@ -41,3 +41,46 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.ending-buttons {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.ending-menu-button {
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-right: 10px;
+  padding-left: 10px;
+  background:  #a74c00;
+  
+  a {
+    text-decoration: none;
+    color: #f1f2f1;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #ffa100;
+  }
+}
+
+.ending-next-button {
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-right: 10px;
+  padding-left: 10px;
+  background:  #a74c00;
+
+  a {
+    text-decoration: none;
+    color: #f1f2f1;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #ffa100;
+  }
+}

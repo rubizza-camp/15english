@@ -13,10 +13,12 @@
       </div>
     <% end %>
   </div>
-  <div class="ending-menu-button">
-    <%= link_to "Menu", @course %>
-  </div>
-  <div class="ending-next-button">
-    <%= link_to "Next lesson", @lesson.next %>
+  <div class="ending-buttons">
+    <div class="ending-menu-button">
+      <%= link_to "Menu", @course %>
+    </div>
+    <div class="ending-next-button">
+      <%= link_to "Next lesson", @lesson.next %>
+    </div>
   </div>
 </div>
