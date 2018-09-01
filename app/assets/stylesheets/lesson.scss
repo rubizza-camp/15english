@@ -64,4 +64,25 @@
     margin-bottom: 10px;
     margin-left: 50px;
   }
+  cursor: pointer;
+}
+
+.finish-button {
+  margin-top: 10px;
+  display: inline-block;
+  background: #ffd300;
+  border-radius: 3px;
+  font-size: 20px;
+  padding: 5px 20px 5px 20px;
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }

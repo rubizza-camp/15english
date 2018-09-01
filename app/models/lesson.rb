@@ -11,4 +11,8 @@ class Lesson < ApplicationRecord
   accepts_nested_attributes_for :questions
 
   validates :title, presence: true
+
+  def next
+    Lesson.where(["id > ?", id]).first
+  end
 end

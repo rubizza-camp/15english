@@ -16,3 +16,5 @@
     .check-message
     .check-answer
       = submit_tag "Check", class: 'check_answer'
+    .finish-button
+      == link_to "Finish lesson", lesson_ending_path(id: @lesson.id, lesson_id: @lesson.id)

@@ -3,6 +3,7 @@ $(document).ready(function() {
     var collectionSize = document.getElementById("questions_wrapper").children.length + 1;
     var currentQuestionForm = $(`#question-box-${current_question}`);
     currentQuestionForm.show().siblings().hide();
+    $('.finish-button').hide();
 
     $('#questions_wrapper').on('click', '.check_answer', function (e) {
         e.preventDefault();
@@ -21,7 +22,8 @@ $(document).ready(function() {
         if (checkButton[0].value === "Next") {
             current_question += 1;
             if (current_question == collectionSize) {
-                window.location.href = JsRoutesRails.course_path({id: 1});
+                $('.check-answer').hide();
+                $('.finish-button').show();
             } else {
                 var checkButton = document.querySelectorAll(".check_answer");
                 checkButton.forEach(function(e) {
