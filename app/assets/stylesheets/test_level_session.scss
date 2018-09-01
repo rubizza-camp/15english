@@ -62,7 +62,7 @@
   margin: 0 30px;
 }
 
-label {
+.radio_test_level label {
   width: 200px;
   border-radius: 3px;
   border: 1px solid $radio_white
@@ -122,4 +122,13 @@ input.form-check-input.radio_buttons.optional:checked ~ label {
 /* radio focus */
 input.form-check-input.radio_buttons.optional:focus ~ label:before {
   box-shadow: 0 0 0 3px $radio_light_gray;
+}
+
+.btn.btn-course {
+  max-width: 18%;
+  background-color: $main_brown;
+  color: $main_milk;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
 }
