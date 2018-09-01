@@ -1,7 +1,6 @@
-.content-right
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.level"), new_test_level_session_path
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.progress"), user_map_path(@user)
-  .btn.btn-outline-success
-    == link_to (t "devise.users.profile.dictionary"), dictionary_path
+= image_tag("len7.png", class: "image-map-idler")
+.row.justify-content-center
+  .col-md-4
+    == link_to (t "devise.users.profile.level"), new_test_level_session_path, class: "btn btn-squared-default profile"
+  .col-md-4
+    == link_to (t "devise.users.profile.dictionary"), dictionary_path, class: "btn btn-squared-default dictionary"
