@@ -14,6 +14,7 @@ class WordDashboard < Administrate::BaseDashboard
     id: Field::Number,
     en: Field::String,
     ru: Field::String,
+    usage: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,6 +29,7 @@ class WordDashboard < Administrate::BaseDashboard
     :id,
     :en,
     :ru,
+    :usage,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,6 +39,7 @@ class WordDashboard < Administrate::BaseDashboard
     :id,
     :en,
     :ru,
+    :usage,
     :created_at,
     :updated_at,
   ].freeze
@@ -48,6 +51,7 @@ class WordDashboard < Administrate::BaseDashboard
     :lesson,
     :en,
     :ru,
+    :usage,
   ].freeze
 
   # Overwrite this method to customize how words are displayed
